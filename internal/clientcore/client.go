@@ -127,6 +127,16 @@ func New(cfg Config) (*Client, error) {
 }
 
 func (c *Client) Do(ctx context.Context, path string, requestBody, out any) error {
+	return c.do(ctx, path, requestBody, out, false)
+}
+
+// DoOptionalData decodes data when present for endpoints whose documented
+// success response may omit it. Ordinary data-bearing endpoints must use Do.
+func (c *Client) DoOptionalData(ctx context.Context, path string, requestBody, out any) error {
+	return c.do(ctx, path, requestBody, out, true)
+}
+
+func (c *Client) do(ctx context.Context, path string, requestBody, out any, allowMissingData bool) error {
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -201,8 +211,14 @@ func (c *Client) Do(ctx context.Context, path string, requestBody, out any) erro
 	if apiResp.Code == nil {
 		return errors.New("decode response: missing or null code")
 	}
-	if out == nil || len(apiResp.Data) == 0 || string(apiResp.Data) == "null" {
+	if out == nil {
 		return nil
+	}
+	if len(apiResp.Data) == 0 || bytes.Equal(bytes.TrimSpace(apiResp.Data), []byte("null")) {
+		if allowMissingData {
+			return nil
+		}
+		return errors.New("decode response: missing or null data")
 	}
 	if err := json.Unmarshal(apiResp.Data, out); err != nil {
 		return fmt.Errorf("decode data: %w", err)
@@ -232,6 +248,22 @@ func (c *Client) Upload(ctx context.Context, method, signedURL string, headers m
 		return errors.New("upload: body is required for nonzero size")
 	}
 	if size == 0 {
+		// Zero is an exact length, not a request to infer the stream length.
+		// Read at most one byte to distinguish a valid empty stream from data
+		// that would otherwise be silently discarded. Do not read after cancellation.
+		if err := ctx.Err(); err != nil {
+			return err
+		}
+		if body != nil {
+			var probe [1]byte
+			n, err := io.ReadFull(body, probe[:])
+			if n != 0 {
+				return errors.New("upload: body exceeds declared size 0")
+			}
+			if err != io.EOF {
+				return fmt.Errorf("upload: read empty body: %w", err)
+			}
+		}
 		body = http.NoBody
 	}
 	req, err := http.NewRequestWithContext(ctx, method, signedURL, body)
@@ -287,6 +319,14 @@ func newTraceID() (string, error) {
 }
 
 func (c *Client) waitTurn(ctx context.Context, path string) error {
+	interval := c.minInterval
+	// Billing endpoints have stricter limits than the API-wide default.
+	switch path {
+	case "/open/v1/pay/plan/info":
+		interval = max(interval, time.Minute)
+	case "/open/v1/pay/wallet":
+		interval = max(interval, 6*time.Second)
+	}
 	for {
 		if err := ctx.Err(); err != nil {
 			return err
@@ -295,7 +335,7 @@ func (c *Client) waitTurn(ctx context.Context, path string) error {
 		now := time.Now()
 		delay := c.nextRequest[path].Sub(now)
 		if delay <= 0 {
-			c.nextRequest[path] = now.Add(c.minInterval)
+			c.nextRequest[path] = now.Add(interval)
 			c.mu.Unlock()
 			return nil
 		}
@@ -346,7 +386,7 @@ func withoutRedirects(hc *http.Client) *http.Client {
 		c.Timeout = 30 * time.Second
 	}
 	c.CheckRedirect = func(_ *http.Request, _ []*http.Request) error {
-		return errors.New("refusing redirect")
+		return http.ErrUseLastResponse
 	}
 	return &c
 }

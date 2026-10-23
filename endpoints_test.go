@@ -48,13 +48,19 @@ func TestDocumentedPaths(t *testing.T) {
 		_, _ = w.Write([]byte(response.body))
 	}))
 	defer srv.Close()
-	cloud, err := geelark.NewClient("test-token", geelark.WithBaseURL(srv.URL), geelark.WithMinInterval(time.Nanosecond))
-	if err != nil {
-		t.Fatal(err)
-	}
-	local, err := geelark.NewBrowserClient("test-token", geelark.WithBaseURL(srv.URL), geelark.WithRemoteBaseURL(srv.URL), geelark.WithMinInterval(time.Nanosecond))
-	if err != nil {
-		t.Fatal(err)
+	var cloud *geelark.Client
+	var local *geelark.BrowserClient
+	newClients := func(t *testing.T) {
+		t.Helper()
+		var err error
+		cloud, err = geelark.NewClient("test-token", geelark.WithBaseURL(srv.URL), geelark.WithMinInterval(time.Nanosecond))
+		if err != nil {
+			t.Fatal(err)
+		}
+		local, err = geelark.NewBrowserClient("test-token", geelark.WithBaseURL(srv.URL), geelark.WithRemoteBaseURL(srv.URL), geelark.WithMinInterval(time.Nanosecond))
+		if err != nil {
+			t.Fatal(err)
+		}
 	}
 	ctx := context.Background()
 	cases := []struct {
@@ -182,27 +188,27 @@ func TestDocumentedPaths(t *testing.T) {
 			return err
 		}},
 		{"automation.FaceBookLogin", "/open/v1/rpa/task/faceBookLogin", func() error {
-			_, err := cloud.Automation.FaceBookLogin(ctx, automation.FaceBookLoginRequest{})
+			_, err := cloud.Automation.FacebookLogin(ctx, automation.FaceBookLoginRequest{})
 			return err
 		}},
 		{"automation.FaceBookAutoComment", "/open/v1/rpa/task/faceBookAutoComment", func() error {
-			_, err := cloud.Automation.FaceBookAutoComment(ctx, automation.FaceBookAutoCommentRequest{})
+			_, err := cloud.Automation.FacebookAutoComment(ctx, automation.FaceBookAutoCommentRequest{})
 			return err
 		}},
 		{"automation.FaceBookPublish", "/open/v1/rpa/task/faceBookPublish", func() error {
-			_, err := cloud.Automation.FaceBookPublish(ctx, automation.FaceBookPublishRequest{})
+			_, err := cloud.Automation.FacebookPublish(ctx, automation.FaceBookPublishRequest{})
 			return err
 		}},
 		{"automation.FaceBookActiveAccount", "/open/v1/rpa/task/faceBookActiveAccount", func() error {
-			_, err := cloud.Automation.FaceBookActiveAccount(ctx, automation.FaceBookActiveAccountRequest{})
+			_, err := cloud.Automation.FacebookActiveAccount(ctx, automation.FaceBookActiveAccountRequest{})
 			return err
 		}},
 		{"automation.FaceBookPubReels", "/open/v1/rpa/task/faceBookPubReels", func() error {
-			_, err := cloud.Automation.FaceBookPubReels(ctx, automation.FaceBookPubReelsRequest{})
+			_, err := cloud.Automation.FacebookPubReels(ctx, automation.FaceBookPubReelsRequest{})
 			return err
 		}},
 		{"automation.FaceBookMessage", "/open/v1/rpa/task/faceBookMessage", func() error {
-			_, err := cloud.Automation.FaceBookMessage(ctx, automation.FaceBookMessageRequest{})
+			_, err := cloud.Automation.FacebookMessage(ctx, automation.FaceBookMessageRequest{})
 			return err
 		}},
 		{"automation.FacebookReelsActive", "/open/v1/rpa/task/facebookReelsActive", func() error {
@@ -469,7 +475,7 @@ func TestDocumentedPaths(t *testing.T) {
 		{"billing.Transactions", "/open/v1/billing/transaction/detail", func() error { _, err := cloud.Billing.Transactions(ctx, billing.TransactionsRequest{}); return err }},
 		{"billing.BuyTime", "/open/v1/pay/timeAddOn/buy", func() error { _, err := cloud.Billing.BuyTime(ctx, billing.BuyTimeRequest{}); return err }},
 	}
-	manifest, err := os.ReadFile("docs/coverage.json")
+	manifest, err := os.ReadFile("testdata/endpoints.json")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -483,6 +489,10 @@ func TestDocumentedPaths(t *testing.T) {
 		t.Fatalf("%d endpoint tests for %d documented endpoints", len(cases), len(coverage.Endpoints))
 	}
 	wantPaths := make(map[string]string, len(coverage.Endpoints))
+	successBodies := make(map[string]string)
+	for _, fixture := range auditFixtures(t) {
+		successBodies[fixture.Package+"."+fixture.Method] = string(auditSuccessEnvelope(t, fixture))
+	}
 	for _, endpoint := range coverage.Endpoints {
 		wantPaths[endpoint.Package+"."+endpoint.Method] = endpoint.Path
 	}
@@ -497,11 +507,13 @@ func TestDocumentedPaths(t *testing.T) {
 				reply reply
 				code  int
 			}{
-				{"success", reply{200, `{"traceId":"test","code":0,"data":null}`}, 0},
+				{"success", reply{200, successBodies[tc.name]}, 0},
 				{"partial_success", reply{200, `{"traceId":"test","code":40006,"msg":"partial success","data":{"successAmount":1}}`}, 40006},
 				{"http_error", reply{503, `{"traceId":"test","code":50000,"msg":"unavailable"}`}, 50000},
 			} {
 				t.Run(scenario.name, func(t *testing.T) {
+					// Each scenario tests one response without waiting on earlier calls.
+					newClients(t)
 					currentReply.Store(scenario.reply)
 					err := tc.run()
 					if scenario.code == 0 {

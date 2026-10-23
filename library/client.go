@@ -1,27 +1,36 @@
+// Package library provides Library files and tags.
 package library
 
 import (
 	"context"
 
-	"github.com/wyosa/geelark-go-sdk/internal/clientcore"
+	"github.com/wyosa/geelark-go-sdk/common"
 )
 
 type Client struct {
-	core *clientcore.Client
+	core common.UploadTransport
 }
 
-func New(core *clientcore.Client) *Client { return &Client{core: core} }
+func New(core common.UploadTransport) *Client { return &Client{core: core} }
 
 type GetUploadURLRequest struct {
+	// File type, Currently supported: "jpg", "jpeg", "png", "gif", "bmp", "webp","heif",
+	// "heic", "mp4", "webm","xml", "apk", "xapk". Required.
 	FileType string `json:"fileType"`
 }
 
 type GetUploadURLResponse struct {
-	UploadURL   string `json:"uploadUrl"`
+	// URL for uploading the file (valid for 30 minutes).
+	UploadURL string `json:"uploadUrl"`
+	// URL to access the resource.
 	ResourceURL string `json:"resourceUrl"`
 }
 
-// GetUploadURL calls /open/v1/material/getUploadUrl.
+// GetUploadURL: https://open.geelark.com/api/get-material-upload-url
+//
+// GeeLark documents a 30-day retention period for Library files. Call Create immediately
+// after the storage upload; unregistered uploads are deleted. The signed upload URL itself
+// expires after 30 minutes.
 func (c *Client) GetUploadURL(ctx context.Context, req GetUploadURLRequest) (*GetUploadURLResponse, error) {
 	var resp GetUploadURLResponse
 	if err := c.core.Do(ctx, "/open/v1/material/getUploadUrl", req, &resp); err != nil {
@@ -31,23 +40,31 @@ func (c *Client) GetUploadURL(ctx context.Context, req GetUploadURLRequest) (*Ge
 }
 
 type CreateRequest struct {
-	URL      string   `json:"url"`
-	TagsID   []string `json:"tagsId,omitempty"`
-	FileName string   `json:"fileName,omitempty"`
+	// please refer to Upload a file to the Library
+	// (https://open.geelark.com/api/get-material-upload-url). Required.
+	URL    string   `json:"url"`
+	TagsID []string `json:"tagsId,omitempty"`
+	// file name, up to 200 characters.
+	FileName string `json:"fileName,omitempty"`
 }
 
 type CreateResponseFailDetailsItem struct {
-	ID   string `json:"id"`
-	Code int    `json:"code"`
-	Msg  string `json:"msg"`
+	// Tag ID.
+	ID string `json:"id"`
+	// Error code.
+	Code int `json:"code"`
+	// Error msg.
+	Msg string `json:"msg"`
 }
 
 type CreateResponse struct {
-	ID          string                          `json:"id"`
+	// ID of the created Library material.
+	ID string `json:"id"`
+	// Failure details.
 	FailDetails []CreateResponseFailDetailsItem `json:"failDetails"`
 }
 
-// Create calls /open/v1/material/create.
+// Create: https://open.geelark.com/api/material-create
 func (c *Client) Create(ctx context.Context, req CreateRequest) (*CreateResponse, error) {
 	var resp CreateResponse
 	if err := c.core.Do(ctx, "/open/v1/material/create", req, &resp); err != nil {
@@ -57,23 +74,31 @@ func (c *Client) Create(ctx context.Context, req CreateRequest) (*CreateResponse
 }
 
 type DeleteRequest struct {
+	// material id. Required.
 	IDs []string `json:"ids"`
 }
 
 type DeleteResponseFailDetailsItem struct {
-	ID   string `json:"id"`
-	Code int    `json:"code"`
-	Msg  string `json:"msg"`
+	// Tag ID.
+	ID string `json:"id"`
+	// Error code.
+	Code int `json:"code"`
+	// Error msg.
+	Msg string `json:"msg"`
 }
 
 type DeleteResponse struct {
-	TotalAmount   int                             `json:"totalAmount"`
-	SuccessAmount int                             `json:"successAmount"`
-	FailAmount    int                             `json:"failAmount"`
-	FailDetails   []DeleteResponseFailDetailsItem `json:"failDetails"`
+	// Total delete requests.
+	TotalAmount int `json:"totalAmount"`
+	// Total successes.
+	SuccessAmount int `json:"successAmount"`
+	// Total failures.
+	FailAmount int `json:"failAmount"`
+	// Failure details.
+	FailDetails []DeleteResponseFailDetailsItem `json:"failDetails"`
 }
 
-// Delete calls /open/v1/material/del.
+// Delete: https://open.geelark.com/api/material-del
 func (c *Client) Delete(ctx context.Context, req DeleteRequest) (*DeleteResponse, error) {
 	var resp DeleteResponse
 	if err := c.core.Do(ctx, "/open/v1/material/del", req, &resp); err != nil {
@@ -83,21 +108,29 @@ func (c *Client) Delete(ctx context.Context, req DeleteRequest) (*DeleteResponse
 }
 
 type SetTagRequest struct {
+	// material id. Required.
 	MaterialsID []string `json:"materialsId"`
-	TagsID      []string `json:"tagsId,omitempty"`
+	// New material tag IDs; each operation replaces all existing tags. Nil and empty slices
+	// both omit tagsId in this SDK. The server behavior for an omitted field versus an empty
+	// array is not specified.
+	TagsID []string `json:"tagsId,omitempty"`
 }
 
 type SetTagResponseFailDetailsItem struct {
-	ID   string `json:"id"`
-	Code int    `json:"code"`
-	Msg  string `json:"msg"`
+	// Tag ID.
+	ID string `json:"id"`
+	// Error code.
+	Code int `json:"code"`
+	// Error msg.
+	Msg string `json:"msg"`
 }
 
 type SetTagResponse struct {
+	// Details of individual failures, including the affected ID and error code.
 	FailDetails []SetTagResponseFailDetailsItem `json:"failDetails"`
 }
 
-// SetTag calls /open/v1/material/tag/set.
+// SetTag: https://open.geelark.com/api/material-tag-set
 func (c *Client) SetTag(ctx context.Context, req SetTagRequest) (*SetTagResponse, error) {
 	var resp SetTagResponse
 	if err := c.core.Do(ctx, "/open/v1/material/tag/set", req, &resp); err != nil {
@@ -107,44 +140,69 @@ func (c *Client) SetTag(ctx context.Context, req SetTagRequest) (*SetTagResponse
 }
 
 type SearchRequest struct {
-	Page     int      `json:"page,omitempty"`
-	PageSize int      `json:"pageSize,omitempty"`
-	FileName string   `json:"fileName,omitempty"`
-	TagsID   []string `json:"tagsId,omitempty"`
-	Source   *int     `json:"source,omitempty"`
-	FileType []int    `json:"fileType,omitempty"`
-	IDs      []string `json:"ids,omitempty"`
-	TagIDs   []string `json:"tagIds,omitempty"`
+	Page int `json:"page,omitempty"`
+	// page size （max: 200）.
+	PageSize int `json:"pageSize,omitempty"`
+	// search file name.
+	FileName string `json:"fileName,omitempty"`
+	// search tag id.
+	TagsID []string `json:"tagsId,omitempty"`
+	// source: 0-upload，1-AI Edit 2Baidu Cloud Drive 3GhostCut 4GoogleDrive 5Image to video.
+	Source *int `json:"source,omitempty"`
+	// file type 1-image，2-video.
+	FileType []int `json:"fileType,omitempty"`
+	// ID array，The maximum length of the array is 100.
+	IDs []string `json:"ids,omitempty"`
+	// Additional tag ID filter shown in the JSON example. The parameter table lists TagsID
+	// instead; server precedence is not documented.
+	TagIDs []string `json:"tagIds,omitempty"`
 }
 
 type SearchResponseListItemTagsItem struct {
-	ID    string `json:"id"`
-	Name  string `json:"name"`
-	Color int    `json:"color"`
+	// Library tag ID.
+	ID string `json:"id"`
+	// Library tag name. The example uses a string despite the table describing it as an
+	// integer.
+	Name string `json:"name"`
+	// tag color: 0 White 1 Red 2 Blue 3 Green 4 Yellow 5 Purple.
+	Color int `json:"color"`
 }
 
 type SearchResponseListItem struct {
-	ID          string                           `json:"id"`
-	CreatedTime int                              `json:"createdTime"`
-	FileName    string                           `json:"fileName"`
-	FileSize    int                              `json:"fileSize"`
-	FileURL     string                           `json:"fileUrl"`
-	FileType    int                              `json:"fileType"`
-	Width       int                              `json:"width"`
-	Height      int                              `json:"height"`
-	Source      int                              `json:"source"`
-	Tags        []SearchResponseListItemTagsItem `json:"tags"`
-	UserName    string                           `json:"userName"`
+	// Library material ID.
+	ID string `json:"id"`
+	// Creation time, second level timestamp.
+	CreatedTime int64 `json:"createdTime"`
+	// material name.
+	FileName string `json:"fileName"`
+	// material file size, byte.
+	FileSize int64 `json:"fileSize"`
+	// material url.
+	FileURL string `json:"fileUrl"`
+	// material file type 1-image，2-video.
+	FileType int `json:"fileType"`
+	Width    int `json:"width"`
+	Height   int `json:"height"`
+	// source: 0-upload，1-AI Edit 2Baidu Cloud Drive 3GhostCut 4GoogleDrive 5Image to video.
+	Source int `json:"source"`
+	// tag data.
+	Tags []SearchResponseListItemTagsItem `json:"tags"`
+	// upload user name.
+	UserName string `json:"userName"`
 }
 
 type SearchResponse struct {
-	Total    int                      `json:"total"`
-	Page     int                      `json:"page"`
-	PageSize int                      `json:"pageSize"`
-	List     []SearchResponseListItem `json:"list"`
+	// total data.
+	Total int `json:"total"`
+	// current page.
+	Page int `json:"page"`
+	// current page size.
+	PageSize int `json:"pageSize"`
+	// material data.
+	List []SearchResponseListItem `json:"list"`
 }
 
-// Search calls /open/v1/material/search.
+// Search: https://open.geelark.com/api/material-search
 func (c *Client) Search(ctx context.Context, req SearchRequest) (*SearchResponse, error) {
 	var resp SearchResponse
 	if err := c.core.Do(ctx, "/open/v1/material/search", req, &resp); err != nil {
@@ -154,15 +212,18 @@ func (c *Client) Search(ctx context.Context, req SearchRequest) (*SearchResponse
 }
 
 type CreateTagRequest struct {
-	Name  string `json:"name"`
-	Color *int   `json:"color,omitempty"`
+	// tag name（Up to 30 characters）. Required.
+	Name string `json:"name"`
+	// tag color: 0 White 1 Red 2 Blue 3 Green 4 Yellow 5 Purple.
+	Color *int `json:"color,omitempty"`
 }
 
 type CreateTagResponse struct {
+	// tag id.
 	ID string `json:"id"`
 }
 
-// CreateTag calls /open/v1/material/tag/create.
+// CreateTag: https://open.geelark.com/api/material-tag-create
 func (c *Client) CreateTag(ctx context.Context, req CreateTagRequest) (*CreateTagResponse, error) {
 	var resp CreateTagResponse
 	if err := c.core.Do(ctx, "/open/v1/material/tag/create", req, &resp); err != nil {
@@ -172,23 +233,31 @@ func (c *Client) CreateTag(ctx context.Context, req CreateTagRequest) (*CreateTa
 }
 
 type DeleteTagRequest struct {
+	// tag id. Required.
 	IDs []string `json:"ids"`
 }
 
 type DeleteTagResponseFailDetailsItem struct {
-	Code int    `json:"code"`
-	ID   string `json:"id"`
-	Msg  string `json:"msg"`
+	// Error code.
+	Code int `json:"code"`
+	// Tag ID.
+	ID string `json:"id"`
+	// Error msg.
+	Msg string `json:"msg"`
 }
 
 type DeleteTagResponse struct {
-	TotalAmount   int                                `json:"totalAmount"`
-	SuccessAmount int                                `json:"successAmount"`
-	FailAmount    int                                `json:"failAmount"`
-	FailDetails   []DeleteTagResponseFailDetailsItem `json:"failDetails"`
+	// Total delete requests.
+	TotalAmount int `json:"totalAmount"`
+	// Total successes.
+	SuccessAmount int `json:"successAmount"`
+	// Total failures.
+	FailAmount int `json:"failAmount"`
+	// Failure details.
+	FailDetails []DeleteTagResponseFailDetailsItem `json:"failDetails"`
 }
 
-// DeleteTag calls /open/v1/material/tag/del.
+// DeleteTag: https://open.geelark.com/api/material-tag-del
 func (c *Client) DeleteTag(ctx context.Context, req DeleteTagRequest) (*DeleteTagResponse, error) {
 	var resp DeleteTagResponse
 	if err := c.core.Do(ctx, "/open/v1/material/tag/del", req, &resp); err != nil {
@@ -198,25 +267,34 @@ func (c *Client) DeleteTag(ctx context.Context, req DeleteTagRequest) (*DeleteTa
 }
 
 type SearchTagsRequest struct {
-	Page     int     `json:"page,omitempty"`
-	PageSize int     `json:"pageSize,omitempty"`
-	Name     *string `json:"name,omitempty"`
+	Page int `json:"page,omitempty"`
+	// page size （max: 200）.
+	PageSize int `json:"pageSize,omitempty"`
+	// search tag name.
+	Name *string `json:"name,omitempty"`
 }
 
 type SearchTagsResponseListItem struct {
-	ID    string `json:"id"`
-	Name  string `json:"name"`
-	Color int    `json:"color"`
+	// tag id.
+	ID string `json:"id"`
+	// tag name.
+	Name string `json:"name"`
+	// tag color: 0 White 1 Red 2 Blue 3 Green 4 Yellow 5 Purple.
+	Color int `json:"color"`
 }
 
 type SearchTagsResponse struct {
-	Total    int                          `json:"total"`
-	Page     int                          `json:"page"`
-	PageSize int                          `json:"pageSize"`
-	List     []SearchTagsResponseListItem `json:"list"`
+	// total data.
+	Total int `json:"total"`
+	// current page.
+	Page int `json:"page"`
+	// current page size.
+	PageSize int `json:"pageSize"`
+	// tag data.
+	List []SearchTagsResponseListItem `json:"list"`
 }
 
-// SearchTags calls /open/v1/material/tag/search.
+// SearchTags: https://open.geelark.com/api/material-tag-search
 func (c *Client) SearchTags(ctx context.Context, req SearchTagsRequest) (*SearchTagsResponse, error) {
 	var resp SearchTagsResponse
 	if err := c.core.Do(ctx, "/open/v1/material/tag/search", req, &resp); err != nil {

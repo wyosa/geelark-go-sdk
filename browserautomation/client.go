@@ -1,46 +1,67 @@
+// Package browserautomation provides scheduled browser tasks and custom flows in the GeeLark
+// desktop client.
 package browserautomation
 
 import (
 	"context"
 
-	"github.com/wyosa/geelark-go-sdk/internal/clientcore"
+	"github.com/wyosa/geelark-go-sdk/common"
 )
 
 type Client struct {
-	core *clientcore.Client
+	core common.Transport
 }
 
-func New(core *clientcore.Client) *Client { return &Client{core: core} }
+func New(core common.Transport) *Client { return &Client{core: core} }
 
 type SearchRequest struct {
-	Page     int      `json:"page,omitempty"`
-	PageSize int      `json:"pageSize,omitempty"`
-	TaskIDs  []string `json:"taskIds,omitempty"`
+	// Page number, defaults to 1 if not specified.
+	Page int `json:"page,omitempty"`
+	// Page size, maximum 100, defaults to 10 if not specified.
+	PageSize int `json:"pageSize,omitempty"`
+	// Task ID.
+	TaskIDs []string `json:"taskIds,omitempty"`
 }
 
 type SearchResponseListItem struct {
-	ID         string `json:"id"`
-	Eid        string `json:"eid"`
-	Name       string `json:"name"`
-	Remark     string `json:"remark"`
+	// Task ID.
+	ID string `json:"id"`
+	// Profile ID.
+	Eid string `json:"eid"`
+	// Task Name.
+	Name string `json:"name"`
+	// Task Remark.
+	Remark string `json:"remark"`
+	// Profile Name.
 	SerialName string `json:"serialName"`
-	Status     int    `json:"status"`
-	StartAt    int    `json:"startAt"`
-	FinishAt   int    `json:"finishAt"`
-	Cost       int    `json:"cost"`
-	ResultCode int    `json:"resultCode"`
+	// Task Status, 1-Waiting for Execution 2-Executing 3-Task Completed 4-Task Failed 7-Task
+	// Cancelled.
+	Status int `json:"status"`
+	// Start Time, Second-level Timestamp.
+	StartAt int64 `json:"startAt"`
+	// End Time, Second-level Timestamp.
+	FinishAt int64 `json:"finishAt"`
+	// Time Elapsed in Seconds.
+	Cost int `json:"cost"`
+	// Task Result Code, Refer to Task Failure Code and Reason.
+	ResultCode int `json:"resultCode"`
+	// Task Result Description, Refer to Task Failure Code and Reason.
 	ResultDesc string `json:"resultDesc"`
-	ScheduleAt int    `json:"scheduleAt"`
+	// Scheduled execution time as a Unix timestamp in seconds.
+	ScheduleAt int64 `json:"scheduleAt"`
 }
 
 type SearchResponse struct {
-	Total    int                      `json:"total"`
-	Page     int                      `json:"page"`
-	PageSize int                      `json:"pageSize"`
-	List     []SearchResponseListItem `json:"list"`
+	// Total number of data.
+	Total int `json:"total"`
+	// Page number.
+	Page     int `json:"page"`
+	PageSize int `json:"pageSize"`
+	// Data list.
+	List []SearchResponseListItem `json:"list"`
 }
 
-// Search calls /api/v1/browser/task/search.
+// Search: https://open.geelark.com/api/browser-task-search
 func (c *Client) Search(ctx context.Context, req SearchRequest) (*SearchResponse, error) {
 	var resp SearchResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/search", req, &resp); err != nil {
@@ -50,56 +71,77 @@ func (c *Client) Search(ctx context.Context, req SearchRequest) (*SearchResponse
 }
 
 type CancelRequest struct {
+	// task id. Required.
 	TaskID string `json:"taskId"`
 }
 
 type CancelResponse struct{}
 
-// Cancel calls /api/v1/browser/task/cancel.
+// Cancel: https://open.geelark.com/api/browser-task-cancel
+//
+// Only waiting or running tasks can be cancelled.
 func (c *Client) Cancel(ctx context.Context, req CancelRequest) (*CancelResponse, error) {
 	var resp CancelResponse
-	if err := c.core.Do(ctx, "/api/v1/browser/task/cancel", req, &resp); err != nil {
+	if err := c.core.Do(ctx, "/api/v1/browser/task/cancel", req, nil); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 type RestartRequest struct {
+	// task id. Required.
 	TaskID string `json:"taskId"`
 }
 
 type RestartResponse struct{}
 
-// Restart calls /api/v1/browser/task/restart.
+// Restart: https://open.geelark.com/api/browser-task-restart
+//
+// Completed, failed, or cancelled tasks can be retried.
 func (c *Client) Restart(ctx context.Context, req RestartRequest) (*RestartResponse, error) {
 	var resp RestartResponse
-	if err := c.core.Do(ctx, "/api/v1/browser/task/restart", req, &resp); err != nil {
+	if err := c.core.Do(ctx, "/api/v1/browser/task/restart", req, nil); err != nil {
 		return nil, err
 	}
 	return &resp, nil
 }
 
 type DetailRequest struct {
+	// Task ID. Required.
 	TaskID string `json:"taskId"`
 }
 
 type DetailResponse struct {
-	ID         string   `json:"id"`
-	Eid        string   `json:"eid"`
-	Name       string   `json:"name"`
-	Remark     string   `json:"remark"`
-	SerialName string   `json:"serialName"`
-	Status     int      `json:"status"`
-	StartAt    int      `json:"startAt"`
-	FinishAt   int      `json:"finishAt"`
-	Cost       int      `json:"cost"`
-	ResultCode int      `json:"resultCode"`
-	ResultDesc string   `json:"resultDesc"`
-	ScheduleAt int      `json:"scheduleAt"`
-	Logs       []string `json:"logs"`
+	// Task ID.
+	ID string `json:"id"`
+	// Profile ID.
+	Eid string `json:"eid"`
+	// Task Name.
+	Name string `json:"name"`
+	// Task Remark.
+	Remark string `json:"remark"`
+	// Profile Name.
+	SerialName string `json:"serialName"`
+	// Task Status, 1-Waiting for Execution 2-Executing 3-Task Completed 4-Task Failed
+	// 7-Canceled.
+	Status int `json:"status"`
+	// Start time, timestamp in seconds.
+	StartAt int64 `json:"startAt"`
+	// End time, timestamp in seconds.
+	FinishAt int64 `json:"finishAt"`
+	// Time elapsed in seconds.
+	Cost int `json:"cost"`
+	// Task result code, refer to task failure codes and reasons.
+	ResultCode int `json:"resultCode"`
+	// Task result description, refer to task failure codes and reasons.
+	ResultDesc string `json:"resultDesc"`
+	// Scheduled execution time as a Unix timestamp in seconds.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// Task logs.
+	Logs []string `json:"logs"`
 }
 
-// Detail calls /api/v1/browser/task/detail.
+// Detail: https://open.geelark.com/api/browser-task-detail
 func (c *Client) Detail(ctx context.Context, req DetailRequest) (*DetailResponse, error) {
 	var resp DetailResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/detail", req, &resp); err != nil {
@@ -109,25 +151,34 @@ func (c *Client) Detail(ctx context.Context, req DetailRequest) (*DetailResponse
 }
 
 type FlowRequest struct {
-	Page     int `json:"page,omitempty"`
+	// Page number, defaults to 1 if not specified.
+	Page int `json:"page,omitempty"`
+	// Page size, maximum 100, defaults to 10 if not specified.
 	PageSize int `json:"pageSize,omitempty"`
 }
 
 type FlowResponseListItem struct {
-	ID     string   `json:"id"`
-	Title  string   `json:"title"`
-	Desc   string   `json:"desc"`
+	// Task Flow ID.
+	ID string `json:"id"`
+	// Task Flow Title.
+	Title string `json:"title"`
+	// Task Flow Remarks.
+	Desc string `json:"desc"`
+	// Task Flow Parameter Field Names.
 	Params []string `json:"params"`
 }
 
 type FlowResponse struct {
-	Total    int                    `json:"total"`
-	Page     int                    `json:"page"`
-	PageSize int                    `json:"pageSize"`
-	List     []FlowResponseListItem `json:"list"`
+	// Total number of records.
+	Total int `json:"total"`
+	// Page number.
+	Page     int `json:"page"`
+	PageSize int `json:"pageSize"`
+	// List of records.
+	List []FlowResponseListItem `json:"list"`
 }
 
-// Flow calls /api/v1/browser/task/flow.
+// Flow: https://open.geelark.com/api/browser-task-flow
 func (c *Client) Flow(ctx context.Context, req FlowRequest) (*FlowResponse, error) {
 	var resp FlowResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/flow", req, &resp); err != nil {
@@ -141,19 +192,29 @@ func (c *Client) Flow(ctx context.Context, req FlowRequest) (*FlowResponse, erro
 type AddRequestParamMap map[string]any
 
 type AddRequest struct {
-	Eid        string             `json:"eid"`
-	Name       string             `json:"name,omitempty"`
-	Remark     string             `json:"remark,omitempty"`
-	ScheduleAt int                `json:"scheduleAt"`
-	FlowID     string             `json:"flowId"`
-	ParamMap   AddRequestParamMap `json:"paramMap,omitempty"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// Task flow ID, the ID field returned by the task flow query interface. Required.
+	FlowID string `json:"flowId"`
+	// Task flow parameters, with corresponding parameter types as follows:; String: string;
+	// Batch text: array[string]; Number: number; Boolean: bool; File: array[string].
+	ParamMap AddRequestParamMap `json:"paramMap,omitempty"`
 }
 
 type AddResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// Add calls /api/v1/browser/task/add.
+// Add: https://open.geelark.com/api/browser-task-add
+//
+// Call Flow first to obtain a flow ID and the input names expected by ParamMap.
 func (c *Client) Add(ctx context.Context, req AddRequest) (*AddResponse, error) {
 	var resp AddResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/add", req, &resp); err != nil {
@@ -163,18 +224,24 @@ func (c *Client) Add(ctx context.Context, req AddRequest) (*AddResponse, error) 
 }
 
 type TikTokSearchRequest struct {
-	Eid           string `json:"eid"`
-	Name          string `json:"name,omitempty"`
-	Remark        string `json:"remark,omitempty"`
-	ScheduleAt    int    `json:"scheduleAt"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// search keyword. Required.
 	SearchKeyword string `json:"searchKeyword"`
 }
 
 type TikTokSearchResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// TikTokSearch calls /api/v1/browser/task/tiktokSearch.
+// TikTokSearch: https://open.geelark.com/api/browser-task-tiktokSearch
 func (c *Client) TikTokSearch(ctx context.Context, req TikTokSearchRequest) (*TikTokSearchResponse, error) {
 	var resp TikTokSearchResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/tiktokSearch", req, &resp); err != nil {
@@ -184,18 +251,24 @@ func (c *Client) TikTokSearch(ctx context.Context, req TikTokSearchRequest) (*Ti
 }
 
 type TikTokCommentRequest struct {
-	Eid        string   `json:"eid"`
-	Name       string   `json:"name,omitempty"`
-	Remark     string   `json:"remark,omitempty"`
-	ScheduleAt int      `json:"scheduleAt"`
-	Comments   []string `json:"comments"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// comments. Required.
+	Comments []string `json:"comments"`
 }
 
 type TikTokCommentResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// TikTokComment calls /api/v1/browser/task/tiktokComment.
+// TikTokComment: https://open.geelark.com/api/browser-task-tiktokComment
 func (c *Client) TikTokComment(ctx context.Context, req TikTokCommentRequest) (*TikTokCommentResponse, error) {
 	var resp TikTokCommentResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/tiktokComment", req, &resp); err != nil {
@@ -205,19 +278,25 @@ func (c *Client) TikTokComment(ctx context.Context, req TikTokCommentRequest) (*
 }
 
 type TikTokLikeRequest struct {
-	Eid        string `json:"eid"`
-	Name       string `json:"name,omitempty"`
-	Remark     string `json:"remark,omitempty"`
-	ScheduleAt int    `json:"scheduleAt"`
-	VideoLink  string `json:"videoLink"`
-	Comment    string `json:"comment,omitempty"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// Video link. Required.
+	VideoLink string `json:"videoLink"`
+	Comment   string `json:"comment,omitempty"`
 }
 
 type TikTokLikeResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// TikTokLike calls /api/v1/browser/task/tiktokLike.
+// TikTokLike: https://open.geelark.com/api/browser-task-tiktokLike
 func (c *Client) TikTokLike(ctx context.Context, req TikTokLikeRequest) (*TikTokLikeResponse, error) {
 	var resp TikTokLikeResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/tiktokLike", req, &resp); err != nil {
@@ -227,18 +306,24 @@ func (c *Client) TikTokLike(ctx context.Context, req TikTokLikeRequest) (*TikTok
 }
 
 type FacebookPostRequest struct {
-	Eid        string `json:"eid"`
-	Name       string `json:"name,omitempty"`
-	Remark     string `json:"remark,omitempty"`
-	ScheduleAt int    `json:"scheduleAt"`
-	Content    string `json:"content"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// Content. Required.
+	Content string `json:"content"`
 }
 
 type FacebookPostResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// FacebookPost calls /api/v1/browser/task/facebookPost.
+// FacebookPost: https://open.geelark.com/api/browser-task-facebookPost
 func (c *Client) FacebookPost(ctx context.Context, req FacebookPostRequest) (*FacebookPostResponse, error) {
 	var resp FacebookPostResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/facebookPost", req, &resp); err != nil {
@@ -248,17 +333,22 @@ func (c *Client) FacebookPost(ctx context.Context, req FacebookPostRequest) (*Fa
 }
 
 type FacebookFriendsRequest struct {
-	Eid        string `json:"eid"`
-	Name       string `json:"name,omitempty"`
-	Remark     string `json:"remark,omitempty"`
-	ScheduleAt int    `json:"scheduleAt"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
 }
 
 type FacebookFriendsResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// FacebookFriends calls /api/v1/browser/task/facebookFriends.
+// FacebookFriends: https://open.geelark.com/api/browser-task-facebookFriends
 func (c *Client) FacebookFriends(ctx context.Context, req FacebookFriendsRequest) (*FacebookFriendsResponse, error) {
 	var resp FacebookFriendsResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/facebookFriends", req, &resp); err != nil {
@@ -268,17 +358,22 @@ func (c *Client) FacebookFriends(ctx context.Context, req FacebookFriendsRequest
 }
 
 type FacebookLikeRequest struct {
-	Eid        string `json:"eid"`
-	Name       string `json:"name,omitempty"`
-	Remark     string `json:"remark,omitempty"`
-	ScheduleAt int    `json:"scheduleAt"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
 }
 
 type FacebookLikeResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// FacebookLike calls /api/v1/browser/task/facebookLike.
+// FacebookLike: https://open.geelark.com/api/browser-task-facebookLike
 func (c *Client) FacebookLike(ctx context.Context, req FacebookLikeRequest) (*FacebookLikeResponse, error) {
 	var resp FacebookLikeResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/facebookLike", req, &resp); err != nil {
@@ -288,19 +383,26 @@ func (c *Client) FacebookLike(ctx context.Context, req FacebookLikeRequest) (*Fa
 }
 
 type FacebookHomepageRequest struct {
-	Eid          string   `json:"eid"`
-	Name         string   `json:"name,omitempty"`
-	Remark       string   `json:"remark,omitempty"`
-	ScheduleAt   int      `json:"scheduleAt"`
-	MainPageName string   `json:"mainPageName"`
-	Category     []string `json:"category"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// Homepage name data. Required.
+	MainPageName string `json:"mainPageName"`
+	// Homepage category data. Required.
+	Category []string `json:"category"`
 }
 
 type FacebookHomepageResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// FacebookHomepage calls /api/v1/browser/task/facebookHomepage.
+// FacebookHomepage: https://open.geelark.com/api/browser-task-facebookHomepage
 func (c *Client) FacebookHomepage(ctx context.Context, req FacebookHomepageRequest) (*FacebookHomepageResponse, error) {
 	var resp FacebookHomepageResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/facebookHomepage", req, &resp); err != nil {
@@ -310,17 +412,22 @@ func (c *Client) FacebookHomepage(ctx context.Context, req FacebookHomepageReque
 }
 
 type InstagramLikeRequest struct {
-	Eid        string `json:"eid"`
-	Name       string `json:"name,omitempty"`
-	Remark     string `json:"remark,omitempty"`
-	ScheduleAt int    `json:"scheduleAt"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
 }
 
 type InstagramLikeResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// InstagramLike calls /api/v1/browser/task/instagramLike.
+// InstagramLike: https://open.geelark.com/api/browser-task-instagramLike
 func (c *Client) InstagramLike(ctx context.Context, req InstagramLikeRequest) (*InstagramLikeResponse, error) {
 	var resp InstagramLikeResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/instagramLike", req, &resp); err != nil {
@@ -330,18 +437,24 @@ func (c *Client) InstagramLike(ctx context.Context, req InstagramLikeRequest) (*
 }
 
 type InstagramSearchRequest struct {
-	Eid            string   `json:"eid"`
-	Name           string   `json:"name,omitempty"`
-	Remark         string   `json:"remark,omitempty"`
-	ScheduleAt     int      `json:"scheduleAt"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// Search keywords. Required.
 	SearchKeywords []string `json:"searchKeywords"`
 }
 
 type InstagramSearchResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// InstagramSearch calls /api/v1/browser/task/instagramSearch.
+// InstagramSearch: https://open.geelark.com/api/browser-task-instagramSearch
 func (c *Client) InstagramSearch(ctx context.Context, req InstagramSearchRequest) (*InstagramSearchResponse, error) {
 	var resp InstagramSearchResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/instagramSearch", req, &resp); err != nil {
@@ -351,20 +464,28 @@ func (c *Client) InstagramSearch(ctx context.Context, req InstagramSearchRequest
 }
 
 type YouTubeWatchRequest struct {
-	Eid           string `json:"eid"`
-	Name          string `json:"name,omitempty"`
-	Remark        string `json:"remark,omitempty"`
-	ScheduleAt    int    `json:"scheduleAt"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// search keyword. Required.
 	SearchKeyword string `json:"searchKeyword"`
-	Title         string `json:"title"`
-	Comment       string `json:"comment"`
+	// title. Required.
+	Title string `json:"title"`
+	// comment. Required.
+	Comment string `json:"comment"`
 }
 
 type YouTubeWatchResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// YouTubeWatch calls /api/v1/browser/task/youtubeWatch.
+// YouTubeWatch: https://open.geelark.com/api/browser-task-youtubeWatch
 func (c *Client) YouTubeWatch(ctx context.Context, req YouTubeWatchRequest) (*YouTubeWatchResponse, error) {
 	var resp YouTubeWatchResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/youtubeWatch", req, &resp); err != nil {
@@ -374,18 +495,24 @@ func (c *Client) YouTubeWatch(ctx context.Context, req YouTubeWatchRequest) (*Yo
 }
 
 type XPostRequest struct {
-	Eid        string `json:"eid"`
-	Name       string `json:"name,omitempty"`
-	Remark     string `json:"remark,omitempty"`
-	ScheduleAt int    `json:"scheduleAt"`
-	Content    string `json:"content"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// Content. Required.
+	Content string `json:"content"`
 }
 
 type XPostResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// XPost calls /api/v1/browser/task/xPost.
+// XPost: https://open.geelark.com/api/browser-task-xPost
 func (c *Client) XPost(ctx context.Context, req XPostRequest) (*XPostResponse, error) {
 	var resp XPostResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/xPost", req, &resp); err != nil {
@@ -395,17 +522,22 @@ func (c *Client) XPost(ctx context.Context, req XPostRequest) (*XPostResponse, e
 }
 
 type XLikeRequest struct {
-	Eid        string `json:"eid"`
-	Name       string `json:"name,omitempty"`
-	Remark     string `json:"remark,omitempty"`
-	ScheduleAt int    `json:"scheduleAt"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
 }
 
 type XLikeResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// XLike calls /api/v1/browser/task/xLike.
+// XLike: https://open.geelark.com/api/browser-task-xLike
 func (c *Client) XLike(ctx context.Context, req XLikeRequest) (*XLikeResponse, error) {
 	var resp XLikeResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/xLike", req, &resp); err != nil {
@@ -415,18 +547,24 @@ func (c *Client) XLike(ctx context.Context, req XLikeRequest) (*XLikeResponse, e
 }
 
 type RedditLikeRequest struct {
-	Eid            string   `json:"eid"`
-	Name           string   `json:"name,omitempty"`
-	Remark         string   `json:"remark,omitempty"`
-	ScheduleAt     int      `json:"scheduleAt"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// Search keywords. Required.
 	SearchKeywords []string `json:"searchKeywords"`
 }
 
 type RedditLikeResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// RedditLike calls /api/v1/browser/task/redditLike.
+// RedditLike: https://open.geelark.com/api/browser-task-redditLike
 func (c *Client) RedditLike(ctx context.Context, req RedditLikeRequest) (*RedditLikeResponse, error) {
 	var resp RedditLikeResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/redditLike", req, &resp); err != nil {
@@ -436,18 +574,24 @@ func (c *Client) RedditLike(ctx context.Context, req RedditLikeRequest) (*Reddit
 }
 
 type CookieBotRequest struct {
-	Eid        string   `json:"eid"`
-	Name       string   `json:"name,omitempty"`
-	Remark     string   `json:"remark,omitempty"`
-	ScheduleAt int      `json:"scheduleAt"`
-	Pages      []string `json:"pages"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// The webpage to be accessed. Required.
+	Pages []string `json:"pages"`
 }
 
 type CookieBotResponse struct {
+	// ID assigned to the asynchronous task.
 	TaskID string `json:"taskId"`
 }
 
-// CookieBot calls /api/v1/browser/task/cookieBot.
+// CookieBot: https://open.geelark.com/api/browser-task-cookieBot
 func (c *Client) CookieBot(ctx context.Context, req CookieBotRequest) (*CookieBotResponse, error) {
 	var resp CookieBotResponse
 	if err := c.core.Do(ctx, "/api/v1/browser/task/cookieBot", req, &resp); err != nil {

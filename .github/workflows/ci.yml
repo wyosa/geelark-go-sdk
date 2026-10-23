@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  # Test exactly the version selected by setup-go, including the Go 1.22 job.
+  GOTOOLCHAIN: local
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        go: ['1.22.12', '1.27.3']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version: ${{ matrix.go }}
+          cache: false
+      - name: Minimum supported Go
+        if: matrix.go == '1.22.12'
+        env:
+          CGO_ENABLED: '0'
+        run: go test -count=1 ./...
+      - name: Race detection and coverage
+        if: matrix.go == '1.27.3'
+        run: |
+          go test -race -count=1 -coverpkg=./... -coverprofile=coverage.out ./...
+          go tool cover -func=coverage.out
+      - name: Execute 32-bit tests
+        if: matrix.go == '1.27.3'
+        env:
+          GOARCH: '386'
+          CGO_ENABLED: '0'
+        run: go test -count=1 ./...
+
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Formatting
+        run: |
+          unformatted=$(gofmt -l .)
+          if [ -n "$unformatted" ]; then
+            printf '%s\n' "$unformatted"
+            exit 1
+          fi
+      - name: API fixtures
+        run: python3 scripts/fixtures.py check
+      - run: go vet ./...
+      - run: go run honnef.co/go/tools/cmd/staticcheck@v0.8.2 ./...
+      - run: go run golang.org/x/vuln/cmd/govulncheck@v1.9.0 ./...
+
+  fuzz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - package: ./internal/clientcore
+            target: FuzzAuditEnvelope
+          - package: ./internal/jsonutil
+            target: FuzzStringID
+          - package: ./common
+            target: FuzzAuditText
+          - package: ./webhook
+            target: FuzzAuditVerification
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - run: go test -run='^$' -fuzz='^${{ matrix.target }}$' -fuzztime=10s -parallel=2 ${{ matrix.package }}

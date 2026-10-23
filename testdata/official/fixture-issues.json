@@ -1,0 +1,22 @@
+[
+  {
+    "endpoint": "automation.CancelTask",
+    "problem": "invalid_example",
+    "raw": "{\n    \"traceId\": \"123456ABCEDF\",\n    \"code\": 40009,\n    \"msg\": \"process all failure\",\n\t\"data\": {\n\t\t\"totalAmount\": 1,\n\t\t\"successAmount\": 0,\n\t\t\"failAmount\": 1,\n\t\t\"failDetails\": [\n\t\t\t\"id\": \"123456ABCEDF\"\n\t\t\t\"code\": \"48001\",\n\t\t\t\"msg\": \"the current task status does not allow the operation\"\n\t\t]\n\t}\n}\n"
+  },
+  {
+    "endpoint": "automation.CancelTask",
+    "problem": "invalid_example",
+    "raw": "{\n    \"traceId\": \"123456ABCEDF\",\n    \"code\": 40006,\n    \"msg\": \"partial success\",\n\t\"data\": {\n\t\t\"totalAmount\": 2,\n\t\t\"successAmount\": 1,\n\t\t\"failAmount\": 1,\n\t\t\"failDetails\": [\n\t\t\t\"id\": \"123456ABCEDF\"\n\t\t\t\"code\": \"48001\",\n\t\t\t\"msg\": \"the current task status does not allow the operation\"\n\t\t]\n\t}\n}\n"
+  },
+  {
+    "endpoint": "automation.RetryTask",
+    "problem": "invalid_example",
+    "raw": "{\n    \"traceId\": \"123456ABCEDF\",\n    \"code\": 40009,\n    \"msg\": \"process all failure\",\n\t\"data\": {\n\t\t\"totalAmount\": 1,\n\t\t\"successAmount\": 0,\n\t\t\"failAmount\": 1,\n\t\t\"failDetails\": [\n\t\t\t\"id\": \"123456ABCEDF\"\n\t\t\t\"code\": \"48001\",\n\t\t\t\"msg\": \"the current task status does not allow the operation\"\n\t\t]\n\t}\n}\n"
+  },
+  {
+    "endpoint": "automation.RetryTask",
+    "problem": "invalid_example",
+    "raw": "{\n    \"traceId\": \"123456ABCEDF\",\n    \"code\": 40006,\n    \"msg\": \"partial success\",\n\t\"data\": {\n\t\t\"totalAmount\": 2,\n\t\t\"successAmount\": 1,\n\t\t\"failAmount\": 1,\n\t\t\"failDetails\": [\n\t\t\t\"id\": \"123456ABCEDF\"\n\t\t\t\"code\": \"48001\",\n\t\t\t\"msg\": \"the current task status does not allow the operation\"\n\t\t]\n\t}\n}\n"
+  }
+]

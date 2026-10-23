@@ -1,3 +1,4 @@
+// Package geelark provides clients for the GeeLark cloud and local browser APIs.
 package geelark
 
 import (
@@ -28,11 +29,16 @@ import (
 )
 
 const (
-	DefaultBaseURL        = clientcore.DefaultBaseURL
+	// DefaultBaseURL is the remote GeeLark API origin.
+	DefaultBaseURL = clientcore.DefaultBaseURL
+	// DefaultBrowserBaseURL is the local GeeLark desktop API origin.
 	DefaultBrowserBaseURL = clientcore.DefaultBrowserBaseURL
-	DefaultMinInterval    = clientcore.DefaultMinInterval
+	// DefaultMinInterval spaces calls to the same path; Billing has higher minima.
+	DefaultMinInterval = clientcore.DefaultMinInterval
 )
 
+// APIError describes a non-2xx HTTP response or a nonzero GeeLark result code.
+// Use errors.As to inspect it and DecodeData to read partial-success results.
 type APIError = clientcore.APIError
 
 type config struct {
@@ -42,33 +48,52 @@ type config struct {
 	minInterval   time.Duration
 }
 
+// Option configures a cloud or browser client through the With functions.
 type Option func(*config)
 
 // Client provides the cloud and platform APIs through module services.
 type Client struct {
+	// CloudPhones manages cloud phone lifecycle and device configuration.
 	CloudPhones *cloudphone.Client
-	ADB         *adb.Client
-	Shell       *shell.Client
-	Apps        *app.Client
-	Files       *files.Client
-	Library     *library.Client
-	Automation  *automation.Client
-	Analytics   *analytics.Client
-	LiveStream  *livestream.Client
-	Webhooks    *webhook.Client
-	OEM         *oem.Client
-	Proxies     *proxy.Client
+	// ADB controls ADB access to cloud phones.
+	ADB *adb.Client
+	// Shell executes shell commands on cloud phones.
+	Shell *shell.Client
+	// Apps manages applications on cloud phones.
+	Apps *app.Client
+	// Files uploads temporary files and transfers files to cloud phones.
+	Files *files.Client
+	// Library manages retained Library files and their tags.
+	Library *library.Client
+	// Automation creates and queries automation tasks.
+	Automation *automation.Client
+	// Analytics manages Data Assistant accounts, tags, and metrics.
+	Analytics *analytics.Client
+	// LiveStream controls cloud phone live streams.
+	LiveStream *livestream.Client
+	// Webhooks configures cloud callback delivery.
+	Webhooks *webhook.Client
+	// OEM customizes cloud phone views and branding.
+	OEM *oem.Client
+	// Proxies manages proxy connections.
+	Proxies *proxy.Client
+	// ProxyGroups manages proxy groups.
 	ProxyGroups *proxygroup.Client
-	Groups      *group.Client
-	Tags        *tag.Client
-	Billing     *billing.Client
+	// Groups manages cloud phone profile groups.
+	Groups *group.Client
+	// Tags manages cloud phone profile tags.
+	Tags *tag.Client
+	// Billing reads balances and manages subscriptions and time add-ons.
+	Billing *billing.Client
 
 	core *clientcore.Client
 }
 
 // BrowserClient provides APIs served by the local GeeLark desktop client.
 type BrowserClient struct {
-	Browsers   *browser.Client
+	// Browsers manages local browser profiles and browser settings.
+	Browsers *browser.Client
+	// Automation creates and queries automation tasks.
 	Automation *browserautomation.Client
 
 	core       *clientcore.Client
@@ -181,6 +206,11 @@ func applyOptions(baseURL string, opts []Option) config {
 	return cfg
 }
 
+// WithBaseURL changes the cloud or local API base URL for the chosen constructor.
+// URLs require HTTPS except on loopback hosts. Credentials, query strings, and
+// fragments are rejected. Do not append /open/v1 or /api/v1; methods add the API
+// path. Empty values are ignored. NewBrowserClient's remote endpoint is configured
+// separately with WithRemoteBaseURL.
 func WithBaseURL(baseURL string) Option {
 	return func(cfg *config) {
 		if strings.TrimSpace(baseURL) != "" {
@@ -199,6 +229,9 @@ func WithRemoteBaseURL(baseURL string) Option {
 }
 
 // WithHTTPClient copies the supplied client and refuses redirects.
+// Its timeout and transport apply to API requests and storage uploads. The
+// transport and cookie jar are shared with the supplied client and must be safe
+// for concurrent use. A zero timeout remains unlimited; nil is ignored.
 func WithHTTPClient(httpClient *http.Client) Option {
 	return func(cfg *config) {
 		if httpClient != nil {
@@ -208,6 +241,10 @@ func WithHTTPClient(httpClient *http.Client) Option {
 }
 
 // WithMinInterval changes the minimum spacing between calls to the same path.
+// Billing.PlanInfo always waits at least 60 seconds between calls and
+// Billing.Balance at least 6 seconds; a longer interval is honored.
+// Nonpositive values are ignored. This setting applies to one client instance;
+// callers coordinating several clients or processes need their own limiter.
 func WithMinInterval(interval time.Duration) Option {
 	return func(cfg *config) {
 		if interval > 0 {

@@ -1,0 +1,93 @@
+[
+  {
+    "type": 1,
+    "id": "528086321789535232",
+    "result": true,
+    "username": "admin@geelark.com",
+    "ip": "62.141.247.218",
+    "eventTime": 1766567054
+  },
+  {
+    "type": 4,
+    "id": "528715748189668352",
+    "taskId": "128715748189668352",
+    "result": true
+  },
+  {
+    "type": 5,
+    "id": "528715748189668352",
+    "taskId": "128715748189668352",
+    "result": true,
+    "downloadLink": "https://www.abc.com/a.jpg"
+  },
+  {
+    "type": 6,
+    "taskId": "528715748189668352",
+    "result": true
+  },
+  {
+    "type": 8,
+    "id": "528086321789535232",
+    "username": "GeeLark",
+    "ip": "62.141.247.218",
+    "eventTime": 1766567054,
+    "useMin": 1
+  },
+  {
+    "type": 9,
+    "items": [
+      {
+        "id": "583502967211075086",
+        "name": "newName"
+      }
+    ]
+  },
+  {
+    "type": 10,
+    "items": [
+      {
+        "id": "583502967211075086",
+        "recycle": false
+      }
+    ]
+  },
+  {
+    "type": 11,
+    "envIds": [
+      "583502967211075086"
+    ]
+  },
+  {
+    "type": 12,
+    "taskIds": [
+      "528715748189668352"
+    ],
+    "channel": "api"
+  },
+  {
+    "type": 13,
+    "taskIds": [
+      "528715748189668352"
+    ],
+    "channel": "api"
+  },
+  {
+    "type": 14,
+    "taskId": "528715748189168352",
+    "status": 1
+  },
+  {
+    "type": 15,
+    "packageName": "com.example.app",
+    "appVersionId": "1793552962140770305",
+    "id": "528715748189168352",
+    "result": 1
+  },
+  {
+    "type": 16,
+    "id": "528715748189668352",
+    "TaskId": "1850726441252569088",
+    "result": true,
+    "downloadLink": "https://test.com/test.xml"
+  }
+]

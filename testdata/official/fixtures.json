@@ -1,0 +1,7301 @@
+[
+  {
+    "package": "cloudphone",
+    "method": "Create",
+    "path": "/open/v1/phone/addNew",
+    "title": "Create new V2",
+    "source": "https://doc.geelark.com/web/#/602813392/101528476",
+    "page_id": "101528476",
+    "url": "https://openapi.geelark.com/open/v1/phone/addNew",
+    "slug": "phone-addNew",
+    "requests": [
+      {
+        "mobileType": "Android 12",
+        "chargeMode": 0,
+        "data": [
+          {
+            "profileName": "myPhone",
+            "proxyInformation": "socks5://AD00xx004:3000xxx0002@100.200.200.100:30000",
+            "proxyQueryChannel": 1,
+            "mobileLanguage": "default",
+            "profileGroup": "myGroup",
+            "profileTags": [
+              "myTag"
+            ],
+            "profileNote": "remark"
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 1,
+          "successAmount": 1,
+          "failAmount": 0,
+          "details": [
+            {
+              "index": 1,
+              "code": 0,
+              "msg": "success",
+              "id": "497652752864775437",
+              "profileName": "22 ungrouped",
+              "envSerialNo": "22",
+              "equipmentInfo": {
+                "countryName": "Thailand",
+                "phoneNumber": "+66877382166",
+                "enableSim": 1,
+                "imei": "863406055475987",
+                "osVersion": "Android 11.0",
+                "wifiBssid": "1C:1D:67:B1:C1:76",
+                "mac": "9C:A5:C0:5F:C5:AD",
+                "bluetoothMac": "D0:15:4A:5B:7E:AE",
+                "timeZone": "Asia/Bangkok"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "List",
+    "path": "/open/v1/phone/list",
+    "title": "Get all cloud phones",
+    "source": "https://doc.geelark.com/web/#/602813392/101527838",
+    "page_id": "101527838",
+    "url": "https://openapi.geelark.com/open/v1/phone/list",
+    "slug": "phone-list",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 10,
+        "serialName": "test",
+        "remark": "",
+        "groupName": "",
+        "tags": [
+          "tag1",
+          "tag2"
+        ],
+        "openStatus": 1,
+        "proxyIds": [
+          "602943680722009770"
+        ],
+        "serialNos": [
+          "238"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 1,
+          "page": 1,
+          "pageSize": 10,
+          "items": [
+            {
+              "id": "123456ABCDEF",
+              "serialName": "test",
+              "serialNo": "1",
+              "group": {
+                "id": "123456ABCDEF",
+                "name": "test group",
+                "remark": "group remark"
+              },
+              "remark": "env remark",
+              "status": 0,
+              "tags": [
+                {
+                  "name": "hi"
+                },
+                {
+                  "name": "test"
+                }
+              ],
+              "equipmentInfo": {
+                "countryName": "Thailand",
+                "phoneNumber": "+66877382166",
+                "enableSim": 1,
+                "imei": "863406055475987",
+                "osVersion": "Android 11.0",
+                "wifiBssid": "1C:1D:67:B1:C1:76",
+                "mac": "9C:A5:C0:5F:C5:AD",
+                "bluetoothMac": "D0:15:4A:5B:7E:AE",
+                "timeZone": "Asia/Bangkok",
+                "deviceName": "",
+                "netType": 1,
+                "language": "en-US",
+                "province": "",
+                "city": ""
+              },
+              "proxy": {
+                "type": "socks5",
+                "server": "129.129.129.129",
+                "port": 30000,
+                "username": "user",
+                "password": "pass"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "Status",
+    "path": "/open/v1/phone/status",
+    "title": "Query status",
+    "source": "https://doc.geelark.com/web/#/602813392/101527839",
+    "page_id": "101527839",
+    "url": "https://openapi.geelark.com/open/v1/phone/status",
+    "slug": "phone-status",
+    "requests": [
+      {
+        "ids": [
+          "123456ABCDEF",
+          "123456ABCDEF",
+          "123456ABCDEF",
+          "123456ABCDEF"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "code": 0,
+        "msg": "成功",
+        "traceId": "123456ABCDEF",
+        "data": {
+          "totalAmount": 4,
+          "successAmount": 3,
+          "failAmount": 1,
+          "successDetails": [
+            {
+              "id": "123456ABCDEF",
+              "serialName": "name1",
+              "status": 0
+            },
+            {
+              "id": "123456ABCDEF",
+              "serialName": "name2",
+              "status": 1
+            },
+            {
+              "id": "123456ABCDEF",
+              "serialName": "name3",
+              "status": 1
+            }
+          ],
+          "failDetails": [
+            {
+              "code": 42001,
+              "id": "123456ABCDEF",
+              "msg": "env not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "Start",
+    "path": "/open/v1/phone/start",
+    "title": "Start cloud phone",
+    "source": "https://doc.geelark.com/web/#/602813392/101527840",
+    "page_id": "101527840",
+    "url": "https://openapi.geelark.com/open/v1/phone/start",
+    "slug": "phone-start",
+    "requests": [
+      {
+        "ids": [
+          "123456ABCDEF",
+          "123456ABCDEF",
+          "123456ABCDEF",
+          "123456ABCDEF"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "code": 0,
+        "msg": "success",
+        "traceId": "12345678ABCDEF",
+        "data": {
+          "totalAmount": 3,
+          "successAmount": 1,
+          "failAmount": 2,
+          "failDetails": [
+            {
+              "code": 43004,
+              "id": "12345678ABCDEFG",
+              "msg": "env is expired"
+            },
+            {
+              "code": 42001,
+              "id": "12345678ABCDEFG",
+              "msg": "env not found"
+            }
+          ],
+          "successDetails": [
+            {
+              "id": "12345678ABCDEFG",
+              "url": "https://speedup.geelark.com/phone-api",
+              "chargingMethod": "Per-minute usage"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "Stop",
+    "path": "/open/v1/phone/stop",
+    "title": "Stop cloud phone",
+    "source": "https://doc.geelark.com/web/#/602813392/101527841",
+    "page_id": "101527841",
+    "url": "https://openapi.geelark.com/open/v1/phone/stop",
+    "slug": "phone-stop",
+    "requests": [
+      {
+        "ids": [
+          "123456ABCDEF",
+          "123456ABCDEF",
+          "123456ABCDEF",
+          "123456ABCDEF"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "code": 0,
+        "msg": "成功",
+        "traceId": "123456ABCDEF",
+        "data": {
+          "totalAmount": 4,
+          "successAmount": 3,
+          "failAmount": 1,
+          "successDetails": [
+            {
+              "id": "123456ABCDEF",
+              "serialName": "name1",
+              "status": 0
+            },
+            {
+              "id": "123456ABCDEF",
+              "serialName": "name2",
+              "status": 1
+            },
+            {
+              "id": "123456ABCDEF",
+              "serialName": "name3",
+              "status": 1
+            }
+          ],
+          "failDetails": [
+            {
+              "code": 42001,
+              "id": "123456ABCDEF",
+              "msg": "env not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "Restart",
+    "path": "/open/v1/phone/restart",
+    "title": "Restart cloud phone",
+    "source": "https://doc.geelark.com/web/#/602813392/101529774",
+    "page_id": "101529774",
+    "url": "https://openapi.geelark.com/open/v1/phone/restart",
+    "slug": "restart-cloud-phone",
+    "requests": [
+      {
+        "id": "631490227545875981"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "v0G7JFyvR",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "Delete",
+    "path": "/open/v1/phone/delete",
+    "title": "Delete cloud phone",
+    "source": "https://doc.geelark.com/web/#/602813392/101527842",
+    "page_id": "101527842",
+    "url": "https://openapi.geelark.com/open/v1/phone/delete",
+    "slug": "phone-delete",
+    "requests": [
+      {
+        "ids": [
+          "123456ABCDEF",
+          "123456ABCDEF"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "code": 0,
+        "msg": "success",
+        "traceId": "12345ABCDEF",
+        "data": {
+          "totalAmount": 4,
+          "successAmount": 2,
+          "failAmount": 2,
+          "failDetails": [
+            {
+              "code": 42001,
+              "id": "12345ABCDEF",
+              "msg": "env not found"
+            },
+            {
+              "code": 43009,
+              "id": "12345ABCDEF",
+              "msg": "env is started"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "GetGPS",
+    "path": "/open/v1/phone/gps/get",
+    "title": "Get GPS ",
+    "source": "https://doc.geelark.com/web/#/602813392/101527933",
+    "page_id": "101527933",
+    "url": "https://openapi.geelark.com/open/v1/phone/gps/get",
+    "slug": "phone-gps-get",
+    "requests": [
+      {
+        "ids": [
+          "528086321789535232"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "81CA3BD0B7BBB924A1C6B836B298ADA7",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 1,
+          "successAmount": 1,
+          "failAmount": 0,
+          "list": [
+            {
+              "id": "528086321789535232",
+              "latitude": 1.3024300336837769,
+              "longitude": 103.87545776367188
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "SetGPS",
+    "path": "/open/v1/phone/gps/set",
+    "title": "Set GPS",
+    "source": "https://doc.geelark.com/web/#/602813392/101527934",
+    "page_id": "101527934",
+    "url": "https://openapi.geelark.com/open/v1/phone/gps/set",
+    "slug": "phone-gps-set",
+    "requests": [
+      {
+        "list": [
+          {
+            "id": "528086321789535232",
+            "latitude": 1.30243,
+            "longitude": 103.87546
+          },
+          {
+            "id": "530011895768286208",
+            "latitude": 11.30243,
+            "longitude": 104.87546
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "870AE3259C965B45A0D09C92A4EA8F81",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 2,
+          "successAmount": 2,
+          "failAmount": 0
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "Update",
+    "path": "/open/v1/phone/detail/update",
+    "title": "Modify cloud phone information",
+    "source": "https://doc.geelark.com/web/#/602813392/101527935",
+    "page_id": "101527935",
+    "url": "https://openapi.geelark.com/open/v1/phone/detail/update",
+    "slug": "phone-detail-update",
+    "requests": [
+      {
+        "id": "528086284158239744",
+        "name": "api update",
+        "remark": "api remark",
+        "tagIDs": [
+          "528989565877355520",
+          "528989565877289984"
+        ],
+        "groupID": "528995439832269824",
+        "proxyQueryChannel": 1,
+        "proxyConfig": {
+          "typeId": 1,
+          "server": "123.123.123.123",
+          "port": 32080,
+          "username": "username",
+          "password": "password"
+        },
+        "proxyId": "528989565877355520"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B04B0843BD86D9589AB3BAB6A9EA3D92",
+        "code": 0,
+        "msg": "success"
+      },
+      {
+        "traceId": "8B38AA778DBCD9519FB9B00D8A593DB3",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "failDetails": [
+            {
+              "code": 43022,
+              "id": "52898956587728998",
+              "msg": "tag not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "Reset",
+    "path": "/open/v2/phone/newOne",
+    "title": "One-click new machine V2",
+    "source": "https://doc.geelark.com/web/#/602813392/101528107",
+    "page_id": "101528107",
+    "url": "https://openapi.geelark.com/open/v2/phone/newOne",
+    "slug": "phone-newOne",
+    "requests": [
+      {
+        "id": "528715748189668352"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A62BBBF3A294487F9B49B9FFA0F84CA8",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "Clone",
+    "path": "/open/v1/phone/clone",
+    "title": "Clone cloud phone",
+    "source": "https://doc.geelark.com/web/#/602813392/101529600",
+    "page_id": "101529600",
+    "url": "https://openapi.geelark.com/open/v1/phone/clone",
+    "slug": "phone-clone",
+    "requests": [
+      {
+        "envId": "590711571886417452",
+        "amount": 1,
+        "groupId": "590711571886417453"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B3DAFF64A7BD493CB1169D94A22BFC8D",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "ids": [
+            "590711571886417454"
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "Screenshot",
+    "path": "/open/v1/phone/screenShot",
+    "title": "Screen Shot",
+    "source": "https://doc.geelark.com/web/#/602813392/101528205",
+    "page_id": "101528205",
+    "url": "https://openapi.geelark.com/open/v1/phone/screenShot",
+    "slug": "phone-screenShot",
+    "requests": [
+      {
+        "id": "528715748189668352"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A62BBBF3A294487F9B49B9FFA0F84CA8",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "1850726441252569088"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "ScreenshotResult",
+    "path": "/open/v1/phone/screenShot/result",
+    "title": "Get screenshot result",
+    "source": "https://doc.geelark.com/web/#/602813392/101528206",
+    "page_id": "101528206",
+    "url": "https://openapi.geelark.com/open/v1/phone/screenShot/result",
+    "slug": "phone-screenShot-result",
+    "requests": [
+      {
+        "taskId": "528715748189668352"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A62BBBF3A294487F9B49B9FFA0F84CA8",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "status": 2,
+          "downloadLink": "https://zx-cloud-phone-pre.obs.cn-southwest-2.myhuaweicloud.com/envirFileExport/1851511129017700352/IMG_20241122160248.png?AccessKeyId=UFNIPAPFJX2MAGMFGRYZ&Expires=1732264377&Signature=dqV5JYzYDdm0wwAgkZIpDrs%2FL%2FE%3D"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "SetRoot",
+    "path": "/open/v1/root/setStatus",
+    "title": "Set Root Status",
+    "source": "https://doc.geelark.com/web/#/602813392/101528240",
+    "page_id": "101528240",
+    "url": "https://openapi.geelark.com/open/v1/root/setStatus",
+    "slug": "root-setStatus",
+    "requests": [
+      {
+        "ids": [
+          "526209711930868736"
+        ],
+        "open": true
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A24A3089958A4BC28E8B89B3AE1A61AC",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "items": [
+            {
+              "code": 42002,
+              "msg": "phone is not running",
+              "id": "543483007558772199"
+            },
+            {
+              "code": 0,
+              "msg": "success",
+              "id": "543483063829554663"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "GetRoot",
+    "path": "/open/v1/root/getStatus",
+    "title": "Get Root Status",
+    "source": "https://doc.geelark.com/web/#/602813392/101529825",
+    "page_id": "101529825",
+    "url": "https://openapi.geelark.com/open/v1/root/getStatus",
+    "slug": "root-getStatus",
+    "requests": [
+      {
+        "ids": [
+          "526209711930868736"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A24A3089958A4BC28E8B89B3AE1A61AC",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "items": [
+            {
+              "code": 0,
+              "msg": "success",
+              "id": "543483063829554663",
+              "open": true
+            },
+            {
+              "code": 42001,
+              "msg": "phone is not exist",
+              "id": "543483007558772199",
+              "open": false
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "DeviceID",
+    "path": "/open/v1/phone/serialNum/get",
+    "title": "Get device ID",
+    "source": "https://doc.geelark.com/web/#/602813392/101528243",
+    "page_id": "101528243",
+    "url": "https://openapi.geelark.com/open/v1/phone/serialNum/get",
+    "slug": "phone-serialNum-get",
+    "requests": [
+      {
+        "id": "528715748189668352"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "89D8C3C08DA4DB5089069D34A3786494",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "serialNum": "r2cbvzlx5bs"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "SendSMS",
+    "path": "/open/v1/phone/sendSms",
+    "title": "Send SMS to cloud phone",
+    "source": "https://doc.geelark.com/web/#/602813392/101528255",
+    "page_id": "101528255",
+    "url": "https://openapi.geelark.com/open/v1/phone/sendSms",
+    "slug": "phone-sendSms",
+    "requests": [
+      {
+        "id": "526209711930868736",
+        "phoneNumber": "+17723504471",
+        "text": "your tk code: 6666"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "9E681400B2983A5390F4B7C8BF1BF2B7",
+        "code": 0,
+        "msg": "success",
+        "data": {}
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "Brands",
+    "path": "/open/v1/phone/brand/list",
+    "title": "List of cloud mobile phone brands",
+    "source": "https://doc.geelark.com/web/#/602813392/101528264",
+    "page_id": "101528264",
+    "url": "https://openapi.geelark.com/open/v1/phone/brand/list",
+    "slug": "phone-brand-list",
+    "requests": [
+      {
+        "androidVer": 10
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B0BA8FF29AB60B8ABF4E9A26BF08F7B9",
+        "code": 0,
+        "msg": "success",
+        "data": [
+          {
+            "surfaceBrandName": "samsung",
+            "surfaceModelName": "Galaxy S20+"
+          }
+        ]
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "TeamBrands",
+    "path": "/open/v1/phone/brand/teamList",
+    "title": "List of cloud phone team brands",
+    "source": "https://doc.geelark.com/web/#/602813392/101529669",
+    "page_id": "101529669",
+    "url": "https://openapi.geelark.com/open/v1/phone/brand/teamList",
+    "slug": "phone-brand-teamList",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 10,
+        "androidVer": 10
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B0BA8FF29AB60B8ABF4E9A26BF08F7B9",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 1,
+          "page": 1,
+          "pageSize": 10,
+          "list": [
+            {
+              "surfaceBrandName": "HUAWEI",
+              "surfaceModelName": "SPN-AL00"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "Transfer",
+    "path": "/open/v1/phone/transfer",
+    "title": "Transfer Cloud Phone",
+    "source": "https://doc.geelark.com/web/#/602813392/101528449",
+    "page_id": "101528449",
+    "url": "https://openapi.geelark.com/open/v1/phone/transfer",
+    "slug": "phone-transfer",
+    "requests": [
+      {
+        "ids": [
+          "539893235657500146"
+        ],
+        "account": "Anna@geelark.com",
+        "transferOption": [
+          "name",
+          "proxy",
+          "tag",
+          "remark"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B0BA8FF29AB60B8ABF4E9A26BF08F7B9",
+        "code": 0,
+        "msg": "success",
+        "data": [
+          {
+            "successCount": 10,
+            "failCount": 2,
+            "failEnvIds": [
+              "539893235657500146"
+            ]
+          }
+        ]
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "SetNetworkType",
+    "path": "/open/v1/phone/net/set",
+    "title": "Set net type",
+    "source": "https://doc.geelark.com/web/#/602813392/101528562",
+    "page_id": "101528562",
+    "url": "https://openapi.geelark.com/open/v1/phone/net/set",
+    "slug": "phone-net-set",
+    "requests": [
+      {
+        "id": "528086284158239744",
+        "netType": 0
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B04B0843BD86D9589AB3BAB6A9EA3D92",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "HideAccessibility",
+    "path": "/open/v1/phone/hideAccessibility",
+    "title": "Hide Accessibility",
+    "source": "https://doc.geelark.com/web/#/602813392/101529420",
+    "page_id": "101529420",
+    "url": "https://openapi.geelark.com/open/v1/phone/hideAccessibility",
+    "slug": "phone-hideAccessibility",
+    "requests": [
+      {
+        "ids": [
+          "599257164413959866"
+        ],
+        "pkgName": [
+          "com.zhiliaoapp.musically"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A17A45A3B3A49AB5A1BDB654B7C82B81",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "failDetails": [
+            {
+              "id": "599257164413959866",
+              "code": 42001,
+              "msg": "env not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "MoveGroup",
+    "path": "/open/v1/phone/moveGroup",
+    "title": "Move Group",
+    "source": "https://doc.geelark.com/web/#/602813392/101529422",
+    "page_id": "101529422",
+    "url": "https://openapi.geelark.com/open/v1/phone/moveGroup",
+    "slug": "phone-moveGroup",
+    "requests": [
+      {
+        "envIds": [
+          "601876382020062634"
+        ],
+        "groupId": "590711571886417453"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B3DAFF64A7BD493CB1169D94A22BFC8D",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "ImportContacts",
+    "path": "/open/v1/phone/importContacts",
+    "title": "Batch Import Contacts",
+    "source": "https://doc.geelark.com/web/#/602813392/101529436",
+    "page_id": "101529436",
+    "url": "https://openapi.geelark.com/open/v1/phone/importContacts",
+    "slug": "phone-importContacts",
+    "requests": [
+      {
+        "id": "557536075321468390",
+        "contacts": [
+          {
+            "firstName": "jay",
+            "mobile": "13288888888"
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "ImportContactsResult",
+    "path": "/open/v1/phone/importContactsResult",
+    "title": "Get Batch Import Contacts Result",
+    "source": "https://doc.geelark.com/web/#/602813392/101529437",
+    "page_id": "101529437",
+    "url": "https://openapi.geelark.com/open/v1/phone/importContactsResult",
+    "slug": "phone-importContactsResult",
+    "requests": [
+      {
+        "taskId": "528715748189668352"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A62BBBF3A294487F9B49B9FFA0F84CA8",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "status": 2
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "GetNetworkSettings",
+    "path": "/open/v1/phone/netConfig/get",
+    "title": "Get cloud phone network settings",
+    "source": "https://doc.geelark.com/web/#/602813392/101529608",
+    "page_id": "101529608",
+    "url": "https://openapi.geelark.com/open/v1/phone/netConfig/get",
+    "slug": "phone-netConfig-get",
+    "requests": [],
+    "responses": [
+      {
+        "traceId": "B3DAFF64A7BD493CB1169D94A22BFC8D",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "blackList": [
+            "c.com"
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "SetNetworkSettings",
+    "path": "/open/v1/phone/netConfig/set",
+    "title": "Modify cloud phone network settings",
+    "source": "https://doc.geelark.com/web/#/602813392/101529609",
+    "page_id": "101529609",
+    "url": "https://openapi.geelark.com/open/v1/phone/netConfig/set",
+    "slug": "phone-netConfig-set",
+    "requests": [
+      {
+        "blackList": [
+          "c.com"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A62BBBF3A294487F9B49B9FFA0F84CA8",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "UIDump",
+    "path": "/open/v1/phone/uiDump",
+    "title": "Get UI Dump",
+    "source": "https://doc.geelark.com/web/#/602813392/101529828",
+    "page_id": "101529828",
+    "url": "https://openapi.geelark.com/open/v1/phone/uiDump",
+    "slug": "get-ui-dump",
+    "requests": [
+      {
+        "id": "528715748189668352"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A62BBBF3A294487F9B49B9FFA0F84CA8",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "1850726441252569088"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "cloudphone",
+    "method": "UIDumpResult",
+    "path": "/open/v1/phone/uiDump/result",
+    "title": "Get UI Dump Result",
+    "source": "https://doc.geelark.com/web/#/602813392/101529829",
+    "page_id": "101529829",
+    "url": "https://openapi.geelark.com/open/v1/phone/uiDump/result",
+    "slug": "get-ui-dump-result",
+    "requests": [
+      {
+        "taskId": "1850726441252569088"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A62BBBF3A294487F9B49B9FFA0F84CA8",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "status": 2,
+          "downloadLink": "https://test.com/test.xml"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "QueryTask",
+    "path": "/open/v1/task/query",
+    "title": "Query task",
+    "source": "https://doc.geelark.com/web/#/602813392/101528366",
+    "page_id": "101528366",
+    "url": "https://openapi.geelark.com/open/v1/task/query",
+    "slug": "task-query",
+    "requests": [
+      {
+        "ids": [
+          "123321",
+          "456654"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 1,
+          "items": [
+            {
+              "id": "123456ABCDEF",
+              "planName": "plan123456ABCDEF",
+              "taskType": 2,
+              "serialName": "test",
+              "envId": "123456654321",
+              "scheduleAt": 1718744459,
+              "status": 3
+            }
+          ]
+        }
+      },
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 1,
+          "items": [
+            {
+              "id": "123456ABCDEF",
+              "planName": "plan123456ABCDEF",
+              "taskType": 2,
+              "serialName": "test",
+              "envId": "123456654321",
+              "scheduleAt": 1718744459,
+              "status": 4,
+              "failCode": 29999,
+              "failDesc": "some reason"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "ListTasks",
+    "path": "/open/v1/task/historyRecords",
+    "title": "Batch query tasks",
+    "source": "https://doc.geelark.com/web/#/602813392/101528505",
+    "page_id": "101528505",
+    "url": "https://openapi.geelark.com/open/v1/task/historyRecords",
+    "slug": "task-historyRecords",
+    "requests": [
+      {
+        "size": 10,
+        "lastId": "574376043897425896"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 1,
+          "items": [
+            {
+              "id": "123456ABCDEF",
+              "planName": "plan123456ABCDEF",
+              "taskType": 2,
+              "serialName": "test",
+              "envId": "123456654321",
+              "scheduleAt": 1718744459,
+              "status": 3
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "CancelTask",
+    "path": "/open/v1/task/cancel",
+    "title": "Cancel task",
+    "source": "https://doc.geelark.com/web/#/602813392/101528367",
+    "page_id": "101528367",
+    "url": "https://openapi.geelark.com/open/v1/task/cancel",
+    "slug": "task-cancel",
+    "requests": [
+      {
+        "ids": [
+          "123321",
+          "456654"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCEDF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 10,
+          "successAmount": 10,
+          "failAmount": 0
+        }
+      },
+      {
+        "traceId": "123456ABCEDF",
+        "code": 40000,
+        "msg": "unknown error"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "RetryTask",
+    "path": "/open/v1/task/restart",
+    "title": "Retry Task",
+    "source": "https://doc.geelark.com/web/#/602813392/101528368",
+    "page_id": "101528368",
+    "url": "https://openapi.geelark.com/open/v1/task/restart",
+    "slug": "task-restart",
+    "requests": [
+      {
+        "ids": [
+          "123321",
+          "456654"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCEDF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 10,
+          "successAmount": 10,
+          "failAmount": 0
+        }
+      },
+      {
+        "traceId": "123456ABCEDF",
+        "code": 40000,
+        "msg": "unknown error"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TaskDetail",
+    "path": "/open/v1/task/detail",
+    "title": "Task Detail",
+    "source": "https://doc.geelark.com/web/#/602813392/101528416",
+    "page_id": "101528416",
+    "url": "https://openapi.geelark.com/open/v1/task/detail",
+    "slug": "task-detail",
+    "requests": [
+      {
+        "id": "1234567898",
+        "searchAfter": [
+          1749004889852
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "123456ABCDEF",
+          "planName": "plan123456ABCDEF",
+          "taskType": 2,
+          "serialName": "test",
+          "envId": "123456654321",
+          "scheduleAt": 1718744459,
+          "status": 3,
+          "cost": 60,
+          "resultImages": [
+            "https://material.geelark.com/geeUserUix/569544577254450679_1929760564478226432_20250604104103.jpg"
+          ],
+          "logs": [
+            "[2025-06-04 02:38:00 025] Waiting for execution"
+          ],
+          "searchAfter": [
+            1749004889853
+          ],
+          "logContinue": false
+        }
+      },
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "123456ABCDEF",
+          "planName": "plan123456ABCDEF",
+          "taskType": 2,
+          "serialName": "test",
+          "envId": "123456654321",
+          "scheduleAt": 1718744459,
+          "status": 4,
+          "failCode": 29999,
+          "failDesc": "some reason",
+          "cost": 60,
+          "resultImages": [
+            "https://material.geelark.com/geeUserUix/569544577254450679_1929760564478226432_20250604104103.jpg"
+          ],
+          "logs": [
+            "[2025-06-04 02:38:00 025] Waiting for execution"
+          ],
+          "searchAfter": [
+            1749004889853
+          ],
+          "logContinue": false
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "AddTask",
+    "path": "/open/v1/task/add",
+    "title": "Add video/image/warmup task",
+    "source": "https://doc.geelark.com/web/#/602813392/101528369",
+    "page_id": "101528369",
+    "url": "https://openapi.geelark.com/open/v1/task/add",
+    "slug": "task-add",
+    "requests": [
+      {
+        "planName": "testAdd",
+        "taskType": 2,
+        "list": [
+          {
+            "scheduleAt": 1718744459,
+            "envId": "123456654321",
+            "action": "search video",
+            "keywords": [
+              "hi"
+            ],
+            "duration": 10,
+            "probability": {
+              "hasKey": {
+                "like": 30,
+                "follow": 10,
+                "readComment": 30,
+                "collect": 20
+              },
+              "noKey": {
+                "like": 15,
+                "follow": 5,
+                "readComment": 15,
+                "collect": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "planName": "testAdd",
+        "taskType": 1,
+        "list": [
+          {
+            "scheduleAt": 1718744459,
+            "envId": "123456654321",
+            "video": "https://demo.geelark.com/open-upload/DhRP36s3.mp4"
+          }
+        ]
+      },
+      {
+        "planName": "testAdd",
+        "taskType": 3,
+        "list": [
+          {
+            "scheduleAt": 1718744459,
+            "envId": "123456654321",
+            "images": [
+              "https://demo.geelark.com/open-upload/DhRP36s3.jpg",
+              "https://demo.geelark.com/open-upload/DhRP36s3.jpg"
+            ]
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCEDF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskIds": [
+            "123456ABCEDF"
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokLogin",
+    "path": "/open/v1/rpa/task/tiktokLogin",
+    "title": "TikTok login",
+    "source": "https://doc.geelark.com/web/#/602813392/101528370",
+    "page_id": "101528370",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokLogin",
+    "slug": "rpa-task-tiktokLogin",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "account": "test@gmail.com",
+        "password": "123456"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokEdit",
+    "path": "/open/v1/rpa/task/tiktokEdit",
+    "title": "TikTok profile edit",
+    "source": "https://doc.geelark.com/web/#/602813392/101528371",
+    "page_id": "101528371",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokEdit",
+    "slug": "rpa-task-tiktokEdit",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "avatar": "https://singapore-upgrade.geelark.com/a.jpg",
+        "nickName": "test",
+        "bio": "test",
+        "site": "https://www.abc.com",
+        "username": "user"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokRandomStar",
+    "path": "/open/v1/rpa/task/tiktokRandomStar",
+    "title": "TikTok star",
+    "source": "https://doc.geelark.com/web/#/602813392/101528372",
+    "page_id": "101528372",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokRandomStar",
+    "slug": "rpa-task-tiktokRandomStar",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokRandomStarAsia",
+    "path": "/open/v1/rpa/task/tiktokRandomStarAsia",
+    "title": "TikTok star - Asia",
+    "source": "https://doc.geelark.com/web/#/602813392/101528499",
+    "page_id": "101528499",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokRandomStarAsia",
+    "slug": "rpa-task-tiktokRandomStarAsia",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokRandomComment",
+    "path": "/open/v1/rpa/task/tiktokRandomComment",
+    "title": "TikTok AI comment",
+    "source": "https://doc.geelark.com/web/#/602813392/101528373",
+    "page_id": "101528373",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokRandomComment",
+    "slug": "rpa-task-tiktokRandomComment",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "useAi": 2,
+        "comment": "test"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokRandomCommentAsia",
+    "path": "/open/v1/rpa/task/tiktokRandomCommentAsia",
+    "title": "TikTok AI comment - Asia",
+    "source": "https://doc.geelark.com/web/#/602813392/101528639",
+    "page_id": "101528639",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokRandomCommentAsia",
+    "slug": "rpa-task-tiktokRandomCommentAsia",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "useAi": 2,
+        "comment": "test"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokMessage",
+    "path": "/open/v1/rpa/task/tiktokMessage",
+    "title": "Send private message on TikTok",
+    "source": "https://doc.geelark.com/web/#/602813392/101528468",
+    "page_id": "101528468",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokMessage",
+    "slug": "rpa-task-tiktokMessage",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "usernames": [
+          "user"
+        ],
+        "content": "123456"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokMessageAsia",
+    "path": "/open/v1/rpa/task/tiktokMessageAsia",
+    "title": "Send private message on TikTok - Asia",
+    "source": "https://doc.geelark.com/web/#/602813392/101528500",
+    "page_id": "101528500",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokMessageAsia",
+    "slug": "rpa-task-tiktokMessageAsia",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "usernames": [
+          "user"
+        ],
+        "content": "123456"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokRandomFollow",
+    "path": "/open/v1/rpa/task/tiktokRandomFollow",
+    "title": "TikTok follow",
+    "source": "https://doc.geelark.com/web/#/602813392/101529519",
+    "page_id": "101529519",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokRandomFollow",
+    "slug": "rpa-task-tiktokRandomFollow",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "followProbability": 30
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokRandomFollowAsia",
+    "path": "/open/v1/rpa/task/tiktokRandomFollowAsia",
+    "title": "TikTok follow - Asia",
+    "source": "https://doc.geelark.com/web/#/602813392/101529520",
+    "page_id": "101529520",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokRandomFollowAsia",
+    "slug": "rpa-task-tiktokRandomFollowAsia",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "followProbability": 30
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokHide",
+    "path": "/open/v1/rpa/task/tiktokHide",
+    "title": "Hide TikTok videos",
+    "source": "https://doc.geelark.com/web/#/602813392/101529594",
+    "page_id": "101529594",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokHide",
+    "slug": "rpa-task-tiktokHide",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokHideAsia",
+    "path": "/open/v1/rpa/task/tiktokHideAsia",
+    "title": "Hide TikTok videos - Asia",
+    "source": "https://doc.geelark.com/web/#/602813392/101529595",
+    "page_id": "101529595",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokHideAsia",
+    "slug": "rpa-task-tiktokHideAsia",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokDel",
+    "path": "/open/v1/rpa/task/tiktokDel",
+    "title": "Delete all TikTok videos",
+    "source": "https://doc.geelark.com/web/#/602813392/101529596",
+    "page_id": "101529596",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokDel",
+    "slug": "rpa-task-tiktokDel",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokDelAsia",
+    "path": "/open/v1/rpa/task/tiktokDelAsia",
+    "title": "Delete all TikTok videos - Asia",
+    "source": "https://doc.geelark.com/web/#/602813392/101529597",
+    "page_id": "101529597",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokDelAsia",
+    "slug": "rpa-task-tiktokDelAsia",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokCommentInterception",
+    "path": "/open/v1/rpa/task/tiktokCommentInterception",
+    "title": "TikTok comments into conversations",
+    "source": "https://doc.geelark.com/web/#/602813392/101529680",
+    "page_id": "101529680",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokCommentInterception",
+    "slug": "rpa-task-tiktokCommentInterception",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "executionTime": 1,
+        "videoKeywords": [
+          "test"
+        ],
+        "commentKeywords": [
+          "test"
+        ],
+        "replyComment": [
+          "test"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokCommentInterceptionAsia",
+    "path": "/open/v1/rpa/task/tiktokCommentInterceptionAsia",
+    "title": "TikTok comments into conversations - Asia",
+    "source": "https://doc.geelark.com/web/#/602813392/101529683",
+    "page_id": "101529683",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokCommentInterceptionAsia",
+    "slug": "rpa-task-tiktokCommentInterceptionAsia",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "executionTime": 1,
+        "videoKeywords": [
+          "test"
+        ],
+        "commentKeywords": [
+          "test"
+        ],
+        "replyComment": [
+          "test"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokDeleteComment",
+    "path": "/open/v1/rpa/task/tiktokDeleteComment",
+    "title": "Delete TikTok comments",
+    "source": "https://doc.geelark.com/web/#/602813392/101529804",
+    "page_id": "101529804",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokDeleteComment",
+    "slug": "rpa-task-tiktokDeleteComment",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "keywords": [
+          "hello"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "TikTokDeleteCommentAsia",
+    "path": "/open/v1/rpa/task/tiktokDeleteCommentAsia",
+    "title": "Delete TikTok comments - Asia",
+    "source": "https://doc.geelark.com/web/#/602813392/101529805",
+    "page_id": "101529805",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/tiktokDeleteCommentAsia",
+    "slug": "rpa-task-tiktokDeleteCommentAsia",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "keywords": [
+          "hello"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "FaceBookLogin",
+    "path": "/open/v1/rpa/task/faceBookLogin",
+    "title": "Facebook auto login",
+    "source": "https://doc.geelark.com/web/#/602813392/101528374",
+    "page_id": "101528374",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/faceBookLogin",
+    "slug": "rpa-task-faceBookLogin",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "email": "test@gmail.com",
+        "password": "123456"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "FaceBookAutoComment",
+    "path": "/open/v1/rpa/task/faceBookAutoComment",
+    "title": "Facebook auto comment",
+    "source": "https://doc.geelark.com/web/#/602813392/101528375",
+    "page_id": "101528375",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/faceBookAutoComment",
+    "slug": "rpa-task-faceBookAutoComment",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "postAddress": "https://abc.com",
+        "comment": [
+          "test1",
+          "test2"
+        ],
+        "keyword": [
+          "k1",
+          "k2"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "FaceBookPublish",
+    "path": "/open/v1/rpa/task/faceBookPublish",
+    "title": "Facebook post content",
+    "source": "https://doc.geelark.com/web/#/602813392/101528376",
+    "page_id": "101528376",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/faceBookPublish",
+    "slug": "rpa-task-faceBookPublish",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "title": "title",
+        "video": [
+          "https://singapore-upgrade.geelark.com/a.mp4"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "FaceBookActiveAccount",
+    "path": "/open/v1/rpa/task/faceBookActiveAccount",
+    "title": "Facebook account warm up",
+    "source": "https://doc.geelark.com/web/#/602813392/101528377",
+    "page_id": "101528377",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/faceBookActiveAccount",
+    "slug": "rpa-task-faceBookActiveAccount",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "postAddress": "https://abc.com",
+        "browsePostsNum": 10,
+        "keyword": [
+          "k1",
+          "k2"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "FaceBookPubReels",
+    "path": "/open/v1/rpa/task/faceBookPubReels",
+    "title": "Facebook publish Reels video",
+    "source": "https://doc.geelark.com/web/#/602813392/101528378",
+    "page_id": "101528378",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/faceBookPubReels",
+    "slug": "rpa-task-faceBookPubReels",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "description": "description",
+        "video": "https://material.geelark.com/a.mp4"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "FaceBookMessage",
+    "path": "/open/v1/rpa/task/faceBookMessage",
+    "title": "Send private messages on Facebook",
+    "source": "https://doc.geelark.com/web/#/602813392/101528469",
+    "page_id": "101528469",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/faceBookMessage",
+    "slug": "rpa-task-faceBookMessage",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "usernames": [
+          "user"
+        ],
+        "content": "123456"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "FacebookReelsActive",
+    "path": "/open/v1/rpa/task/facebookReelsActive",
+    "title": "Facebook Reels warm up",
+    "source": "https://doc.geelark.com/web/#/602813392/101529618",
+    "page_id": "101529618",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/facebookReelsActive",
+    "slug": "rpa-task-facebookReelsActive",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "videoNumber": 10,
+        "searchKeywords": [
+          "hello"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "InstagramPubReels",
+    "path": "/open/v1/rpa/task/instagramPubReels",
+    "title": "Instagram publish Reels video",
+    "source": "https://doc.geelark.com/web/#/602813392/101528379",
+    "page_id": "101528379",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/instagramPubReels",
+    "slug": "rpa-task-instagramPubReels",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "description": "description",
+        "video": [
+          "https://material.geelark.com/a.mp4"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "InstagramWarmup",
+    "path": "/open/v1/rpa/task/instagramWarmup",
+    "title": "Instagram AI account warmup",
+    "source": "https://doc.geelark.com/web/#/602813392/101528405",
+    "page_id": "101528405",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/instagramWarmup",
+    "slug": "rpa-task-instagramWarmup",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "browseVideo": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "InstagramMessage",
+    "path": "/open/v1/rpa/task/instagramMessage",
+    "title": "Send private messages on Instagram",
+    "source": "https://doc.geelark.com/web/#/602813392/101528470",
+    "page_id": "101528470",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/instagramMessage",
+    "slug": "rpa-task-instagramMessage",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "usernames": [
+          "user"
+        ],
+        "content": "123456"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "InstagramPubReelsImages",
+    "path": "/open/v1/rpa/task/instagramPubReelsImages",
+    "title": "Instagram publish Reels image",
+    "source": "https://doc.geelark.com/web/#/602813392/101528501",
+    "page_id": "101528501",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/instagramPubReelsImages",
+    "slug": "rpa-task-instagramPubReelsImages",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "description": "description",
+        "image": [
+          "https://material.geelark.com/a.jpg"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "InstagramLogin",
+    "path": "/open/v1/rpa/task/instagramLogin",
+    "title": "Instagram auto login",
+    "source": "https://doc.geelark.com/web/#/602813392/101528509",
+    "page_id": "101528509",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/instagramLogin",
+    "slug": "rpa-task-instagramLogin",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "account": "test@gmail.com",
+        "password": "123456"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "InstagramEdit",
+    "path": "/open/v1/rpa/task/instagramEdit",
+    "title": "Edit Instagram profile",
+    "source": "https://doc.geelark.com/web/#/602813392/101529538",
+    "page_id": "101529538",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/instagramEdit",
+    "slug": "rpa-task-instagramEdit",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "nickname": "myName",
+        "username": "myName"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "InstagramAccountStatus",
+    "path": "/open/v1/rpa/task/instagramAccountStatus",
+    "title": "Instagram account privacy settings",
+    "source": "https://doc.geelark.com/web/#/602813392/101529679",
+    "page_id": "101529679",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/instagramAccountStatus",
+    "slug": "rpa-task-instagramAccountStatus",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "public": true
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "InstagramFollowAccount",
+    "path": "/open/v1/rpa/task/instagramFollowAccount",
+    "title": "Instagram Follow Account",
+    "source": "https://doc.geelark.com/web/#/602813392/101529716",
+    "page_id": "101529716",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/instagramFollowAccount",
+    "slug": "rpa-task-instagramFollowAccount",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "username": [
+          "ins1",
+          "ins2"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "InstagramAiComment",
+    "path": "/open/v1/rpa/task/instagramAiComment",
+    "title": "Instagram AI comments",
+    "source": "https://doc.geelark.com/web/#/602813392/101529717",
+    "page_id": "101529717",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/instagramAiComment",
+    "slug": "rpa-task-InstagramAIComments",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "useAi": true,
+        "randomRate": 50
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "YouTubePubShort",
+    "path": "/open/v1/rpa/task/youtubePubShort",
+    "title": "YouTube publish Short",
+    "source": "https://doc.geelark.com/web/#/602813392/101528380",
+    "page_id": "101528380",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/youtubePubShort",
+    "slug": "rpa-task-youtubePubShort",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "title": "title",
+        "video": "https://material.geelark.com/a.mp4",
+        "SameStyleUrl": "https://www.abc.com",
+        "sameStyleVoice": 50,
+        "originalVoice": 50
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "YouTubePubVideo",
+    "path": "/open/v1/rpa/task/youtubePubVideo",
+    "title": "YouTube publish Video",
+    "source": "https://doc.geelark.com/web/#/602813392/101528381",
+    "page_id": "101528381",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/youtubePubVideo",
+    "slug": "rpa-task-youtubePubVideo",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "title": "title",
+        "description": "description",
+        "video": "https://material.geelark.com/a.mp4",
+        "waitTimeAfterPublishing": 5
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "YouTubeActiveAccount",
+    "path": "/open/v1/rpa/task/youTubeActiveAccount",
+    "title": "YouTube maintenance",
+    "source": "https://doc.geelark.com/web/#/602813392/101528382",
+    "page_id": "101528382",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/youTubeActiveAccount",
+    "slug": "rpa-task-youTubeActiveAccount",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "browseVideoNum": 10,
+        "keyword": [
+          "k1",
+          "k2"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "YouTubeEdit",
+    "path": "/open/v1/rpa/task/youtubeEdit",
+    "title": "Edit YouTube profile",
+    "source": "https://doc.geelark.com/web/#/602813392/101529696",
+    "page_id": "101529696",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/youtubeEdit",
+    "slug": "rpa-task-youtubeEdit",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "profileName": "myName"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "GoogleLogin",
+    "path": "/open/v1/rpa/task/googleLogin",
+    "title": "Google auto login",
+    "source": "https://doc.geelark.com/web/#/602813392/101528383",
+    "page_id": "101528383",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/googleLogin",
+    "slug": "rpa-task-googleLogin",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "email": "test@gmail.com",
+        "password": "123456"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "GoogleAppDownload",
+    "path": "/open/v1/rpa/task/googleAppDownload",
+    "title": "Download apps on Google",
+    "source": "https://doc.geelark.com/web/#/602813392/101528471",
+    "page_id": "101528471",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/googleAppDownload",
+    "slug": "rpa-task-googleAppDownload",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "appName": "TikTok"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "GoogleAppBrowser",
+    "path": "/open/v1/rpa/task/googleAppBrowser",
+    "title": "Open the app on Google for browsing",
+    "source": "https://doc.geelark.com/web/#/602813392/101528472",
+    "page_id": "101528472",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/googleAppBrowser",
+    "slug": "rpa-task-googleAppBrowser",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "appName": "TikTok",
+        "description": "good app"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "SheinLogin",
+    "path": "/open/v1/rpa/task/sheinLogin",
+    "title": "SHEIN auto login",
+    "source": "https://doc.geelark.com/web/#/602813392/101528384",
+    "page_id": "101528384",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/sheinLogin",
+    "slug": "rpa-task-sheinLogin",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "email": "test@gmail.com",
+        "password": "123456"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "XPublish",
+    "path": "/open/v1/rpa/task/xPublish",
+    "title": "Publish content on X(Twitter)",
+    "source": "https://doc.geelark.com/web/#/602813392/101528392",
+    "page_id": "101528392",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/xPublish",
+    "slug": "rpa-task-xPublish",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "description": "description",
+        "video": [
+          "https://material.geelark.com/a.mp4"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "ListFlows",
+    "path": "/open/v1/task/flow/list",
+    "title": "Task flow query",
+    "source": "https://doc.geelark.com/web/#/602813392/101528402",
+    "page_id": "101528402",
+    "url": "https://openapi.geelark.com/open/v1/task/flow/list",
+    "slug": "task-flow-list",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "914969A485BE1AE584ECB4D19AF83EBA",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 1,
+          "page": 1,
+          "pageSize": 1,
+          "items": [
+            {
+              "id": "562316072435344885",
+              "title": "video flow",
+              "desc": "this is a video flow",
+              "params": [
+                "Title",
+                "Desc",
+                "Video"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "CreateCustomTask",
+    "path": "/open/v1/task/rpa/add",
+    "title": "Create custom task",
+    "source": "https://doc.geelark.com/web/#/602813392/101528403",
+    "page_id": "101528403",
+    "url": "https://openapi.geelark.com/open/v1/task/rpa/add",
+    "slug": "task-rpa-add",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "flowId": "562316072435344885",
+        "paramMap": {
+          "Title": "video",
+          "Desc": "this is video",
+          "Video": [
+            "https://material.geelark.com/a.mp4"
+          ]
+        }
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "ImportFlow",
+    "path": "/open/v1/task/flow/import",
+    "title": "Import custom task flow",
+    "source": "https://doc.geelark.com/web/#/602813392/101529544",
+    "page_id": "101529544",
+    "url": "https://openapi.geelark.com/open/v1/task/flow/import",
+    "slug": "task-flow-import",
+    "requests": [
+      {
+        "id": "612345671223083526",
+        "gal": "{\"content\":{\"contents\":[{\"config\":{\"packgename\":\"com.zhiliaoapp.musically\",\"remark\":\"\",\"timeout\":30000},\"type\":\"openApp\"},{\"config\":{\"remark\":\"\",\"timeout\":10000,\"timeoutMax\":300000,\"timeoutMin\":1000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"},{\"config\":{\"filters\":[{\"content\":\"Home\",\"type\":\"text\"}],\"remark\":\"\",\"searchTime\":3000,\"serial\":1,\"serialMax\":50,\"serialMin\":1,\"serialType\":\"fixedValue\",\"variable\":\"\"},\"type\":\"click\"},{\"config\":{\"remark\":\"\",\"timeout\":2000,\"timeoutMax\":300000,\"timeoutMin\":1000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"},{\"config\":{\"filters\":[{\"content\":\"For You\",\"type\":\"text\"},{\"content\":\"android:id/text1\",\"type\":\"id\"}],\"remark\":\"\",\"searchTime\":30,\"serial\":1,\"serialMax\":50,\"serialMin\":1,\"serialType\":\"fixedValue\",\"variable\":\"\"},\"type\":\"click\"},{\"config\":{\"remark\":\"\",\"timeout\":2000,\"timeoutMax\":300000,\"timeoutMin\":1000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"},{\"config\":{\"direction\":\"top\",\"distanceMax\":700,\"distanceMin\":500,\"position\":[300,700],\"randomWheelSleepTime\":[300,500],\"remark\":\"\"},\"type\":\"scrollPage\"},{\"config\":{\"remark\":\"\",\"timeout\":2000,\"timeoutMax\":300000,\"timeoutMin\":1000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"},{\"config\":{\"direction\":\"top\",\"distanceMax\":700,\"distanceMin\":500,\"position\":[300,700],\"randomWheelSleepTime\":[300,500],\"remark\":\"\"},\"type\":\"scrollPage\"},{\"config\":{\"remark\":\"\",\"timeout\":2000,\"timeoutMax\":300000,\"timeoutMin\":1000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"},{\"config\":{\"children\":[{\"config\":{\"direction\":\"top\",\"distanceMax\":600,\"distanceMin\":500,\"position\":[300,700],\"randomWheelSleepTime\":[300,500],\"remark\":\"\"},\"type\":\"scrollPage\"},{\"config\":{\"filters\":[{\"content\":\"com.zhiliaoapp.musically:id/nl8\",\"type\":\"id\"}],\"remark\":\"\",\"searchTime\":30,\"serial\":1,\"serialMax\":50,\"serialMin\":1,\"serialType\":\"fixedValue\",\"variable\":\"avatar\"},\"type\":\"waitEle\"},{\"config\":{\"children\":[{\"config\":{\"remark\":\"\",\"timeout\":2000,\"timeoutMax\":30000,\"timeoutMin\":10000,\"timeoutType\":\"randomInterval\"},\"type\":\"waitTime\"},{\"config\":{\"children\":[{\"config\":{\"filters\":[{\"content\":\"com.zhiliaoapp.musically:id/cf6\",\"type\":\"id\"}],\"remark\":\"\",\"searchTime\":3000,\"serial\":1,\"serialMax\":50,\"serialMin\":1,\"serialType\":\"fixedValue\"},\"type\":\"click\"}],\"hiddenChildren\":false,\"other\":[],\"probability\":30,\"relation\":\"random\",\"remark\":\"\"},\"type\":\"ifElse\"},{\"config\":{\"remark\":\"\",\"timeout\":2000,\"timeoutMax\":30000,\"timeoutMin\":10000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"}],\"condition\":[\"avatar\"],\"hiddenChildren\":false,\"other\":[],\"relation\":\"exist\",\"remark\":\"\"},\"type\":\"ifElse\"}],\"hiddenChildren\":false,\"remark\":\"\",\"times\":15,\"variableIndex\":\"for_times_index\"},\"type\":\"forTimes\"},{\"config\":{\"remark\":\"\",\"timeout\":120000,\"timeoutMax\":300000,\"timeoutMin\":1000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"}],\"errorType\":\"skip\",\"isDebug\":false,\"timeOut\":\"30\",\"contentType\":\"phone\"},\"desc\":\"A TikTok Task flow\",\"title\":\"TikTok\"}"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A9D852F29EA2CA1BA46B963DB449329A",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "612345671223083526"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "ExportFlow",
+    "path": "/open/v1/task/flow/export",
+    "title": "Export custom task flow",
+    "source": "https://doc.geelark.com/web/#/602813392/101529545",
+    "page_id": "101529545",
+    "url": "https://openapi.geelark.com/open/v1/task/flow/export",
+    "slug": "task-flow-export",
+    "requests": [
+      {
+        "id": "612345671223083526"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "8119CCF5AD857989B62A940E8B5AA5AF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "gal": "{\"content\":{\"contents\":[{\"config\":{\"packgename\":\"com.zhiliaoapp.musically\",\"remark\":\"\",\"timeout\":30000},\"type\":\"openApp\"},{\"config\":{\"remark\":\"\",\"timeout\":10000,\"timeoutMax\":300000,\"timeoutMin\":1000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"},{\"config\":{\"filters\":[{\"content\":\"Home\",\"type\":\"text\"}],\"remark\":\"\",\"searchTime\":3000,\"serial\":1,\"serialMax\":50,\"serialMin\":1,\"serialType\":\"fixedValue\",\"variable\":\"\"},\"type\":\"click\"},{\"config\":{\"remark\":\"\",\"timeout\":2000,\"timeoutMax\":300000,\"timeoutMin\":1000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"},{\"config\":{\"filters\":[{\"content\":\"For You\",\"type\":\"text\"},{\"content\":\"android:id/text1\",\"type\":\"id\"}],\"remark\":\"\",\"searchTime\":30,\"serial\":1,\"serialMax\":50,\"serialMin\":1,\"serialType\":\"fixedValue\",\"variable\":\"\"},\"type\":\"click\"},{\"config\":{\"remark\":\"\",\"timeout\":2000,\"timeoutMax\":300000,\"timeoutMin\":1000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"},{\"config\":{\"direction\":\"top\",\"distanceMax\":700,\"distanceMin\":500,\"position\":[300,700],\"randomWheelSleepTime\":[300,500],\"remark\":\"\"},\"type\":\"scrollPage\"},{\"config\":{\"remark\":\"\",\"timeout\":2000,\"timeoutMax\":300000,\"timeoutMin\":1000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"},{\"config\":{\"direction\":\"top\",\"distanceMax\":700,\"distanceMin\":500,\"position\":[300,700],\"randomWheelSleepTime\":[300,500],\"remark\":\"\"},\"type\":\"scrollPage\"},{\"config\":{\"remark\":\"\",\"timeout\":2000,\"timeoutMax\":300000,\"timeoutMin\":1000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"},{\"config\":{\"children\":[{\"config\":{\"direction\":\"top\",\"distanceMax\":600,\"distanceMin\":500,\"position\":[300,700],\"randomWheelSleepTime\":[300,500],\"remark\":\"\"},\"type\":\"scrollPage\"},{\"config\":{\"filters\":[{\"content\":\"com.zhiliaoapp.musically:id/nl8\",\"type\":\"id\"}],\"remark\":\"\",\"searchTime\":30,\"serial\":1,\"serialMax\":50,\"serialMin\":1,\"serialType\":\"fixedValue\",\"variable\":\"avatar\"},\"type\":\"waitEle\"},{\"config\":{\"children\":[{\"config\":{\"remark\":\"\",\"timeout\":2000,\"timeoutMax\":30000,\"timeoutMin\":10000,\"timeoutType\":\"randomInterval\"},\"type\":\"waitTime\"},{\"config\":{\"children\":[{\"config\":{\"filters\":[{\"content\":\"com.zhiliaoapp.musically:id/cf6\",\"type\":\"id\"}],\"remark\":\"\",\"searchTime\":3000,\"serial\":1,\"serialMax\":50,\"serialMin\":1,\"serialType\":\"fixedValue\"},\"type\":\"click\"}],\"hiddenChildren\":false,\"other\":[],\"probability\":30,\"relation\":\"random\",\"remark\":\"\"},\"type\":\"ifElse\"},{\"config\":{\"remark\":\"\",\"timeout\":2000,\"timeoutMax\":30000,\"timeoutMin\":10000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"}],\"condition\":[\"avatar\"],\"hiddenChildren\":false,\"other\":[],\"relation\":\"exist\",\"remark\":\"\"},\"type\":\"ifElse\"}],\"hiddenChildren\":false,\"remark\":\"\",\"times\":15,\"variableIndex\":\"for_times_index\"},\"type\":\"forTimes\"},{\"config\":{\"remark\":\"\",\"timeout\":120000,\"timeoutMax\":300000,\"timeoutMin\":1000,\"timeoutType\":\"fixedValue\"},\"type\":\"waitTime\"}],\"errorType\":\"skip\",\"isDebug\":false,\"timeOut\":\"30\",\"contentType\":\"phone\"},\"desc\":\"A TikTok Task flow\",\"title\":\"TikTok\"}"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "MultiPlatformVideoDistribution",
+    "path": "/open/v1/rpa/task/multiPlatformVideoDistribution",
+    "title": "Multichannel video distribution",
+    "source": "https://doc.geelark.com/web/#/602813392/101528365",
+    "page_id": "101528365",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/multiPlatformVideoDistribution",
+    "slug": "rpa-task-multiPlatformVideoDistribution",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "title": "title",
+        "video": [
+          "https://singapore-upgrade.geelark.com/a.mp4"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "FileUpload",
+    "path": "/open/v1/rpa/task/fileUpload",
+    "title": "Upload files to the cloud machine in batches",
+    "source": "https://doc.geelark.com/web/#/602813392/101528391",
+    "page_id": "101528391",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/fileUpload",
+    "slug": "rpa-task-fileUpload",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "files": [
+          "https://material.geelark.com/a.mp4"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "ImportContacts",
+    "path": "/open/v1/rpa/task/importContacts",
+    "title": "Batch import contacts to cloud phone",
+    "source": "https://doc.geelark.com/web/#/602813392/101528497",
+    "page_id": "101528497",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/importContacts",
+    "slug": "rpa-task-importContacts",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "contacts": [
+          {
+            "firstName": "jay",
+            "mobile": "13288888888"
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "KeyboxUpload",
+    "path": "/open/v1/rpa/task/keyboxUpload",
+    "title": "Upload Keybox to the cloud phone",
+    "source": "https://doc.geelark.com/web/#/602813392/101528498",
+    "page_id": "101528498",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/keyboxUpload",
+    "slug": "rpa-task-keyboxUpload",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "files": [
+          "https://material.geelark.com/a.xml"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "RedditWarmup",
+    "path": "/open/v1/rpa/task/redditWarmup",
+    "title": "Reddit AI account warmup",
+    "source": "https://doc.geelark.com/web/#/602813392/101528460",
+    "page_id": "101528460",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/redditWarmup",
+    "slug": "rpa-task-redditWarmup",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "RedditVideo",
+    "path": "/open/v1/rpa/task/redditVideo",
+    "title": "Publish video on Reddit",
+    "source": "https://doc.geelark.com/web/#/602813392/101528461",
+    "page_id": "101528461",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/redditVideo",
+    "slug": "rpa-task-redditVideo",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "title": "title",
+        "description": "description",
+        "video": [
+          "https://material.geelark.com/a.mp4"
+        ],
+        "community": "cat"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "RedditImage",
+    "path": "/open/v1/rpa/task/redditImage",
+    "title": "Publish pictures and texts on Reddit",
+    "source": "https://doc.geelark.com/web/#/602813392/101528462",
+    "page_id": "101528462",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/redditImage",
+    "slug": "rpa-task-redditImage",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "title": "title",
+        "description": "description",
+        "images": [
+          "https://material.geelark.com/a.jpg"
+        ],
+        "community": "cat"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "PinterestVideo",
+    "path": "/open/v1/rpa/task/pinterestVideo",
+    "title": "Publish video on Pinterest",
+    "source": "https://doc.geelark.com/web/#/602813392/101528559",
+    "page_id": "101528559",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/pinterestVideo",
+    "slug": "rpa-task-pinterestVideo",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "title": "title",
+        "description": "description",
+        "video": [
+          "https://material.geelark.com/a.mp4"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "PinterestImage",
+    "path": "/open/v1/rpa/task/pinterestImage",
+    "title": "Publish pictures and texts on Pinterest",
+    "source": "https://doc.geelark.com/web/#/602813392/101528560",
+    "page_id": "101528560",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/pinterestImage",
+    "slug": "rpa-task-pinterestImage",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "title": "title",
+        "description": "description",
+        "images": [
+          "https://material.geelark.com/a.jpg"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "ThreadsVideo",
+    "path": "/open/v1/rpa/task/threadsVideo",
+    "title": "Publish video on Threads",
+    "source": "https://doc.geelark.com/web/#/602813392/101528654",
+    "page_id": "101528654",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/threadsVideo",
+    "slug": "rpa-task-threadsVideo",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "title": "title",
+        "video": [
+          "https://material.geelark.com/a.mp4"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
+    "method": "ThreadsImage",
+    "path": "/open/v1/rpa/task/threadsImage",
+    "title": "Publish pictures and texts on Threads",
+    "source": "https://doc.geelark.com/web/#/602813392/101528655",
+    "page_id": "101528655",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/threadsImage",
+    "slug": "rpa-task-threadsImage",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "title": "title",
+        "images": [
+          "https://material.geelark.com/a.jpg"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "shell",
+    "method": "Execute",
+    "path": "/open/v1/shell/execute",
+    "title": "Execute shell command",
+    "source": "https://doc.geelark.com/web/#/602813392/101527932",
+    "page_id": "101527932",
+    "url": "https://openapi.geelark.com/open/v1/shell/execute",
+    "slug": "shell-execute",
+    "requests": [
+      {
+        "id": "528715748189668352",
+        "cmd": "pm list packages"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "924A8E4AAC9E0B0B96ABA7B8801B2CBE",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "status": true,
+          "output": "com.zhiliaoapp.musically"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "ListInstalled",
+    "path": "/open/v1/app/list",
+    "title": "Get installed applications",
+    "source": "https://doc.geelark.com/web/#/602813392/101527847",
+    "page_id": "101527847",
+    "url": "https://openapi.geelark.com/open/v1/app/list",
+    "slug": "app-list",
+    "requests": [
+      {
+        "envId": "1809135651036667904",
+        "page": 1,
+        "pageSize": 5
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "items": [
+            {
+              "appIcon": "http://cmp1-prod.zxpcloud.com/apps/io.tm.k.drama/K-DRAMA_1716451323126.png",
+              "appId": "1793552962123993090",
+              "appName": "K-DRAMA",
+              "appVersionId": "1793552962140770305",
+              "installStatus": 1,
+              "installTime": "2024-07-10 23:07:56",
+              "packageName": "io.tm.k.drama",
+              "versionCode": "21120300",
+              "versionName": "1.0.1"
+            }
+          ],
+          "total": 1,
+          "page": 1,
+          "pageSize": 5
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "ListAvailable",
+    "path": "/open/v1/app/installable/list",
+    "title": "Get available applications",
+    "source": "https://doc.geelark.com/web/#/602813392/101527848",
+    "page_id": "101527848",
+    "url": "https://openapi.geelark.com/open/v1/app/installable/list",
+    "slug": "app-installable-list",
+    "requests": [
+      {
+        "name": "tiktok",
+        "envId": "1809135651036667904",
+        "getUploadApp": false,
+        "page": 1,
+        "pageSize": 5
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "items": [
+            {
+              "appIcon": "http://cmp1-prod.zxpcloud.com/apps/io.tm.k.drama/K-DRAMA_1716451323126.png",
+              "appName": "K-DRAMA",
+              "appVersionInfoList": [
+                {
+                  "id": "1793552962140770305",
+                  "installStatus": 1,
+                  "versionCode": 21120300,
+                  "versionName": "1.0.1"
+                }
+              ],
+              "id": "1793552962123993090",
+              "installStatus": 1,
+              "packageName": "io.tm.k.drama"
+            }
+          ],
+          "total": 1,
+          "page": 1,
+          "pageSize": 5
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "Install",
+    "path": "/open/v1/app/install",
+    "title": "Install application",
+    "source": "https://doc.geelark.com/web/#/602813392/101527849",
+    "page_id": "101527849",
+    "url": "https://openapi.geelark.com/open/v1/app/install",
+    "slug": "app-install",
+    "requests": [
+      {
+        "envId": "1809135651036667904",
+        "appVersionId": "1793552962140770305"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "Start",
+    "path": "/open/v1/app/start",
+    "title": "Start application",
+    "source": "https://doc.geelark.com/web/#/602813392/101527850",
+    "page_id": "101527850",
+    "url": "https://openapi.geelark.com/open/v1/app/start",
+    "slug": "app-start",
+    "requests": [
+      {
+        "envId": "1809135651036667904",
+        "appVersionId": "1793552962140770305"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "Stop",
+    "path": "/open/v1/app/stop",
+    "title": "Stop application",
+    "source": "https://doc.geelark.com/web/#/602813392/101527851",
+    "page_id": "101527851",
+    "url": "https://openapi.geelark.com/open/v1/app/stop",
+    "slug": "app-stop",
+    "requests": [
+      {
+        "envId": "1809135651036667904",
+        "appVersionId": "1793552962140770305"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "Uninstall",
+    "path": "/open/v1/app/uninstall",
+    "title": "Uninstall application",
+    "source": "https://doc.geelark.com/web/#/602813392/101527852",
+    "page_id": "101527852",
+    "url": "https://openapi.geelark.com/open/v1/app/uninstall",
+    "slug": "app-uninstall",
+    "requests": [
+      {
+        "envId": "1809135651036667904",
+        "packageName": "com.zhiliaoapp.musically"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "Upload",
+    "path": "/open/v1/app/upload",
+    "title": "Upload Application",
+    "source": "https://doc.geelark.com/web/#/602813392/101527967",
+    "page_id": "101527967",
+    "url": "https://openapi.geelark.com/open/v1/app/upload",
+    "slug": "app-upload",
+    "requests": [
+      {
+        "fileUrl": "https://material.geelark.cn/user-upload/495622401615203830/apk/uCeztwvXpswsHPH5WFht.apk",
+        "desc": "app description"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B82825D58F85FB31B755BD6CA32A30A9",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "1830906144634757120"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "UploadStatus",
+    "path": "/open/v1/app/upload/status",
+    "title": "Query Application Upload Status",
+    "source": "https://doc.geelark.com/web/#/602813392/101527968",
+    "page_id": "101527968",
+    "url": "https://openapi.geelark.com/open/v1/app/upload/status",
+    "slug": "app-upload-status",
+    "requests": [
+      {
+        "taskId": "1830906144634757120"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B9C9A787A1B559A6B883A171A7EA129B",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "status": 1,
+          "appName": "パワサカ",
+          "appIcon": "https://material.geelark.cn/app/icon/20240903/223wgZeZq3.jpg",
+          "appId": "1813124121385549826",
+          "versionId": "1813124121435881473"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "ListShop",
+    "path": "/open/v1/app/shop/list",
+    "title": "Get the application list",
+    "source": "https://doc.geelark.com/web/#/602813392/101528644",
+    "page_id": "101528644",
+    "url": "https://openapi.geelark.com/open/v1/app/shop/list",
+    "slug": "app-shop-list",
+    "requests": [
+      {
+        "key": "tiktok",
+        "getUploadApp": false,
+        "page": 1,
+        "pageSize": 5
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "items": [
+            {
+              "appIcon": "http://cmp1-prod.zxpcloud.com/apps/io.tm.k.drama/K-DRAMA_1716451323126.png",
+              "appName": "K-DRAMA",
+              "appVersionList": [
+                {
+                  "id": "1793552962140770305",
+                  "versionCode": 21120300,
+                  "versionName": "1.0.1"
+                }
+              ],
+              "id": "1793552962123993090"
+            }
+          ],
+          "total": 1,
+          "page": 1,
+          "pageSize": 5
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "AddToTeam",
+    "path": "/open/v1/app/add",
+    "title": "Add to Team Applications",
+    "source": "https://doc.geelark.com/web/#/602813392/101528645",
+    "page_id": "101528645",
+    "url": "https://openapi.geelark.com/open/v1/app/add",
+    "slug": "app-add",
+    "requests": [
+      {
+        "id": "1793552962123993090",
+        "versionId": "1793552962140770305",
+        "installGroupIds": [
+          "0"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "886A92FCBE9B7A52A7F583FCBD2BF6A8",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "ListTeam",
+    "path": "/open/v1/app/teamApp/list",
+    "title": "Get Team App List",
+    "source": "https://doc.geelark.com/web/#/602813392/101528688",
+    "page_id": "101528688",
+    "url": "https://openapi.geelark.com/open/v1/app/teamApp/list",
+    "slug": "app-teamApp-list",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 5
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "97CBBCCB8DAFC8D1BDEFB943945BFC95",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 4,
+          "page": 1,
+          "pageSize": 1,
+          "items": [
+            {
+              "id": "497652752864775437",
+              "appName": "TikTok",
+              "appIcon": "https://material.geelark.com/app/icon/20251026/kVAQ8OuTNF.png",
+              "versionId": "1793552962123993090",
+              "versionCode": 410903,
+              "versionName": "41.9.3",
+              "status": 0,
+              "isUpload": false,
+              "uploadStatus": 0,
+              "appAuth": 0,
+              "appRoot": 0,
+              "hideApp": false,
+              "envGroups": []
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "RemoveTeam",
+    "path": "/open/v1/app/remove",
+    "title": "Remove Team Apps",
+    "source": "https://doc.geelark.com/web/#/602813392/101528689",
+    "page_id": "101528689",
+    "url": "https://openapi.geelark.com/open/v1/app/remove",
+    "slug": "app-remove",
+    "requests": [
+      {
+        "id": "497652752864775437"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "886A92FCBE9B7A52A7F583FCBD2BF6A8",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "SetAutoInstall",
+    "path": "/open/v1/app/setStatus",
+    "title": "Set Team Apps to Install Automatically",
+    "source": "https://doc.geelark.com/web/#/602813392/101528690",
+    "page_id": "101528690",
+    "url": "https://openapi.geelark.com/open/v1/app/setStatus",
+    "slug": "app-setStatus",
+    "requests": [
+      {
+        "id": "497652752864775437",
+        "status": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "886A92FCBE9B7A52A7F583FCBD2BF6A8",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "SetAuthorization",
+    "path": "/open/v1/app/auth/status",
+    "title": "Set Team App Authorization",
+    "source": "https://doc.geelark.com/web/#/602813392/101528691",
+    "page_id": "101528691",
+    "url": "https://openapi.geelark.com/open/v1/app/auth/status",
+    "slug": "app-auth-status",
+    "requests": [
+      {
+        "id": "497652752864775437",
+        "appAuth": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "886A92FCBE9B7A52A7F583FCBD2BF6A8",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "SetRoot",
+    "path": "/open/v1/app/root",
+    "title": "Set Team App ROOT Access",
+    "source": "https://doc.geelark.com/web/#/602813392/101528692",
+    "page_id": "101528692",
+    "url": "https://openapi.geelark.com/open/v1/app/root",
+    "slug": "app-root",
+    "requests": [
+      {
+        "id": "497652752864775437",
+        "opera": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "886A92FCBE9B7A52A7F583FCBD2BF6A8",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "BatchOperate",
+    "path": "/open/v1/app/operation/batch",
+    "title": "Batch Operate Cloud Phone App",
+    "source": "https://doc.geelark.com/web/#/602813392/101529391",
+    "page_id": "101529391",
+    "url": "https://openapi.geelark.com/open/v1/app/operation/batch",
+    "slug": "app-operation-batch",
+    "requests": [
+      {
+        "action": 1,
+        "groupIds": [
+          "595681312937911830"
+        ],
+        "packageName": "io.tm.k.drama"
+      },
+      {
+        "action": 1,
+        "groupIds": [
+          "595681312937911830"
+        ],
+        "versionId": "1793552962140770305"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A0598A2CA0802A98957B9E1F87EB9289",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "items": [
+            {
+              "id": "583502967211075086",
+              "errCode": 2
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "SetKeepAlive",
+    "path": "/open/v1/app/setKeepAlive",
+    "title": "Set Team App Keep Alive",
+    "source": "https://doc.geelark.com/web/#/602813392/101529442",
+    "page_id": "101529442",
+    "url": "https://openapi.geelark.com/open/v1/app/setKeepAlive",
+    "slug": "app-setKeepAlive",
+    "requests": [
+      {
+        "id": "497652752864775437",
+        "opera": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "886A92FCBE9B7A52A7F583FCBD2BF6A8",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "SetAutoStart",
+    "path": "/open/v1/app/setAutoStart",
+    "title": "Set Team App Auto Start",
+    "source": "https://doc.geelark.com/web/#/602813392/101529443",
+    "page_id": "101529443",
+    "url": "https://openapi.geelark.com/open/v1/app/setAutoStart",
+    "slug": "app-setAutoStart",
+    "requests": [
+      {
+        "id": "497652752864775437",
+        "opera": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "886A92FCBE9B7A52A7F583FCBD2BF6A8",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "app",
+    "method": "SetHidden",
+    "path": "/open/v1/app/setHide",
+    "title": "Set team app hide status",
+    "source": "https://doc.geelark.com/web/#/602813392/101529759",
+    "page_id": "101529759",
+    "url": "https://openapi.geelark.com/open/v1/app/setHide",
+    "slug": "app-set-hide",
+    "requests": [
+      {
+        "id": "627129068445269681",
+        "opera": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "94r0GGPDg",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "adb",
+    "method": "SetStatus",
+    "path": "/open/v1/adb/setStatus",
+    "title": "Set ADB Status",
+    "source": "https://doc.geelark.com/web/#/602813392/101527853",
+    "page_id": "101527853",
+    "url": "https://openapi.geelark.com/open/v1/adb/setStatus",
+    "slug": "adb-setStatus",
+    "requests": [
+      {
+        "ids": [
+          "526209711930868736"
+        ],
+        "open": true
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A24A3089958A4BC28E8B89B3AE1A61AC",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "adb",
+    "method": "GetInfo",
+    "path": "/open/v1/adb/getData",
+    "title": "Get ADB information",
+    "source": "https://doc.geelark.com/web/#/602813392/101527854",
+    "page_id": "101527854",
+    "url": "https://openapi.geelark.com/open/v1/adb/getData",
+    "slug": "adb-getData",
+    "requests": [
+      {
+        "ids": [
+          "526806961778328576",
+          "524798337208026112",
+          "524783756767134720"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "8AB9D6B482B679ECB5578314903B80B9",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "items": [
+            {
+              "code": 0,
+              "id": "524783756767134720",
+              "ip": "124.71.210.176",
+              "pwd": "8c1da4",
+              "port": "25219"
+            },
+            {
+              "code": 42002,
+              "id": "524798337208026112",
+              "ip": "",
+              "pwd": "",
+              "port": ""
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "files",
+    "method": "GetUploadURL",
+    "path": "/open/v1/upload/getUrl",
+    "title": "Upload temporary files to GeeLark",
+    "source": "https://doc.geelark.com/web/#/602813392/101527836",
+    "page_id": "101527836",
+    "url": "https://openapi.geelark.com/open/v1/upload/getUrl",
+    "slug": "upload-getUrl",
+    "requests": [
+      {
+        "fileType": "mp4"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "9F49062C8DB3C90D8E94B4DFA37BDF89",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "uploadUrl": "http://42-studio-prod.oss-cn-hangzhou.aliyuncs.com/open-upload%2F497521349346987872%2F20240730%2Fe2u5amyB.mp4?Expires=1722310832&OSSAccessKeyId=LTAI5t7JzQBfi1nV3HbsKojG&Signature=HGBVqTUfXcUAthLPnO3ZYIVnAxg%3D",
+          "resourceUrl": "https://material-prod.geelark.cn/open-upload/497521349346987872/20240730/e2u5amyB.mp4"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "files",
+    "method": "UploadToPhone",
+    "path": "/open/v1/phone/uploadFile",
+    "title": "Upload files to the cloud phone",
+    "source": "https://doc.geelark.com/web/#/602813392/101528108",
+    "page_id": "101528108",
+    "url": "https://openapi.geelark.com/open/v1/phone/uploadFile",
+    "slug": "phone-uploadFile",
+    "requests": [
+      {
+        "id": "528715748189668352",
+        "fileUrl": "https://material-prod.geelark.cn/app/icon/20240506/nFrUEcRc9I.jpg"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A62BBBF3A294487F9B49B9FFA0F84CA8",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "1850726441252569088"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "files",
+    "method": "UploadResult",
+    "path": "/open/v1/phone/uploadFile/result",
+    "title": "Query the upload status of files to the cloud phone",
+    "source": "https://doc.geelark.com/web/#/602813392/101528109",
+    "page_id": "101528109",
+    "url": "https://openapi.geelark.com/open/v1/phone/uploadFile/result",
+    "slug": "phone-uploadFile-result",
+    "requests": [
+      {
+        "taskId": "528715748189668352"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A62BBBF3A294487F9B49B9FFA0F84CA8",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "status": 1
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "files",
+    "method": "UploadKeybox",
+    "path": "/open/v1/phone/keyboxUpload",
+    "title": "Upload the keybox file",
+    "source": "https://doc.geelark.com/web/#/602813392/101528555",
+    "page_id": "101528555",
+    "url": "https://openapi.geelark.com/open/v1/phone/keyboxUpload",
+    "slug": "phone-keyboxUpload",
+    "requests": [
+      {
+        "id": "528715748189668352",
+        "fileUrl": "https://material.geelark.cn/client-img/oakendn.xml"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A62BBBF3A294487F9B49B9FFA0F84CA8",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "1850726441252569088"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "files",
+    "method": "KeyboxResult",
+    "path": "/open/v1/phone/keyboxUpload/result",
+    "title": "Query the upload keybox file task result",
+    "source": "https://doc.geelark.com/web/#/602813392/101528556",
+    "page_id": "101528556",
+    "url": "https://openapi.geelark.com/open/v1/phone/keyboxUpload/result",
+    "slug": "phone-keyboxUpload-result",
+    "requests": [
+      {
+        "taskId": "528715748189668352"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A62BBBF3A294487F9B49B9FFA0F84CA8",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "status": 1
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "library",
+    "method": "GetUploadURL",
+    "path": "/open/v1/material/getUploadUrl",
+    "title": "Upload files to the Library",
+    "source": "https://doc.geelark.com/web/#/602813392/101529515",
+    "page_id": "101529515",
+    "url": "https://openapi.geelark.com/open/v1/material/getUploadUrl",
+    "slug": "get-material-upload-url",
+    "requests": [
+      {
+        "fileType": "jpg"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "AC5B5C9ABF8BF925A504A8849A4862B2",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "uploadUrl": "http://42-studio-singapore.oss-ap-southeast-3.aliyuncs.com/open-material-upload%2F503609206784396150%2F20260309%2FVwujVZdl.jpg?Expires=1773046044&OSSAccessKeyId=LTAI5t7JzQBfi1nV3HbsKojG&Signature=TZbYGwfcad4XFiyh4mZ1gdVI%2FzI%3D",
+          "resourceUrl": "https://singapore-upgrade.geelark.com/open-material-upload/503609206784396150/20260309/VwujVZdl.jpg"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "library",
+    "method": "Create",
+    "path": "/open/v1/material/create",
+    "title": "Create material",
+    "source": "https://doc.geelark.com/web/#/602813392/101528424",
+    "page_id": "101528424",
+    "url": "https://openapi.geelark.com/open/v1/material/create",
+    "slug": "material-create",
+    "requests": [
+      {
+        "url": "https://material.geelark.cn/client-img/banner0903_cn.gif",
+        "tagsId": [
+          "569577509402731994",
+          "569577514586891738"
+        ],
+        "fileName": "a.jpg"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "ADD9A7489BB2198DBC0FB37082684CB0",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "570606523940605924",
+          "failDetails": [
+            {
+              "id": "5695775094027319941",
+              "code": 43022,
+              "msg": "tag not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "library",
+    "method": "Delete",
+    "path": "/open/v1/material/del",
+    "title": "Delete material",
+    "source": "https://doc.geelark.com/web/#/602813392/101528425",
+    "page_id": "101528425",
+    "url": "https://openapi.geelark.com/open/v1/material/del",
+    "slug": "material-del",
+    "requests": [
+      {
+        "ids": [
+          "569569510948864567"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A1A84FBC88912B5A9F77B681B2A9A983",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 1,
+          "successAmount": 0,
+          "failAmount": 1,
+          "failDetails": [
+            {
+              "id": "5695695109488645671",
+              "code": 60005,
+              "msg": "material not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "library",
+    "method": "SetTag",
+    "path": "/open/v1/material/tag/set",
+    "title": "Set material tag",
+    "source": "https://doc.geelark.com/web/#/602813392/101528426",
+    "page_id": "101528426",
+    "url": "https://openapi.geelark.com/open/v1/material/tag/set",
+    "slug": "material-tag-set",
+    "requests": [
+      {
+        "materialsId": [
+          "570457374221926935"
+        ],
+        "tagsId": [
+          "570461738663674391"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "AC3ADD84BEA1D8D2A7DDAF8B90A8D2A8",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "failDetails": [
+            {
+              "id": "5704573742219269351",
+              "code": 60005,
+              "msg": "material not found"
+            },
+            {
+              "id": "5704617386636743911",
+              "code": 43022,
+              "msg": "tag not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "library",
+    "method": "Search",
+    "path": "/open/v1/material/search",
+    "title": "Search material",
+    "source": "https://doc.geelark.com/web/#/602813392/101528427",
+    "page_id": "101528427",
+    "url": "https://openapi.geelark.com/open/v1/material/search",
+    "slug": "material-search",
+    "requests": [
+      {
+        "fileType": [
+          1
+        ],
+        "fileName": "demo",
+        "tagIds": [
+          "569577514586891738"
+        ],
+        "source": 1,
+        "page": 1,
+        "pageSize": 50,
+        "ids": [
+          "608127302118696420"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "8D192F0785AEAAFA879FA44A990BEDAC",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 12,
+          "page": 1,
+          "pageSize": 50,
+          "list": [
+            {
+              "id": "569546671000653787",
+              "createdTime": 1749005870,
+              "fileName": "2025_06_02_11_31_IMG_9607.MOV",
+              "fileSize": 120713028,
+              "fileUrl": "https://material.geelark.cn/user-upload/497521349346987872/material-center/Ryzt3vkK14T5asJQPx2W.MOV",
+              "fileType": 2,
+              "width": 2160,
+              "height": 3840,
+              "source": 0,
+              "tags": [
+                {
+                  "id": "569577514586891738",
+                  "name": "2",
+                  "color": 2
+                }
+              ],
+              "userName": "Tom"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "library",
+    "method": "CreateTag",
+    "path": "/open/v1/material/tag/create",
+    "title": "Create tag",
+    "source": "https://doc.geelark.com/web/#/602813392/101528428",
+    "page_id": "101528428",
+    "url": "https://openapi.geelark.com/open/v1/material/tag/create",
+    "slug": "material-tag-create",
+    "requests": [
+      {
+        "name": "test",
+        "color": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "95D85F2085A6C847B2D68ABAAD591997",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "570461738663674391"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "library",
+    "method": "DeleteTag",
+    "path": "/open/v1/material/tag/del",
+    "title": "Delete tag",
+    "source": "https://doc.geelark.com/web/#/602813392/101528429",
+    "page_id": "101528429",
+    "url": "https://openapi.geelark.com/open/v1/material/tag/del",
+    "slug": "material-tag-del",
+    "requests": [
+      {
+        "ids": [
+          "570461738663674391"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "ACEB0CFEB887F99CB989BC9D9FF92BBC",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 2,
+          "successAmount": 1,
+          "failAmount": 1,
+          "failDetails": [
+            {
+              "code": 43022,
+              "id": "528953724308030464",
+              "msg": "tag not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "library",
+    "method": "SearchTags",
+    "path": "/open/v1/material/tag/search",
+    "title": "Search material tag",
+    "source": "https://doc.geelark.com/web/#/602813392/101528430",
+    "page_id": "101528430",
+    "url": "https://openapi.geelark.com/open/v1/material/tag/search",
+    "slug": "material-tag-search",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 50,
+        "name": ""
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "8B6AC3809AAAE8099E94B124A7181BB9",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 2,
+          "page": 1,
+          "pageSize": 50,
+          "list": [
+            {
+              "id": "569577514586891738",
+              "name": "2",
+              "color": 4
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "webhook",
+    "method": "SetURL",
+    "path": "/open/v1/callback/set",
+    "title": "Set Webhook URL",
+    "source": "https://doc.geelark.com/web/#/602813392/101527973",
+    "page_id": "101527973",
+    "url": "https://openapi.geelark.com/open/v1/callback/set",
+    "slug": "callback-set",
+    "requests": [
+      {
+        "url": "http://example.geelark.com/phone/callback/test"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "960B32039F84AA489514ADCC9ADA909F",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "webhook",
+    "method": "GetURL",
+    "path": "/open/v1/callback/get",
+    "title": "Get Webhook URL",
+    "source": "https://doc.geelark.com/web/#/602813392/101527974",
+    "page_id": "101527974",
+    "url": "https://openapi.geelark.com/open/v1/callback/get",
+    "slug": "callback-get",
+    "requests": [],
+    "responses": [
+      {
+        "traceId": "9CEA6CC9B5BB68BBAE4ABDF9BE5AC89D",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "url": "http://example.geelark.com/phone/callback/test"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "oem",
+    "method": "Customization",
+    "path": "/open/v1/phone/customization",
+    "title": "OEM/White Label",
+    "source": "https://doc.geelark.com/web/#/602813392/101528564",
+    "page_id": "101528564",
+    "url": "https://openapi.geelark.com/open/v1/phone/customization",
+    "slug": "phone-customization",
+    "requests": [
+      {
+        "logo": "https://material.geelark.cn/user-upload/banner0903_cn.jpg",
+        "title": "GeeLark",
+        "hideHeader": false,
+        "mirrorUrl": "https://www.abcd.com/mirror/url",
+        "toolBarSettings": [
+          {
+            "toolBar": "networkQuality",
+            "visible": false
+          },
+          {
+            "toolBar": "rotate",
+            "visible": false
+          },
+          {
+            "toolBar": "screenshot",
+            "visible": false
+          },
+          {
+            "toolBar": "upload",
+            "visible": true
+          },
+          {
+            "toolBar": "library",
+            "visible": false
+          },
+          {
+            "toolBar": "volumeUp",
+            "visible": false
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "ADD9A7489BB2198DBC0FB37082684CB0",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "analytics",
+    "method": "Data",
+    "path": "/open/v1/analytics/data",
+    "title": "Get account data",
+    "source": "https://doc.geelark.com/web/#/602813392/101528665",
+    "page_id": "101528665",
+    "url": "https://openapi.geelark.com/open/v1/analytics/data",
+    "slug": "analytics-data",
+    "requests": [
+      {
+        "account": "tk_acc",
+        "dataDate": 1764137986,
+        "createdId": "497521349330210656",
+        "channel": 1,
+        "page": 1,
+        "pageSize": 10
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B8899554AA90BB168406A5CB8A089AB2",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 2,
+          "page": 1,
+          "pageSize": 10,
+          "items": [
+            {
+              "id": "581465531480044822",
+              "channel": 0,
+              "account": "khian.kb",
+              "playCount": -1,
+              "followerCount": -1,
+              "diggCount": -1,
+              "commentCount": -1,
+              "collectCount": -1,
+              "shareCount": -1,
+              "dataDate": -1,
+              "addAccDate": 1756110064,
+              "remark": "",
+              "createdId": "497521349330210656",
+              "username": "exlrhoo@foxmail.com"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "analytics",
+    "method": "AddAccounts",
+    "path": "/open/v1/analytics/accounts/add",
+    "title": "Add Accounts",
+    "source": "https://doc.geelark.com/web/#/602813392/101528675",
+    "page_id": "101528675",
+    "url": "https://openapi.geelark.com/open/v1/analytics/accounts/add",
+    "slug": "analytics-accounts-add",
+    "requests": [
+      {
+        "channel": 0,
+        "accountsData": [
+          {
+            "account": "account-a",
+            "remark": "remark-a",
+            "tagIds": [
+              "628384126517345281",
+              "628384126517345282"
+            ]
+          },
+          {
+            "account": "account-b",
+            "remark": "remark-b",
+            "tagIds": [
+              "628384126517345283"
+            ]
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "9D1A84D6A2A8F9A8A5CD9BA7B7E84281",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "bizCode": 0,
+          "successCount": 2,
+          "failCount": 0,
+          "repeatCount": 0
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "analytics",
+    "method": "DeleteAccount",
+    "path": "/open/v1/analytics/accounts/delete",
+    "title": "Delete Account",
+    "source": "https://doc.geelark.com/web/#/602813392/101528676",
+    "page_id": "101528676",
+    "url": "https://openapi.geelark.com/open/v1/analytics/accounts/delete",
+    "slug": "analytics-accounts-delete",
+    "requests": [
+      {
+        "channel": 0,
+        "account": "xxxx"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "9D1A84D6A2A8F9A8A5CD9BA7B7E84281",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "analytics",
+    "method": "ListAccounts",
+    "path": "/open/v1/analytics/accounts/list",
+    "title": "Accounts List",
+    "source": "https://doc.geelark.com/web/#/602813392/101528677",
+    "page_id": "101528677",
+    "url": "https://openapi.geelark.com/open/v1/analytics/accounts/list",
+    "slug": "analytics-accounts-list",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 10,
+        "channel": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "99793C8DABAC5970A91693E38BBA0596",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "items": [
+            {
+              "id": "565523829426802069",
+              "account": "xxx",
+              "channel": 1,
+              "remark": "remark",
+              "operator": "xxx",
+              "created_time": 1746608069,
+              "updated_time": 1746608069,
+              "tags": [
+                {
+                  "id": "123",
+                  "name": "vip",
+                  "color": 1
+                }
+              ]
+            }
+          ],
+          "total": 1,
+          "page": 1
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "analytics",
+    "method": "UpdateAccount",
+    "path": "/open/v1/analytics/accounts/update",
+    "title": "Update Account",
+    "source": "https://doc.geelark.com/web/#/602813392/101529393",
+    "page_id": "101529393",
+    "url": "https://openapi.geelark.com/open/v1/analytics/accounts/update",
+    "slug": "analytics-accounts-update",
+    "requests": [
+      {
+        "id": "565523829426802069",
+        "account": "abc",
+        "tagIds": [
+          "628384126517345281",
+          "628384126517345282"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "9D1A84D6A2A8F9A8A5CD9BA7B7E84281",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "analytics",
+    "method": "CreateTag",
+    "path": "/open/v1/analytics/tags/create",
+    "title": "Create  Tag",
+    "source": "https://doc.geelark.com/web/#/602813392/101529754",
+    "page_id": "101529754",
+    "url": "https://openapi.geelark.com/open/v1/analytics/tags/create",
+    "slug": "analytics-tags-create",
+    "requests": [
+      {
+        "name": "Important Account",
+        "color": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "9D1A84D6A2A8F9A8A5CD9BA7B7E84281",
+        "code": 0,
+        "msg": "success",
+        "data": null
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "analytics",
+    "method": "ListTags",
+    "path": "/open/v1/analytics/tags/list",
+    "title": "List  Tags",
+    "source": "https://doc.geelark.com/web/#/602813392/101529755",
+    "page_id": "101529755",
+    "url": "https://openapi.geelark.com/open/v1/analytics/tags/list",
+    "slug": "analytics-tags-list",
+    "requests": [
+      {
+        "name": "Important",
+        "page": 1,
+        "pageSize": 200
+      },
+      {
+        "page": 1,
+        "pageSize": 200
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "9D1A84D6A2A8F9A8A5CD9BA7B7E84281",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 2,
+          "page": 1,
+          "pageSize": 200,
+          "list": [
+            {
+              "id": "628384126517345281",
+              "name": "Important Account",
+              "color": 1
+            },
+            {
+              "id": "628384126517345282",
+              "name": "Pending Follow-up",
+              "color": 2
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "analytics",
+    "method": "UpdateTag",
+    "path": "/open/v1/analytics/tags/update",
+    "title": "Update  Tag",
+    "source": "https://doc.geelark.com/web/#/602813392/101529756",
+    "page_id": "101529756",
+    "url": "https://openapi.geelark.com/open/v1/analytics/tags/update",
+    "slug": "analytics-tags-update",
+    "requests": [
+      {
+        "id": "628384126517345281",
+        "name": "Core Account",
+        "color": 2
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "9D1A84D6A2A8F9A8A5CD9BA7B7E84281",
+        "code": 0,
+        "msg": "success",
+        "data": null
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "analytics",
+    "method": "DeleteTags",
+    "path": "/open/v1/analytics/tags/del",
+    "title": "Delete  Tags",
+    "source": "https://doc.geelark.com/web/#/602813392/101529757",
+    "page_id": "101529757",
+    "url": "https://openapi.geelark.com/open/v1/analytics/tags/del",
+    "slug": "analytics-tags-del",
+    "requests": [
+      {
+        "ids": [
+          "628384126517345281",
+          "628384126517345282"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "9D1A84D6A2A8F9A8A5CD9BA7B7E84281",
+        "code": 0,
+        "msg": "success",
+        "data": null
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "livestream",
+    "method": "Start",
+    "path": "/open/v1/phone/videoPush/upload",
+    "title": "Live Streaming",
+    "source": "https://doc.geelark.com/web/#/602813392/101529812",
+    "page_id": "101529812",
+    "url": "https://openapi.geelark.com/open/v1/phone/videoPush/upload",
+    "slug": "phone-videoPush",
+    "requests": [
+      {
+        "id": "628708996374619612",
+        "fileUrl": "https://material.geelark.com/open-upload/497521349346987872/20260828/HCgv7sfC.mp4",
+        "isLoop": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "AE3AA1ECB69B4B1D839783FFB9798780",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "2093234110406909952"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "livestream",
+    "method": "Result",
+    "path": "/open/v1/phone/videoPush/upload/result",
+    "title": "Query Streaming Result",
+    "source": "https://doc.geelark.com/web/#/602813392/101529813",
+    "page_id": "101529813",
+    "url": "https://openapi.geelark.com/open/v1/phone/videoPush/upload/result",
+    "slug": "phone-videoPush-result",
+    "requests": [
+      {
+        "id": "2093234110406909952"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B4D8563B848F395A98C9AA2BB90975A8",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "status": 1
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "livestream",
+    "method": "Stop",
+    "path": "/open/v1/phone/videoPush/stop",
+    "title": "Stop Streaming",
+    "source": "https://doc.geelark.com/web/#/602813392/101529814",
+    "page_id": "101529814",
+    "url": "https://openapi.geelark.com/open/v1/phone/videoPush/stop",
+    "slug": "phone-videoPush-stop",
+    "requests": [
+      {
+        "id": "628708996374619612"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "917887458DA3A9938B9F8223BA4BC096",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "Create",
+    "path": "/api/v1/browser/create",
+    "title": "Create new browser",
+    "source": "https://doc.geelark.com/web/#/602813392/101528629",
+    "page_id": "101528629",
+    "url": "http://localhost:40185/api/v1/browser/create",
+    "slug": "create-new-browser",
+    "requests": [
+      {
+        "serialName": "myBrowserName",
+        "extGroup": "497548067550006541",
+        "browserOs": 1,
+        "proxyConfig": {
+          "typeId": -1
+        },
+        "simulateConfig": {
+          "timeZone": {
+            "switcher": 2,
+            "value": "GMT-12:00 Etc/GMT+12"
+          },
+          "language": {
+            "switcher": 2,
+            "value": "Albanian"
+          },
+          "resolution": {
+            "switcher": 2,
+            "value": "750*1334"
+          },
+          "webRtc": {
+            "switcher": 1
+          },
+          "geoLocation": {
+            "switcher": 1,
+            "baseOnIp": true,
+            "longitude": 20,
+            "latitude": 10,
+            "accuracy": 1
+          },
+          "canvas": {
+            "switcher": 1
+          },
+          "webglImage": {
+            "switcher": 1
+          },
+          "hardware": {
+            "switcher": 1
+          },
+          "audioContext": {
+            "switcher": 1
+          },
+          "mediaDevice": {
+            "switcher": 1
+          },
+          "clientRects": {
+            "switcher": 1
+          },
+          "speechVoise": {
+            "switcher": 1
+          },
+          "hardwareConcurrency": 26,
+          "memeryDevice": 8,
+          "doNotTrack": 2,
+          "bluetooth": {
+            "switcher": 1
+          },
+          "battery": {
+            "switcher": 1
+          },
+          "portScanProtection": {
+            "switcher": 1,
+            "value": "80"
+          }
+        }
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "497548067550006541"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "Update",
+    "path": "/api/v1/browser/update",
+    "title": "Edit browser",
+    "source": "https://doc.geelark.com/web/#/602813392/101528630",
+    "page_id": "101528630",
+    "url": "http://localhost:40185/api/v1/browser/update",
+    "slug": "edit-browser",
+    "requests": [
+      {
+        "id": "497548067550006541",
+        "extGroup": "497548067550006541",
+        "simulateConfig": {
+          "timeZone": {
+            "switcher": 2,
+            "value": "GMT-12:00 Etc/GMT+12"
+          },
+          "language": {
+            "switcher": 2,
+            "value": "Albanian"
+          },
+          "resolution": {
+            "switcher": 2,
+            "value": "750*1334"
+          },
+          "webRtc": {
+            "switcher": 1
+          },
+          "geoLocation": {
+            "switcher": 1,
+            "baseOnIp": true,
+            "longitude": 20,
+            "latitude": 10,
+            "accuracy": 1
+          },
+          "canvas": {
+            "switcher": 1
+          },
+          "webglImage": {
+            "switcher": 1
+          },
+          "hardware": {
+            "switcher": 1
+          },
+          "audioContext": {
+            "switcher": 1
+          },
+          "mediaDevice": {
+            "switcher": 1
+          },
+          "clientRects": {
+            "switcher": 1
+          },
+          "speechVoise": {
+            "switcher": 1
+          },
+          "hardwareConcurrency": 26,
+          "memeryDevice": 8,
+          "doNotTrack": 2,
+          "bluetooth": {
+            "switcher": 1
+          },
+          "battery": {
+            "switcher": 1
+          },
+          "portScanProtection": {
+            "switcher": 1,
+            "value": "80"
+          }
+        }
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "Delete",
+    "path": "/api/v1/browser/delete",
+    "title": "Delete browser",
+    "source": "https://doc.geelark.com/web/#/602813392/101528631",
+    "page_id": "101528631",
+    "url": "http://localhost:40185/api/v1/browser/delete",
+    "slug": "delete-browser",
+    "requests": [
+      {
+        "envIds": [
+          "539893235657500146"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "busyIds": [
+            "539893235657500146"
+          ],
+          "serverErrIds": [
+            "539893235657500147"
+          ],
+          "successIds": [
+            "539893235657500148"
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "List",
+    "path": "/api/v1/browser/list",
+    "title": "Get browser list",
+    "source": "https://doc.geelark.com/web/#/602813392/101528632",
+    "page_id": "101528632",
+    "url": "http://localhost:40185/api/v1/browser/list",
+    "slug": "query-browsers",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 10
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "Zt0YNAeHR",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 1,
+          "page": 1,
+          "pageSize": 10,
+          "items": [
+            {
+              "id": "5213214343124321",
+              "serialName": "myEnv",
+              "serialNo": "3",
+              "group": {
+                "id": "5213214343124321",
+                "name": "myGroup",
+                "remark": "myRemark"
+              },
+              "extGroup": "497548067550006541",
+              "remark": "myRemark",
+              "tags": [
+                {
+                  "name": "myTag"
+                }
+              ],
+              "proxy": {
+                "type": "",
+                "server": "",
+                "port": 0,
+                "username": "",
+                "password": ""
+              },
+              "accountInfo": {
+                "url": "https://www.tiktok.com/",
+                "userName": "jay",
+                "passWord": "password",
+                "totpSecret": "",
+                "afterStartup": 3,
+                "openLastPage": 2,
+                "openSpecPage": 1,
+                "openSiteUrl": true,
+                "autoOpenUrls": [
+                  "http://www.b.com"
+                ]
+              },
+              "simulateInfo": {
+                "os": 2,
+                "vendor": 1,
+                "mixtureKey": "87da5186e1feabc1",
+                "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.6943.141 Safari/537.36",
+                "uaVersion": "133",
+                "timeZone": {
+                  "switcher": 2,
+                  "value": "GMT-12:00 Etc/GMT+12"
+                },
+                "webRtc": {
+                  "switcher": 1
+                },
+                "geoLocation": {
+                  "switcher": 1,
+                  "baseOnIp": true,
+                  "longitude": 20,
+                  "latitude": 10,
+                  "accuracy": 1
+                },
+                "language": {
+                  "switcher": 2,
+                  "value": "Albanian"
+                },
+                "resolution": {
+                  "switcher": 2,
+                  "value": "750*1334"
+                },
+                "font": {
+                  "switcher": 2
+                },
+                "canvas": {
+                  "switcher": 1
+                },
+                "webglImage": {
+                  "switcher": 1
+                },
+                "webglMetadata": {
+                  "switcher": 3,
+                  "provider": "Google Inc. (Intel Inc.)",
+                  "render": "ANGLE (Intel Inc., Intel(R) HD Graphics 6000, OpenGL 4.1)"
+                },
+                "hardware": {
+                  "switcher": 1
+                },
+                "audioContext": {
+                  "switcher": 1
+                },
+                "mediaDevice": {
+                  "switcher": 1
+                },
+                "clientRects": {
+                  "switcher": 1
+                },
+                "speechVoise": {
+                  "switcher": 1
+                },
+                "hardwareConcurrency": 26,
+                "memeryDevice": 8,
+                "doNotTrack": 2,
+                "bluetooth": {
+                  "switcher": 1
+                },
+                "battery": {
+                  "switcher": 1
+                },
+                "portScanProtection": {
+                  "switcher": 1,
+                  "value": "80"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "Start",
+    "path": "/api/v1/browser/start",
+    "title": "Launch browser",
+    "source": "https://doc.geelark.com/web/#/602813392/101528633",
+    "page_id": "101528633",
+    "url": "http://localhost:40185/api/v1/browser/start",
+    "slug": "launch-browser",
+    "requests": [
+      {
+        "id": "612342716134614477",
+        "webhook": "http://localhost:3001"
+      }
+    ],
+    "responses": [
+      {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "debugPort": 11001
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "event": "browser_start",
+        "timestamp": 1776147008407,
+        "data": {
+          "id": "612342716134614477",
+          "status": "success",
+          "debugPort": 11019,
+          "ipCheckPass": true
+        }
+      }
+    ]
+  },
+  {
+    "package": "browser",
+    "method": "Stop",
+    "path": "/api/v1/browser/stop",
+    "title": "Close browser",
+    "source": "https://doc.geelark.com/web/#/602813392/101528634",
+    "page_id": "101528634",
+    "url": "http://localhost:40185/api/v1/browser/stop",
+    "slug": "close-browser",
+    "requests": [
+      {
+        "id": "539893235657500146"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "Transfer",
+    "path": "/api/v1/browser/transfer",
+    "title": "Transfer browsers",
+    "source": "https://doc.geelark.com/web/#/602813392/101528635",
+    "page_id": "101528635",
+    "url": "http://localhost:40185/api/v1/browser/transfer",
+    "slug": "transfer-browsers",
+    "requests": [
+      {
+        "envIds": [
+          "539893235657500146"
+        ],
+        "username": "Anna@geelark.com"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "successCount": 10,
+          "failCount": 2,
+          "failEnvIds": [
+            "539893235657500146"
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "APIStatus",
+    "path": "/api/v1/status",
+    "title": "Check API interface status",
+    "source": "https://doc.geelark.com/web/#/602813392/101528659",
+    "page_id": "101528659",
+    "url": "http://localhost:40185/api/v1/status",
+    "slug": "check-api-interface-status",
+    "requests": [],
+    "responses": [
+      {
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "Status",
+    "path": "/api/v1/browser/status",
+    "title": "Check browser status",
+    "source": "https://doc.geelark.com/web/#/602813392/101529527",
+    "page_id": "101529527",
+    "url": "http://localhost:40185/api/v1/browser/status",
+    "slug": "check-browser-status",
+    "requests": [
+      {
+        "id": "539893235657500146"
+      }
+    ],
+    "responses": [
+      {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "status": "open",
+          "debugPort": 11000
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "ClearCache",
+    "path": "/api/v1/browser/deleteCache",
+    "title": "Clear browser cache",
+    "source": "https://doc.geelark.com/web/#/602813392/101529528",
+    "page_id": "101529528",
+    "url": "http://localhost:40185/api/v1/browser/deleteCache",
+    "slug": "delete-browser-cache",
+    "requests": [
+      {
+        "ids": [
+          "123456789",
+          "987654321"
+        ],
+        "type": [
+          "local_storage",
+          "indexeddb",
+          "extension_cache",
+          "cookie",
+          "history",
+          "image_file"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "success_count": 2,
+          "error_count": 0,
+          "error_info": []
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "MoveGroup",
+    "path": "/api/v1/browser/moveGroup",
+    "title": "Browser Mobile Grouping",
+    "source": "https://doc.geelark.com/web/#/602813392/101529529",
+    "page_id": "101529529",
+    "url": "http://localhost:40185/api/v1/browser/moveGroup",
+    "slug": "browser-group-move",
+    "requests": [
+      {
+        "envIds": [
+          "123456789",
+          "987654321"
+        ],
+        "groupId": "0"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "Cookies",
+    "path": "/api/v1/browser/getCookie",
+    "title": "Query profile cookies",
+    "source": "https://doc.geelark.com/web/#/602813392/101529530",
+    "page_id": "101529530",
+    "url": "http://localhost:40185/api/v1/browser/getCookie",
+    "slug": "browser-get-cookies",
+    "requests": [
+      {
+        "id": "123456789"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "cookies": "[]"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "SetBookmarks",
+    "path": "/api/v1/browser/setBookmark",
+    "title": "Set browser bookmarks",
+    "source": "https://doc.geelark.com/web/#/602813392/101529535",
+    "page_id": "101529535",
+    "url": "http://localhost:40185/api/v1/browser/setBookmark",
+    "slug": "browser-setBookmark",
+    "requests": [
+      {
+        "browserBookmark": {
+          "type": 2,
+          "fileAddr": "",
+          "text": "http://a.com\nhttp://b.com"
+        }
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "GetBookmarks",
+    "path": "/api/v1/browser/getBookmark",
+    "title": "Get browser bookmarks",
+    "source": "https://doc.geelark.com/web/#/602813392/101529536",
+    "page_id": "101529536",
+    "url": "http://localhost:40185/api/v1/browser/getBookmark",
+    "slug": "browser-getBookmark",
+    "requests": [],
+    "responses": [
+      {
+        "traceId": "123456ABCDEF",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "browserBookmark": {
+            "type": 2,
+            "fileAddr": "",
+            "text": "http://a.com\nhttp://b.com"
+          }
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "Clone",
+    "path": "/api/v1/browser/clone",
+    "title": "Clone browser",
+    "source": "https://doc.geelark.com/web/#/602813392/101529610",
+    "page_id": "101529610",
+    "url": "http://localhost:40185/api/v1/browser/clone",
+    "slug": "browser-clone",
+    "requests": [
+      {
+        "envId": "590711571886417452",
+        "amount": 1,
+        "groupId": "590711571886417453"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B3DAFF64A7BD493CB1169D94A22BFC8D",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "ids": [
+            "590711571886417454"
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "Kernels",
+    "path": "/api/v1/browser/getKernelsList",
+    "title": "Query kernel",
+    "source": "https://doc.geelark.com/web/#/602813392/101529621",
+    "page_id": "101529621",
+    "url": "http://localhost:40185/api/v1/browser/getKernelsList",
+    "slug": "browser-get-kernel",
+    "requests": [],
+    "responses": [
+      {
+        "code": 0,
+        "msg": "success",
+        "data": [
+          {
+            "kernel": "147",
+            "isDownloaded": true
+          }
+        ]
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "UpdateKernels",
+    "path": "/api/v1/browser/updateKernels",
+    "title": "Download and update the kernel",
+    "source": "https://doc.geelark.com/web/#/602813392/101529622",
+    "page_id": "101529622",
+    "url": "http://localhost:40185/api/v1/browser/updateKernels",
+    "slug": "browser-update-kernel",
+    "requests": [
+      {
+        "kernel_version": "143"
+      }
+    ],
+    "responses": [
+      {
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "status": "complete",
+          "progress": 0
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browser",
+    "method": "ExtensionGroups",
+    "path": "/open/v1/browser/extGroup/list",
+    "title": "Get Browser Extension Category List",
+    "source": "https://doc.geelark.com/web/#/602813392/101529797",
+    "page_id": "101529797",
+    "url": "https://openapi.geelark.com/open/v1/browser/extGroup/list",
+    "slug": "browser-extgroup-list",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 10
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "Kvdpn6yvg",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 2,
+          "page": 1,
+          "pageSize": 10,
+          "items": [
+            {
+              "id": "504916330621701622",
+              "name": "Category A"
+            },
+            {
+              "id": "509711117119982738",
+              "name": "Category B"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "Search",
+    "path": "/api/v1/browser/task/search",
+    "title": "Query task",
+    "source": "https://doc.geelark.com/web/#/602813392/101529495",
+    "page_id": "101529495",
+    "url": "http://localhost:40185/api/v1/browser/task/search",
+    "slug": "browser-task-search",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 10,
+        "taskIds": [
+          "497652752864775437"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "2XsBK1HDR",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 1,
+          "page": 1,
+          "pageSize": 10,
+          "list": [
+            {
+              "id": "497652752864775437",
+              "eid": "497652752864775438",
+              "name": "myTask",
+              "remark": "",
+              "serialName": "",
+              "status": 3,
+              "startAt": 1762912197,
+              "finishAt": 1762912497,
+              "cost": 300,
+              "resultCode": 0,
+              "resultDesc": "success",
+              "scheduleAt": 1762912197
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "Cancel",
+    "path": "/api/v1/browser/task/cancel",
+    "title": "Cancel task",
+    "source": "https://doc.geelark.com/web/#/602813392/101529496",
+    "page_id": "101529496",
+    "url": "http://localhost:40185/api/v1/browser/task/cancel",
+    "slug": "browser-task-cancel",
+    "requests": [
+      {
+        "taskId": "497652752864775437"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "2XsBK1HDR",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "Restart",
+    "path": "/api/v1/browser/task/restart",
+    "title": "Retry Task",
+    "source": "https://doc.geelark.com/web/#/602813392/101529497",
+    "page_id": "101529497",
+    "url": "http://localhost:40185/api/v1/browser/task/restart",
+    "slug": "browser-task-restart",
+    "requests": [
+      {
+        "taskId": "497652752864775437"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "2XsBK1HDR",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "Detail",
+    "path": "/api/v1/browser/task/detail",
+    "title": "Query task details",
+    "source": "https://doc.geelark.com/web/#/602813392/101529522",
+    "page_id": "101529522",
+    "url": "http://localhost:40185/api/v1/browser/task/detail",
+    "slug": "browser-task-detail",
+    "requests": [
+      {
+        "taskId": "497652752864775437"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "2XsBK1HDR",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "609019758523737585",
+          "eid": "600729455865921210",
+          "name": "task20260303182734",
+          "remark": "",
+          "serialName": "",
+          "status": 3,
+          "startAt": 1772533706,
+          "finishAt": 1772533707,
+          "cost": 1,
+          "resultCode": 0,
+          "resultDesc": "success",
+          "scheduleAt": 1772533659,
+          "logs": [
+            "[2026-03-03 10:28:26 118] New Tab:"
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "Flow",
+    "path": "/api/v1/browser/task/flow",
+    "title": "Task flow query",
+    "source": "https://doc.geelark.com/web/#/602813392/101529498",
+    "page_id": "101529498",
+    "url": "http://localhost:40185/api/v1/browser/task/flow",
+    "slug": "browser-task-flow",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 10
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "2XsBK1HDR",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 1,
+          "page": 1,
+          "pageSize": 10,
+          "list": [
+            {
+              "id": "497652752864775437",
+              "title": "video flow",
+              "desc": "this is a video flow",
+              "params": [
+                "Title",
+                "Desc"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "Add",
+    "path": "/api/v1/browser/task/add",
+    "title": "Create custom task",
+    "source": "https://doc.geelark.com/web/#/602813392/101529499",
+    "page_id": "101529499",
+    "url": "http://localhost:40185/api/v1/browser/task/add",
+    "slug": "browser-task-add",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390",
+        "flowId": "562316072435344885",
+        "paramMap": {
+          "Title": "video",
+          "Desc": "this is video",
+          "Video": [
+            "https://material.geelark.cn/a.mp4"
+          ]
+        }
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "TikTokSearch",
+    "path": "/api/v1/browser/task/tiktokSearch",
+    "title": "TikTok search videos, likes and comments",
+    "source": "https://doc.geelark.com/web/#/602813392/101529576",
+    "page_id": "101529576",
+    "url": "http://localhost:40185/api/v1/browser/task/tiktokSearch",
+    "slug": "browser-task-tiktokSearch",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390",
+        "searchKeyword": "hello"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "TikTokComment",
+    "path": "/api/v1/browser/task/tiktokComment",
+    "title": "TikTok like and comment on videos",
+    "source": "https://doc.geelark.com/web/#/602813392/101529577",
+    "page_id": "101529577",
+    "url": "http://localhost:40185/api/v1/browser/task/tiktokComment",
+    "slug": "browser-task-tiktokComment",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390",
+        "comments": [
+          "hello"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "TikTokLike",
+    "path": "/api/v1/browser/task/tiktokLike",
+    "title": "TikTok like specified videos",
+    "source": "https://doc.geelark.com/web/#/602813392/101529578",
+    "page_id": "101529578",
+    "url": "http://localhost:40185/api/v1/browser/task/tiktokLike",
+    "slug": "browser-task-tiktokLike",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390",
+        "videoLink": "https://www.tiktok.com/video/38210380122",
+        "comment": "hello"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "FacebookPost",
+    "path": "/api/v1/browser/task/facebookPost",
+    "title": "Facebook Post a Status",
+    "source": "https://doc.geelark.com/web/#/602813392/101529579",
+    "page_id": "101529579",
+    "url": "http://localhost:40185/api/v1/browser/task/facebookPost",
+    "slug": "browser-task-facebookPost",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390",
+        "content": "hello"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "FacebookFriends",
+    "path": "/api/v1/browser/task/facebookFriends",
+    "title": "Facebook add recommended friends",
+    "source": "https://doc.geelark.com/web/#/602813392/101529580",
+    "page_id": "101529580",
+    "url": "http://localhost:40185/api/v1/browser/task/facebookFriends",
+    "slug": "browser-task-facebookFriends",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "FacebookLike",
+    "path": "/api/v1/browser/task/facebookLike",
+    "title": "Facebook like all on the first screen",
+    "source": "https://doc.geelark.com/web/#/602813392/101529581",
+    "page_id": "101529581",
+    "url": "http://localhost:40185/api/v1/browser/task/facebookLike",
+    "slug": "browser-task-facebookLike",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "FacebookHomepage",
+    "path": "/api/v1/browser/task/facebookHomepage",
+    "title": "Facebook account creates a homepage",
+    "source": "https://doc.geelark.com/web/#/602813392/101529582",
+    "page_id": "101529582",
+    "url": "http://localhost:40185/api/v1/browser/task/facebookHomepage",
+    "slug": "browser-task-facebookHomepage",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390",
+        "mainPageName": "myPage",
+        "category": [
+          "dev"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "InstagramLike",
+    "path": "/api/v1/browser/task/instagramLike",
+    "title": "Browse and like Instagram feed",
+    "source": "https://doc.geelark.com/web/#/602813392/101529583",
+    "page_id": "101529583",
+    "url": "http://localhost:40185/api/v1/browser/task/instagramLike",
+    "slug": "browser-task-instagramLike",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "InstagramSearch",
+    "path": "/api/v1/browser/task/instagramSearch",
+    "title": "Instagram search hashtags and browse posts",
+    "source": "https://doc.geelark.com/web/#/602813392/101529584",
+    "page_id": "101529584",
+    "url": "http://localhost:40185/api/v1/browser/task/instagramSearch",
+    "slug": "browser-task-instagramSearch",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390",
+        "searchKeywords": [
+          "hello"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "YouTubeWatch",
+    "path": "/api/v1/browser/task/youtubeWatch",
+    "title": "YouTube Watch Videos",
+    "source": "https://doc.geelark.com/web/#/602813392/101529585",
+    "page_id": "101529585",
+    "url": "http://localhost:40185/api/v1/browser/task/youtubeWatch",
+    "slug": "browser-task-youtubeWatch",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390",
+        "searchKeyword": "hello",
+        "title": "myTitle",
+        "comment": "myComment"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "XPost",
+    "path": "/api/v1/browser/task/xPost",
+    "title": "X(Twitter) Retweet and Post a Tweet",
+    "source": "https://doc.geelark.com/web/#/602813392/101529586",
+    "page_id": "101529586",
+    "url": "http://localhost:40185/api/v1/browser/task/xPost",
+    "slug": "browser-task-xPost",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390",
+        "content": "hello"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "XLike",
+    "path": "/api/v1/browser/task/xLike",
+    "title": "X(Twitter) like and retweet tweets",
+    "source": "https://doc.geelark.com/web/#/602813392/101529587",
+    "page_id": "101529587",
+    "url": "http://localhost:40185/api/v1/browser/task/xLike",
+    "slug": "browser-task-xLike",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "RedditLike",
+    "path": "/api/v1/browser/task/redditLike",
+    "title": "Browse and like Reddit posts searched by keywords",
+    "source": "https://doc.geelark.com/web/#/602813392/101529588",
+    "page_id": "101529588",
+    "url": "http://localhost:40185/api/v1/browser/task/redditLike",
+    "slug": "browser-task-redditLike",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390",
+        "searchKeywords": [
+          "hello"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "CookieBot",
+    "path": "/api/v1/browser/task/cookieBot",
+    "title": "Cookie Bot",
+    "source": "https://doc.geelark.com/web/#/602813392/101529589",
+    "page_id": "101529589",
+    "url": "http://localhost:40185/api/v1/browser/task/cookieBot",
+    "slug": "browser-task-cookieBot",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390",
+        "pages": [
+          "https://a.com"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "proxy",
+    "method": "Add",
+    "path": "/open/v1/proxy/add",
+    "title": "Add proxy",
+    "source": "https://doc.geelark.com/web/#/602813392/101527926",
+    "page_id": "101527926",
+    "url": "https://openapi.geelark.com/open/v1/proxy/add",
+    "slug": "proxy-add",
+    "requests": [
+      {
+        "list": [
+          {
+            "scheme": "socks5",
+            "server": "192.3.8.1",
+            "port": 8000,
+            "username": "admin",
+            "password": "admin",
+            "proxyQueryChannel": 1
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "31ec87cd-b8a0-40c1-984e-9d6b8a483322",
+        "code": 40006,
+        "msg": "partial success",
+        "data": {
+          "totalAmount": 2,
+          "successAmount": 1,
+          "failAmount": 1,
+          "failDetails": [
+            {
+              "index": 0,
+              "code": 45007,
+              "msg": "proxy already exists"
+            }
+          ],
+          "successDetails": [
+            {
+              "index": 1,
+              "id": "493188072704313353"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "proxy",
+    "method": "Update",
+    "path": "/open/v1/proxy/update",
+    "title": "Update proxy",
+    "source": "https://doc.geelark.com/web/#/602813392/101527927",
+    "page_id": "101527927",
+    "url": "https://openapi.geelark.com/open/v1/proxy/update",
+    "slug": "proxy-update",
+    "requests": [
+      {
+        "list": [
+          {
+            "id": "493188072704313353",
+            "scheme": "socks5",
+            "server": "192.3.8.1",
+            "port": 8000,
+            "username": "admin",
+            "password": "admin",
+            "proxyQueryChannel": 1
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "31ec87cd-b8a0-40c1-984e-9d6b8a483322",
+        "code": 40006,
+        "msg": "partial success",
+        "data": {
+          "totalAmount": 2,
+          "successAmount": 1,
+          "failAmount": 1,
+          "failDetails": [
+            {
+              "id": "493188072704313353",
+              "code": 40005,
+              "msg": "proxy not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "proxy",
+    "method": "Delete",
+    "path": "/open/v1/proxy/delete",
+    "title": "Delete proxy",
+    "source": "https://doc.geelark.com/web/#/602813392/101527928",
+    "page_id": "101527928",
+    "url": "https://openapi.geelark.com/open/v1/proxy/delete",
+    "slug": "proxy-delete",
+    "requests": [
+      {
+        "ids": [
+          "493188072704313353"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "31ec87cd-b8a0-40c1-984e-9d6b8a483322",
+        "code": 40006,
+        "msg": "partial success",
+        "data": {
+          "totalAmount": 2,
+          "successAmount": 1,
+          "failAmount": 1,
+          "failDetails": [
+            {
+              "id": "493188072704313353",
+              "code": 40005,
+              "msg": "proxy not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "proxy",
+    "method": "List",
+    "path": "/open/v1/proxy/list",
+    "title": "Get all proxies",
+    "source": "https://doc.geelark.com/web/#/602813392/101527929",
+    "page_id": "101527929",
+    "url": "https://openapi.geelark.com/open/v1/proxy/list",
+    "slug": "proxy-list",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 1,
+        "ids": [
+          "493188072704313353"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "31ec87cd-b8a0-40c1-984e-9d6b8a483322",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 1,
+          "page": 1,
+          "pageSize": 1,
+          "list": [
+            {
+              "id": "493188072704313353",
+              "serialNo": 1,
+              "scheme": "socks5",
+              "server": "192.3.8.1",
+              "port": 8000,
+              "username": "admin",
+              "password": "admin"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "proxy",
+    "method": "Check",
+    "path": "/open/v1/proxy/check",
+    "title": "Proxy Detection",
+    "source": "https://doc.geelark.com/web/#/602813392/101528662",
+    "page_id": "101528662",
+    "url": "https://openapi.geelark.com/open/v1/proxy/check",
+    "slug": "proxy-check",
+    "requests": [
+      {
+        "proxyQueryChannel": "IP2Location",
+        "proxyType": "socks5",
+        "server": "185.162.130.86",
+        "port": 10000,
+        "username": "username",
+        "password": "pass"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B379AA1BBBB529758ED091C480AA4285",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "detectStatus": true,
+          "message": "",
+          "outboundIP": "223.135.25.196",
+          "countryCode": "JP",
+          "countryName": "Japan",
+          "subdivision": "Tokyo",
+          "city": "Tokyo",
+          "timezone": "Asia/Tokyo",
+          "isp": "Sony Network Communications Inc."
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "proxygroup",
+    "method": "Create",
+    "path": "/open/v1/proxyGroup/add",
+    "title": "Add Proxy Group",
+    "source": "https://doc.geelark.com/web/#/602813392/101529750",
+    "page_id": "101529750",
+    "url": "https://openapi.geelark.com/open/v1/proxyGroup/add",
+    "slug": "proxy-group-add",
+    "requests": [
+      {
+        "name": "Business Group A"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "31ec87cd-b8a0-40c1-984e-9d6b8a483322",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "id": "123456789012345678"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "proxygroup",
+    "method": "List",
+    "path": "/open/v1/proxyGroup/search",
+    "title": "List Proxy Groups",
+    "source": "https://doc.geelark.com/web/#/602813392/101529751",
+    "page_id": "101529751",
+    "url": "https://api.geelark.com/open/v1/proxyGroup/search",
+    "slug": "proxy-group-search",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 20,
+        "name": "Business Group"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "31ec87cd-b8a0-40c1-984e-9d6b8a483322",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 2,
+          "page": 1,
+          "pageSize": 20,
+          "list": [
+            {
+              "id": "0",
+              "name": "Ungrouped Proxies"
+            },
+            {
+              "id": "123456789012345678",
+              "name": "Business Group A"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "proxygroup",
+    "method": "Update",
+    "path": "/open/v1/proxyGroup/update",
+    "title": "Update Proxy Group",
+    "source": "https://doc.geelark.com/web/#/602813392/101529752",
+    "page_id": "101529752",
+    "url": "https://openapi.geelark.com/open/v1/proxyGroup/update",
+    "slug": "proxy-group-update",
+    "requests": [
+      {
+        "id": "123456789012345678",
+        "name": "New Group Name"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "31ec87cd-b8a0-40c1-984e-9d6b8a483322",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "proxygroup",
+    "method": "Delete",
+    "path": "/open/v1/proxyGroup/del",
+    "title": "Delete Proxy Groups",
+    "source": "https://doc.geelark.com/web/#/602813392/101529753",
+    "page_id": "101529753",
+    "url": "https://openapi.geelark.com/open/v1/proxyGroup/del",
+    "slug": "proxy-group-delete",
+    "requests": [
+      {
+        "ids": [
+          "123456789012345678",
+          "223456789012345678"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "31ec87cd-b8a0-40c1-984e-9d6b8a483322",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 2,
+          "successAmount": 2,
+          "failAmount": 0,
+          "failDetails": []
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "tag",
+    "method": "Create",
+    "path": "/open/v1/tag/add",
+    "title": "Create tag",
+    "source": "https://doc.geelark.com/web/#/602813392/101527936",
+    "page_id": "101527936",
+    "url": "https://openapi.geelark.com/open/v1/tag/add",
+    "slug": "tag-add",
+    "requests": [
+      {
+        "list": [
+          {
+            "name": "tagEmpty"
+          },
+          {
+            "name": "tagRed",
+            "color": "red"
+          },
+          {
+            "name": "tagBlue",
+            "color": "blue"
+          },
+          {
+            "name": "tagGreen",
+            "color": "green"
+          },
+          {
+            "name": "tagYellow",
+            "color": "yellow"
+          },
+          {
+            "name": "tagPurple",
+            "color": "purple"
+          },
+          {
+            "name": "tagWhite",
+            "color": "white"
+          },
+          {
+            "name": "tagWhite2",
+            "color": ""
+          },
+          {
+            "name": "tagInvalid",
+            "color": "abc"
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "BC78266DA98F18EA9278B9C89AF9BB9B",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 9,
+          "successAmount": 8,
+          "failAmount": 1,
+          "successDetails": [
+            {
+              "id": "528989565877224448",
+              "name": "tagWhite2",
+              "color": "white"
+            },
+            {
+              "id": "528989565877289984",
+              "name": "tagBlue",
+              "color": "blue"
+            },
+            {
+              "id": "528989565877355520",
+              "name": "tagGreen",
+              "color": "green"
+            },
+            {
+              "id": "528989565894001664",
+              "name": "tagYellow",
+              "color": "yellow"
+            },
+            {
+              "id": "528989565894067200",
+              "name": "tagPurple",
+              "color": "purple"
+            },
+            {
+              "id": "528989565894132736",
+              "name": "tagWhite",
+              "color": "white"
+            },
+            {
+              "id": "528989565894198272",
+              "name": "tagEmpty",
+              "color": "white"
+            },
+            {
+              "id": "528989565910778880",
+              "name": "tagRed",
+              "color": "red"
+            }
+          ],
+          "failDetails": [
+            {
+              "code": 43023,
+              "name": "tagInvalid",
+              "msg": "tag color not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "tag",
+    "method": "Delete",
+    "path": "/open/v1/tag/delete",
+    "title": "Delete tag",
+    "source": "https://doc.geelark.com/web/#/602813392/101527937",
+    "page_id": "101527937",
+    "url": "https://openapi.geelark.com/open/v1/tag/delete",
+    "slug": "tag-delete",
+    "requests": [
+      {
+        "ids": [
+          "528989565877224448",
+          "528953724308030464"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "ACEB0CFEB887F99CB989BC9D9FF92BBC",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 2,
+          "successAmount": 1,
+          "failAmount": 1,
+          "failDetails": [
+            {
+              "code": 43022,
+              "id": "528953724308030464",
+              "msg": "tag not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "tag",
+    "method": "List",
+    "path": "/open/v1/tag/list",
+    "title": "Query tag",
+    "source": "https://doc.geelark.com/web/#/602813392/101527938",
+    "page_id": "101527938",
+    "url": "https://openapi.geelark.com/open/v1/tag/list",
+    "slug": "tag-list",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 5
+      },
+      {
+        "page": 1,
+        "pageSize": 5,
+        "ids": [
+          "528989565910778880",
+          "528989565894198272"
+        ]
+      },
+      {
+        "page": 1,
+        "pageSize": 5,
+        "names": [
+          "tagRed",
+          "tagWhite"
+        ]
+      },
+      {
+        "page": 1,
+        "pageSize": 5,
+        "colors": [
+          "blue",
+          "red"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "913AE8DBBBB48B70825EBAABB11B91BD",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 24,
+          "page": 1,
+          "pageSize": 5,
+          "list": [
+            {
+              "id": "528989565877355520",
+              "name": "tagGreen",
+              "color": "green"
+            },
+            {
+              "id": "528989565877289984",
+              "name": "tagBlue",
+              "color": "blue"
+            },
+            {
+              "id": "528989565894067200",
+              "name": "tagPurple",
+              "color": "purple"
+            },
+            {
+              "id": "528989565910778880",
+              "name": "tagRed",
+              "color": "red"
+            },
+            {
+              "id": "528989565894198272",
+              "name": "tagEmpty",
+              "color": "white"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "tag",
+    "method": "Update",
+    "path": "/open/v1/tag/update",
+    "title": "Modify tag",
+    "source": "https://doc.geelark.com/web/#/602813392/101527939",
+    "page_id": "101527939",
+    "url": "https://openapi.geelark.com/open/v1/tag/update",
+    "slug": "tag-update",
+    "requests": [
+      {
+        "list": [
+          {
+            "id": "528989565894198272",
+            "name": "tagEmptyUpdate",
+            "color": "red"
+          },
+          {
+            "id": "528994200482481152",
+            "name": "tagUpdate",
+            "color": "red"
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B178151A9586E88195C4BF1493BBC98B",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 2,
+          "successAmount": 2,
+          "failAmount": 0
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "group",
+    "method": "Create",
+    "path": "/open/v1/group/add",
+    "title": "Create group",
+    "source": "https://doc.geelark.com/web/#/602813392/101527940",
+    "page_id": "101527940",
+    "url": "https://openapi.geelark.com/open/v1/group/add",
+    "slug": "group-add",
+    "requests": [
+      {
+        "list": [
+          {
+            "name": "group"
+          },
+          {
+            "name": "groupRemark",
+            "remark": "remark"
+          },
+          {
+            "name": "groupInvalid"
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "AA6849499B949BDCBD7FA792AB1981A5",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 3,
+          "successAmount": 2,
+          "failAmount": 1,
+          "successDetails": [
+            {
+              "id": "528994851237135360",
+              "name": "group"
+            },
+            {
+              "id": "528994851237200896",
+              "name": "groupRemark",
+              "remark": "remark"
+            }
+          ],
+          "failDetails": [
+            {
+              "code": 43031,
+              "name": "groupInvalid",
+              "msg": "group existed"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "group",
+    "method": "Delete",
+    "path": "/open/v1/group/delete",
+    "title": "Delete group",
+    "source": "https://doc.geelark.com/web/#/602813392/101527941",
+    "page_id": "101527941",
+    "url": "https://openapi.geelark.com/open/v1/group/delete",
+    "slug": "group-delete",
+    "requests": [
+      {
+        "ids": [
+          "528994851237200896",
+          "528994851237135360",
+          "528984285433037824"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "AA69C5B4938EDB00920099719D58C8A9",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 3,
+          "successAmount": 2,
+          "failAmount": 1,
+          "failDetails": [
+            {
+              "code": 43032,
+              "id": "528984285433037824",
+              "msg": "group not found"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "group",
+    "method": "List",
+    "path": "/open/v1/group/list",
+    "title": "Query group",
+    "source": "https://doc.geelark.com/web/#/602813392/101527942",
+    "page_id": "101527942",
+    "url": "https://openapi.geelark.com/open/v1/group/list",
+    "slug": "group-list",
+    "requests": [
+      {
+        "page": 1,
+        "pageSize": 5
+      },
+      {
+        "page": 1,
+        "pageSize": 5,
+        "ids": [
+          "528995439832269824",
+          "528985080069096448"
+        ]
+      },
+      {
+        "page": 1,
+        "pageSize": 5,
+        "names": [
+          "groupRemark",
+          "testRemark"
+        ]
+      },
+      {
+        "page": 1,
+        "pageSize": 5,
+        "remarks": [
+          "remark",
+          "test"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A25B0025BA886B1EB2679AAAAC599998",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 2,
+          "page": 1,
+          "pageSize": 5,
+          "list": [
+            {
+              "id": "528995439832269824",
+              "name": "groupRemark",
+              "remark": "remark"
+            },
+            {
+              "id": "528985080069096448",
+              "name": "testRemark",
+              "remark": "test"
+            }
+          ]
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "group",
+    "method": "Update",
+    "path": "/open/v1/group/update",
+    "title": "Modify group",
+    "source": "https://doc.geelark.com/web/#/602813392/101527943",
+    "page_id": "101527943",
+    "url": "https://openapi.geelark.com/open/v1/group/update",
+    "slug": "group-update",
+    "requests": [
+      {
+        "list": [
+          {
+            "id": "528995439832269824",
+            "name": "newGroupRemark",
+            "remark": "update remark"
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B068F85E849B683291AE8ECCBB7B3DB9",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "totalAmount": 1,
+          "successAmount": 1,
+          "failAmount": 0
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "billing",
+    "method": "Balance",
+    "path": "/open/v1/pay/wallet",
+    "title": "Balance Inquiry",
+    "source": "https://doc.geelark.com/web/#/602813392/101529433",
+    "page_id": "101529433",
+    "url": "https://openapi.geelark.com/open/v1/pay/wallet",
+    "slug": "pay-wallet",
+    "requests": [],
+    "responses": [
+      {
+        "traceId": "9C798E6CA2AB58348E2C974EA8E8AB8B",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "balance": 1549.77,
+          "giftMoney": 0,
+          "availableTimeAddOn": 10
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "billing",
+    "method": "Plans",
+    "path": "/open/v1/pay/profiles/list",
+    "title": "Get plan list",
+    "source": "https://doc.geelark.com/web/#/602813392/101529504",
+    "page_id": "101529504",
+    "url": "https://openapi.geelark.com/open/v1/pay/profiles/list",
+    "slug": "pay-profiles-list",
+    "requests": [],
+    "responses": [
+      {
+        "traceId": "BBBA5FE8B3A8FBDEB0209321B43BEB80",
+        "code": 0,
+        "msg": "success",
+        "data": [
+          {
+            "id": "497540679501610040",
+            "price": 5,
+            "level": 0,
+            "envNum": 5,
+            "freeTime": 60,
+            "openEnvNumOneDay": 1000,
+            "createEnvNumOneDay": 25
+          },
+          {
+            "id": "512719311391949750",
+            "price": 19,
+            "level": 1,
+            "envNum": 20,
+            "freeTime": 60,
+            "openEnvNumOneDay": 10000,
+            "createEnvNumOneDay": 200
+          }
+        ]
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "billing",
+    "method": "ChangePlan",
+    "path": "/open/v1/pay/plan/upgrade",
+    "title": "Change plan",
+    "source": "https://doc.geelark.com/web/#/602813392/101529505",
+    "page_id": "101529505",
+    "url": "https://openapi.geelark.com/open/v1/pay/plan/upgrade",
+    "slug": "pay-plan-upgrade",
+    "requests": [
+      {
+        "profilesId": "497540679501610040",
+        "parallelsNum": 1,
+        "monthlyRentalNum": 1
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A3889654BA84B91CBABF8535B83AEABB",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "billing",
+    "method": "RenewPlan",
+    "path": "/open/v1/pay/plan/continue",
+    "title": "Renew plan",
+    "source": "https://doc.geelark.com/web/#/602813392/101529508",
+    "page_id": "101529508",
+    "url": "https://openapi.geelark.com/open/v1/pay/plan/continue",
+    "slug": "pay-plan-continue",
+    "requests": [
+      {
+        "days": 30,
+        "promoCode": "GeeLark666"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A3889654BA84B91CBABF8535B83AEABB",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "billing",
+    "method": "PlanInfo",
+    "path": "/open/v1/pay/plan/info",
+    "title": "Get the current subscription plan information",
+    "source": "https://doc.geelark.com/web/#/602813392/101529510",
+    "page_id": "101529510",
+    "url": "https://openapi.geelark.com/open/v1/pay/plan/info",
+    "slug": "plan-info",
+    "requests": [],
+    "responses": [
+      {
+        "traceId": "928AD6F698AE1840ACEA9A5EA858179B",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "plan": 1,
+          "profiles": 1000,
+          "monthlyRental": 13,
+          "parallels": 3,
+          "expirationTime": 1774596449,
+          "monthlyFee": 777.4,
+          "availableProfiles": 160,
+          "availableMonthlyRentals": 0
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "billing",
+    "method": "Transactions",
+    "path": "/open/v1/billing/transaction/detail",
+    "title": "Billing transaction detail",
+    "source": "https://doc.geelark.com/web/#/602813392/101529561",
+    "page_id": "101529561",
+    "url": "https://openapi.geelark.com/open/v1/billing/transaction/detail",
+    "slug": "billing-transaction-detail",
+    "requests": [
+      {
+        "id": "612451567282427943",
+        "limit": 10,
+        "lastFlowId": "612476158453291064",
+        "startAt": 1774593838,
+        "endAt": 1774593840
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "9DBBF7A080B099189E2D84CF92287189",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "total": 1,
+          "page": 1,
+          "pageSize": 10,
+          "list": [
+            {
+              "id": "612451567282427943",
+              "envId": "612451567282427942",
+              "amount": 0,
+              "usedTime": 2,
+              "type": 1,
+              "chargeType": 5,
+              "createdTime": 1774593838
+            }
+          ],
+          "lastFlowId": "612451567282427943"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "billing",
+    "method": "BuyTime",
+    "path": "/open/v1/pay/timeAddOn/buy",
+    "title": "Buy Time add-on",
+    "source": "https://doc.geelark.com/web/#/602813392/101529625",
+    "page_id": "101529625",
+    "url": "https://openapi.geelark.com/open/v1/pay/timeAddOn/buy",
+    "slug": "time-add-on-buy",
+    "requests": [
+      {
+        "minutes": 2000,
+        "promoCode": "GeeLark666"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A3889654BA84B91CBABF8535B83AEABB",
+        "code": 0,
+        "msg": "success"
+      }
+    ],
+    "callbacks": []
+  }
+]

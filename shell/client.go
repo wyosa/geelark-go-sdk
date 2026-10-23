@@ -1,28 +1,33 @@
+// Package shell provides shell command execution on cloud phones.
 package shell
 
 import (
 	"context"
 
-	"github.com/wyosa/geelark-go-sdk/internal/clientcore"
+	"github.com/wyosa/geelark-go-sdk/common"
 )
 
 type Client struct {
-	core *clientcore.Client
+	core common.Transport
 }
 
-func New(core *clientcore.Client) *Client { return &Client{core: core} }
+func New(core common.Transport) *Client { return &Client{core: core} }
 
 type ExecuteRequest struct {
-	ID  string `json:"id"`
+	// Cloud phone ID. Required.
+	ID string `json:"id"`
+	// Command to execute. Required.
 	Cmd string `json:"cmd"`
 }
 
 type ExecuteResponse struct {
-	Status bool   `json:"status"`
+	// true: Execution successful, false: Execution failed.
+	Status bool `json:"status"`
+	// Execution result.
 	Output string `json:"output"`
 }
 
-// Execute calls /open/v1/shell/execute.
+// Execute: https://open.geelark.com/api/shell-execute
 func (c *Client) Execute(ctx context.Context, req ExecuteRequest) (*ExecuteResponse, error) {
 	var resp ExecuteResponse
 	if err := c.core.Do(ctx, "/open/v1/shell/execute", req, &resp); err != nil {
