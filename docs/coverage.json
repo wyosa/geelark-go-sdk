@@ -1,0 +1,1653 @@
+{
+  "snapshot": "2026-10-23",
+  "endpoints": [
+    {
+      "package": "cloudphone",
+      "method": "Create",
+      "path": "/open/v1/phone/addNew",
+      "title": "Create new V2",
+      "source": "https://doc.geelark.com/web/#/602813392/101528476",
+      "page_id": "101528476"
+    },
+    {
+      "package": "cloudphone",
+      "method": "List",
+      "path": "/open/v1/phone/list",
+      "title": "Get all cloud phones",
+      "source": "https://doc.geelark.com/web/#/602813392/101527838",
+      "page_id": "101527838"
+    },
+    {
+      "package": "cloudphone",
+      "method": "Status",
+      "path": "/open/v1/phone/status",
+      "title": "Query status",
+      "source": "https://doc.geelark.com/web/#/602813392/101527839",
+      "page_id": "101527839"
+    },
+    {
+      "package": "cloudphone",
+      "method": "Start",
+      "path": "/open/v1/phone/start",
+      "title": "Start cloud phone",
+      "source": "https://doc.geelark.com/web/#/602813392/101527840",
+      "page_id": "101527840"
+    },
+    {
+      "package": "cloudphone",
+      "method": "Stop",
+      "path": "/open/v1/phone/stop",
+      "title": "Stop cloud phone",
+      "source": "https://doc.geelark.com/web/#/602813392/101527841",
+      "page_id": "101527841"
+    },
+    {
+      "package": "cloudphone",
+      "method": "Restart",
+      "path": "/open/v1/phone/restart",
+      "title": "Restart cloud phone",
+      "source": "https://doc.geelark.com/web/#/602813392/101529774",
+      "page_id": "101529774"
+    },
+    {
+      "package": "cloudphone",
+      "method": "Delete",
+      "path": "/open/v1/phone/delete",
+      "title": "Delete cloud phone",
+      "source": "https://doc.geelark.com/web/#/602813392/101527842",
+      "page_id": "101527842"
+    },
+    {
+      "package": "cloudphone",
+      "method": "GetGPS",
+      "path": "/open/v1/phone/gps/get",
+      "title": "Get GPS ",
+      "source": "https://doc.geelark.com/web/#/602813392/101527933",
+      "page_id": "101527933"
+    },
+    {
+      "package": "cloudphone",
+      "method": "SetGPS",
+      "path": "/open/v1/phone/gps/set",
+      "title": "Set GPS",
+      "source": "https://doc.geelark.com/web/#/602813392/101527934",
+      "page_id": "101527934"
+    },
+    {
+      "package": "cloudphone",
+      "method": "Update",
+      "path": "/open/v1/phone/detail/update",
+      "title": "Modify cloud phone information",
+      "source": "https://doc.geelark.com/web/#/602813392/101527935",
+      "page_id": "101527935"
+    },
+    {
+      "package": "cloudphone",
+      "method": "Reset",
+      "path": "/open/v2/phone/newOne",
+      "title": "One-click new machine V2",
+      "source": "https://doc.geelark.com/web/#/602813392/101528107",
+      "page_id": "101528107"
+    },
+    {
+      "package": "cloudphone",
+      "method": "Clone",
+      "path": "/open/v1/phone/clone",
+      "title": "Clone cloud phone",
+      "source": "https://doc.geelark.com/web/#/602813392/101529600",
+      "page_id": "101529600"
+    },
+    {
+      "package": "cloudphone",
+      "method": "Screenshot",
+      "path": "/open/v1/phone/screenShot",
+      "title": "Screen Shot",
+      "source": "https://doc.geelark.com/web/#/602813392/101528205",
+      "page_id": "101528205"
+    },
+    {
+      "package": "cloudphone",
+      "method": "ScreenshotResult",
+      "path": "/open/v1/phone/screenShot/result",
+      "title": "Get screenshot result",
+      "source": "https://doc.geelark.com/web/#/602813392/101528206",
+      "page_id": "101528206"
+    },
+    {
+      "package": "cloudphone",
+      "method": "SetRoot",
+      "path": "/open/v1/root/setStatus",
+      "title": "Set Root Status",
+      "source": "https://doc.geelark.com/web/#/602813392/101528240",
+      "page_id": "101528240"
+    },
+    {
+      "package": "cloudphone",
+      "method": "GetRoot",
+      "path": "/open/v1/root/getStatus",
+      "title": "Get Root Status",
+      "source": "https://doc.geelark.com/web/#/602813392/101529825",
+      "page_id": "101529825"
+    },
+    {
+      "package": "cloudphone",
+      "method": "DeviceID",
+      "path": "/open/v1/phone/serialNum/get",
+      "title": "Get device ID",
+      "source": "https://doc.geelark.com/web/#/602813392/101528243",
+      "page_id": "101528243"
+    },
+    {
+      "package": "cloudphone",
+      "method": "SendSMS",
+      "path": "/open/v1/phone/sendSms",
+      "title": "Send SMS to cloud phone",
+      "source": "https://doc.geelark.com/web/#/602813392/101528255",
+      "page_id": "101528255"
+    },
+    {
+      "package": "cloudphone",
+      "method": "Brands",
+      "path": "/open/v1/phone/brand/list",
+      "title": "List of cloud mobile phone brands",
+      "source": "https://doc.geelark.com/web/#/602813392/101528264",
+      "page_id": "101528264"
+    },
+    {
+      "package": "cloudphone",
+      "method": "TeamBrands",
+      "path": "/open/v1/phone/brand/teamList",
+      "title": "List of cloud phone team brands",
+      "source": "https://doc.geelark.com/web/#/602813392/101529669",
+      "page_id": "101529669"
+    },
+    {
+      "package": "cloudphone",
+      "method": "Transfer",
+      "path": "/open/v1/phone/transfer",
+      "title": "Transfer Cloud Phone",
+      "source": "https://doc.geelark.com/web/#/602813392/101528449",
+      "page_id": "101528449"
+    },
+    {
+      "package": "cloudphone",
+      "method": "SetNetworkType",
+      "path": "/open/v1/phone/net/set",
+      "title": "Set net type",
+      "source": "https://doc.geelark.com/web/#/602813392/101528562",
+      "page_id": "101528562"
+    },
+    {
+      "package": "cloudphone",
+      "method": "HideAccessibility",
+      "path": "/open/v1/phone/hideAccessibility",
+      "title": "Hide Accessibility",
+      "source": "https://doc.geelark.com/web/#/602813392/101529420",
+      "page_id": "101529420"
+    },
+    {
+      "package": "cloudphone",
+      "method": "MoveGroup",
+      "path": "/open/v1/phone/moveGroup",
+      "title": "Move Group",
+      "source": "https://doc.geelark.com/web/#/602813392/101529422",
+      "page_id": "101529422"
+    },
+    {
+      "package": "cloudphone",
+      "method": "ImportContacts",
+      "path": "/open/v1/phone/importContacts",
+      "title": "Batch Import Contacts",
+      "source": "https://doc.geelark.com/web/#/602813392/101529436",
+      "page_id": "101529436"
+    },
+    {
+      "package": "cloudphone",
+      "method": "ImportContactsResult",
+      "path": "/open/v1/phone/importContactsResult",
+      "title": "Get Batch Import Contacts Result",
+      "source": "https://doc.geelark.com/web/#/602813392/101529437",
+      "page_id": "101529437"
+    },
+    {
+      "package": "cloudphone",
+      "method": "GetNetworkSettings",
+      "path": "/open/v1/phone/netConfig/get",
+      "title": "Get cloud phone network settings",
+      "source": "https://doc.geelark.com/web/#/602813392/101529608",
+      "page_id": "101529608"
+    },
+    {
+      "package": "cloudphone",
+      "method": "SetNetworkSettings",
+      "path": "/open/v1/phone/netConfig/set",
+      "title": "Modify cloud phone network settings",
+      "source": "https://doc.geelark.com/web/#/602813392/101529609",
+      "page_id": "101529609"
+    },
+    {
+      "package": "cloudphone",
+      "method": "UIDump",
+      "path": "/open/v1/phone/uiDump",
+      "title": "Get UI Dump",
+      "source": "https://doc.geelark.com/web/#/602813392/101529828",
+      "page_id": "101529828"
+    },
+    {
+      "package": "cloudphone",
+      "method": "UIDumpResult",
+      "path": "/open/v1/phone/uiDump/result",
+      "title": "Get UI Dump Result",
+      "source": "https://doc.geelark.com/web/#/602813392/101529829",
+      "page_id": "101529829"
+    },
+    {
+      "package": "automation",
+      "method": "QueryTask",
+      "path": "/open/v1/task/query",
+      "title": "Query task",
+      "source": "https://doc.geelark.com/web/#/602813392/101528366",
+      "page_id": "101528366"
+    },
+    {
+      "package": "automation",
+      "method": "ListTasks",
+      "path": "/open/v1/task/historyRecords",
+      "title": "Batch query tasks",
+      "source": "https://doc.geelark.com/web/#/602813392/101528505",
+      "page_id": "101528505"
+    },
+    {
+      "package": "automation",
+      "method": "CancelTask",
+      "path": "/open/v1/task/cancel",
+      "title": "Cancel task",
+      "source": "https://doc.geelark.com/web/#/602813392/101528367",
+      "page_id": "101528367"
+    },
+    {
+      "package": "automation",
+      "method": "RetryTask",
+      "path": "/open/v1/task/restart",
+      "title": "Retry Task",
+      "source": "https://doc.geelark.com/web/#/602813392/101528368",
+      "page_id": "101528368"
+    },
+    {
+      "package": "automation",
+      "method": "TaskDetail",
+      "path": "/open/v1/task/detail",
+      "title": "Task Detail",
+      "source": "https://doc.geelark.com/web/#/602813392/101528416",
+      "page_id": "101528416"
+    },
+    {
+      "package": "automation",
+      "method": "AddTask",
+      "path": "/open/v1/task/add",
+      "title": "Add video/image/warmup task",
+      "source": "https://doc.geelark.com/web/#/602813392/101528369",
+      "page_id": "101528369"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokLogin",
+      "path": "/open/v1/rpa/task/tiktokLogin",
+      "title": "TikTok login",
+      "source": "https://doc.geelark.com/web/#/602813392/101528370",
+      "page_id": "101528370"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokEdit",
+      "path": "/open/v1/rpa/task/tiktokEdit",
+      "title": "TikTok profile edit",
+      "source": "https://doc.geelark.com/web/#/602813392/101528371",
+      "page_id": "101528371"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokRandomStar",
+      "path": "/open/v1/rpa/task/tiktokRandomStar",
+      "title": "TikTok star",
+      "source": "https://doc.geelark.com/web/#/602813392/101528372",
+      "page_id": "101528372"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokRandomStarAsia",
+      "path": "/open/v1/rpa/task/tiktokRandomStarAsia",
+      "title": "TikTok star - Asia",
+      "source": "https://doc.geelark.com/web/#/602813392/101528499",
+      "page_id": "101528499"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokRandomComment",
+      "path": "/open/v1/rpa/task/tiktokRandomComment",
+      "title": "TikTok AI comment",
+      "source": "https://doc.geelark.com/web/#/602813392/101528373",
+      "page_id": "101528373"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokRandomCommentAsia",
+      "path": "/open/v1/rpa/task/tiktokRandomCommentAsia",
+      "title": "TikTok AI comment - Asia",
+      "source": "https://doc.geelark.com/web/#/602813392/101528639",
+      "page_id": "101528639"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokMessage",
+      "path": "/open/v1/rpa/task/tiktokMessage",
+      "title": "Send private message on TikTok",
+      "source": "https://doc.geelark.com/web/#/602813392/101528468",
+      "page_id": "101528468"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokMessageAsia",
+      "path": "/open/v1/rpa/task/tiktokMessageAsia",
+      "title": "Send private message on TikTok - Asia",
+      "source": "https://doc.geelark.com/web/#/602813392/101528500",
+      "page_id": "101528500"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokRandomFollow",
+      "path": "/open/v1/rpa/task/tiktokRandomFollow",
+      "title": "TikTok follow",
+      "source": "https://doc.geelark.com/web/#/602813392/101529519",
+      "page_id": "101529519"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokRandomFollowAsia",
+      "path": "/open/v1/rpa/task/tiktokRandomFollowAsia",
+      "title": "TikTok follow - Asia",
+      "source": "https://doc.geelark.com/web/#/602813392/101529520",
+      "page_id": "101529520"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokHide",
+      "path": "/open/v1/rpa/task/tiktokHide",
+      "title": "Hide TikTok videos",
+      "source": "https://doc.geelark.com/web/#/602813392/101529594",
+      "page_id": "101529594"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokHideAsia",
+      "path": "/open/v1/rpa/task/tiktokHideAsia",
+      "title": "Hide TikTok videos - Asia",
+      "source": "https://doc.geelark.com/web/#/602813392/101529595",
+      "page_id": "101529595"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokDel",
+      "path": "/open/v1/rpa/task/tiktokDel",
+      "title": "Delete all TikTok videos",
+      "source": "https://doc.geelark.com/web/#/602813392/101529596",
+      "page_id": "101529596"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokDelAsia",
+      "path": "/open/v1/rpa/task/tiktokDelAsia",
+      "title": "Delete all TikTok videos - Asia",
+      "source": "https://doc.geelark.com/web/#/602813392/101529597",
+      "page_id": "101529597"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokCommentInterception",
+      "path": "/open/v1/rpa/task/tiktokCommentInterception",
+      "title": "TikTok comments into conversations",
+      "source": "https://doc.geelark.com/web/#/602813392/101529680",
+      "page_id": "101529680"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokCommentInterceptionAsia",
+      "path": "/open/v1/rpa/task/tiktokCommentInterceptionAsia",
+      "title": "TikTok comments into conversations - Asia",
+      "source": "https://doc.geelark.com/web/#/602813392/101529683",
+      "page_id": "101529683"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokDeleteComment",
+      "path": "/open/v1/rpa/task/tiktokDeleteComment",
+      "title": "Delete TikTok comments",
+      "source": "https://doc.geelark.com/web/#/602813392/101529804",
+      "page_id": "101529804"
+    },
+    {
+      "package": "automation",
+      "method": "TikTokDeleteCommentAsia",
+      "path": "/open/v1/rpa/task/tiktokDeleteCommentAsia",
+      "title": "Delete TikTok comments - Asia",
+      "source": "https://doc.geelark.com/web/#/602813392/101529805",
+      "page_id": "101529805"
+    },
+    {
+      "package": "automation",
+      "method": "FaceBookLogin",
+      "path": "/open/v1/rpa/task/faceBookLogin",
+      "title": "Facebook auto login",
+      "source": "https://doc.geelark.com/web/#/602813392/101528374",
+      "page_id": "101528374"
+    },
+    {
+      "package": "automation",
+      "method": "FaceBookAutoComment",
+      "path": "/open/v1/rpa/task/faceBookAutoComment",
+      "title": "Facebook auto comment",
+      "source": "https://doc.geelark.com/web/#/602813392/101528375",
+      "page_id": "101528375"
+    },
+    {
+      "package": "automation",
+      "method": "FaceBookPublish",
+      "path": "/open/v1/rpa/task/faceBookPublish",
+      "title": "Facebook post content",
+      "source": "https://doc.geelark.com/web/#/602813392/101528376",
+      "page_id": "101528376"
+    },
+    {
+      "package": "automation",
+      "method": "FaceBookActiveAccount",
+      "path": "/open/v1/rpa/task/faceBookActiveAccount",
+      "title": "Facebook account warm up",
+      "source": "https://doc.geelark.com/web/#/602813392/101528377",
+      "page_id": "101528377"
+    },
+    {
+      "package": "automation",
+      "method": "FaceBookPubReels",
+      "path": "/open/v1/rpa/task/faceBookPubReels",
+      "title": "Facebook publish Reels video",
+      "source": "https://doc.geelark.com/web/#/602813392/101528378",
+      "page_id": "101528378"
+    },
+    {
+      "package": "automation",
+      "method": "FaceBookMessage",
+      "path": "/open/v1/rpa/task/faceBookMessage",
+      "title": "Send private messages on Facebook",
+      "source": "https://doc.geelark.com/web/#/602813392/101528469",
+      "page_id": "101528469"
+    },
+    {
+      "package": "automation",
+      "method": "FacebookReelsActive",
+      "path": "/open/v1/rpa/task/facebookReelsActive",
+      "title": "Facebook Reels warm up",
+      "source": "https://doc.geelark.com/web/#/602813392/101529618",
+      "page_id": "101529618"
+    },
+    {
+      "package": "automation",
+      "method": "InstagramPubReels",
+      "path": "/open/v1/rpa/task/instagramPubReels",
+      "title": "Instagram publish Reels video",
+      "source": "https://doc.geelark.com/web/#/602813392/101528379",
+      "page_id": "101528379"
+    },
+    {
+      "package": "automation",
+      "method": "InstagramWarmup",
+      "path": "/open/v1/rpa/task/instagramWarmup",
+      "title": "Instagram AI account warmup",
+      "source": "https://doc.geelark.com/web/#/602813392/101528405",
+      "page_id": "101528405"
+    },
+    {
+      "package": "automation",
+      "method": "InstagramMessage",
+      "path": "/open/v1/rpa/task/instagramMessage",
+      "title": "Send private messages on Instagram",
+      "source": "https://doc.geelark.com/web/#/602813392/101528470",
+      "page_id": "101528470"
+    },
+    {
+      "package": "automation",
+      "method": "InstagramPubReelsImages",
+      "path": "/open/v1/rpa/task/instagramPubReelsImages",
+      "title": "Instagram publish Reels image",
+      "source": "https://doc.geelark.com/web/#/602813392/101528501",
+      "page_id": "101528501"
+    },
+    {
+      "package": "automation",
+      "method": "InstagramLogin",
+      "path": "/open/v1/rpa/task/instagramLogin",
+      "title": "Instagram auto login",
+      "source": "https://doc.geelark.com/web/#/602813392/101528509",
+      "page_id": "101528509"
+    },
+    {
+      "package": "automation",
+      "method": "InstagramEdit",
+      "path": "/open/v1/rpa/task/instagramEdit",
+      "title": "Edit Instagram profile",
+      "source": "https://doc.geelark.com/web/#/602813392/101529538",
+      "page_id": "101529538"
+    },
+    {
+      "package": "automation",
+      "method": "InstagramAccountStatus",
+      "path": "/open/v1/rpa/task/instagramAccountStatus",
+      "title": "Instagram account privacy settings",
+      "source": "https://doc.geelark.com/web/#/602813392/101529679",
+      "page_id": "101529679"
+    },
+    {
+      "package": "automation",
+      "method": "InstagramFollowAccount",
+      "path": "/open/v1/rpa/task/instagramFollowAccount",
+      "title": "Instagram Follow Account",
+      "source": "https://doc.geelark.com/web/#/602813392/101529716",
+      "page_id": "101529716"
+    },
+    {
+      "package": "automation",
+      "method": "InstagramAiComment",
+      "path": "/open/v1/rpa/task/instagramAiComment",
+      "title": "Instagram AI comments",
+      "source": "https://doc.geelark.com/web/#/602813392/101529717",
+      "page_id": "101529717"
+    },
+    {
+      "package": "automation",
+      "method": "YouTubePubShort",
+      "path": "/open/v1/rpa/task/youtubePubShort",
+      "title": "YouTube publish Short",
+      "source": "https://doc.geelark.com/web/#/602813392/101528380",
+      "page_id": "101528380"
+    },
+    {
+      "package": "automation",
+      "method": "YouTubePubVideo",
+      "path": "/open/v1/rpa/task/youtubePubVideo",
+      "title": "YouTube publish Video",
+      "source": "https://doc.geelark.com/web/#/602813392/101528381",
+      "page_id": "101528381"
+    },
+    {
+      "package": "automation",
+      "method": "YouTubeActiveAccount",
+      "path": "/open/v1/rpa/task/youTubeActiveAccount",
+      "title": "YouTube maintenance",
+      "source": "https://doc.geelark.com/web/#/602813392/101528382",
+      "page_id": "101528382"
+    },
+    {
+      "package": "automation",
+      "method": "YouTubeEdit",
+      "path": "/open/v1/rpa/task/youtubeEdit",
+      "title": "Edit YouTube profile",
+      "source": "https://doc.geelark.com/web/#/602813392/101529696",
+      "page_id": "101529696"
+    },
+    {
+      "package": "automation",
+      "method": "GoogleLogin",
+      "path": "/open/v1/rpa/task/googleLogin",
+      "title": "Google auto login",
+      "source": "https://doc.geelark.com/web/#/602813392/101528383",
+      "page_id": "101528383"
+    },
+    {
+      "package": "automation",
+      "method": "GoogleAppDownload",
+      "path": "/open/v1/rpa/task/googleAppDownload",
+      "title": "Download apps on Google",
+      "source": "https://doc.geelark.com/web/#/602813392/101528471",
+      "page_id": "101528471"
+    },
+    {
+      "package": "automation",
+      "method": "GoogleAppBrowser",
+      "path": "/open/v1/rpa/task/googleAppBrowser",
+      "title": "Open the app on Google for browsing",
+      "source": "https://doc.geelark.com/web/#/602813392/101528472",
+      "page_id": "101528472"
+    },
+    {
+      "package": "automation",
+      "method": "SheinLogin",
+      "path": "/open/v1/rpa/task/sheinLogin",
+      "title": "SHEIN auto login",
+      "source": "https://doc.geelark.com/web/#/602813392/101528384",
+      "page_id": "101528384"
+    },
+    {
+      "package": "automation",
+      "method": "XPublish",
+      "path": "/open/v1/rpa/task/xPublish",
+      "title": "Publish content on X(Twitter)",
+      "source": "https://doc.geelark.com/web/#/602813392/101528392",
+      "page_id": "101528392"
+    },
+    {
+      "package": "automation",
+      "method": "ListFlows",
+      "path": "/open/v1/task/flow/list",
+      "title": "Task flow query",
+      "source": "https://doc.geelark.com/web/#/602813392/101528402",
+      "page_id": "101528402"
+    },
+    {
+      "package": "automation",
+      "method": "CreateCustomTask",
+      "path": "/open/v1/task/rpa/add",
+      "title": "Create custom task",
+      "source": "https://doc.geelark.com/web/#/602813392/101528403",
+      "page_id": "101528403"
+    },
+    {
+      "package": "automation",
+      "method": "ImportFlow",
+      "path": "/open/v1/task/flow/import",
+      "title": "Import custom task flow",
+      "source": "https://doc.geelark.com/web/#/602813392/101529544",
+      "page_id": "101529544"
+    },
+    {
+      "package": "automation",
+      "method": "ExportFlow",
+      "path": "/open/v1/task/flow/export",
+      "title": "Export custom task flow",
+      "source": "https://doc.geelark.com/web/#/602813392/101529545",
+      "page_id": "101529545"
+    },
+    {
+      "package": "automation",
+      "method": "MultiPlatformVideoDistribution",
+      "path": "/open/v1/rpa/task/multiPlatformVideoDistribution",
+      "title": "Multichannel video distribution",
+      "source": "https://doc.geelark.com/web/#/602813392/101528365",
+      "page_id": "101528365"
+    },
+    {
+      "package": "automation",
+      "method": "FileUpload",
+      "path": "/open/v1/rpa/task/fileUpload",
+      "title": "Upload files to the cloud machine in batches",
+      "source": "https://doc.geelark.com/web/#/602813392/101528391",
+      "page_id": "101528391"
+    },
+    {
+      "package": "automation",
+      "method": "ImportContacts",
+      "path": "/open/v1/rpa/task/importContacts",
+      "title": "Batch import contacts to cloud phone",
+      "source": "https://doc.geelark.com/web/#/602813392/101528497",
+      "page_id": "101528497"
+    },
+    {
+      "package": "automation",
+      "method": "KeyboxUpload",
+      "path": "/open/v1/rpa/task/keyboxUpload",
+      "title": "Upload Keybox to the cloud phone",
+      "source": "https://doc.geelark.com/web/#/602813392/101528498",
+      "page_id": "101528498"
+    },
+    {
+      "package": "automation",
+      "method": "RedditWarmup",
+      "path": "/open/v1/rpa/task/redditWarmup",
+      "title": "Reddit AI account warmup",
+      "source": "https://doc.geelark.com/web/#/602813392/101528460",
+      "page_id": "101528460"
+    },
+    {
+      "package": "automation",
+      "method": "RedditVideo",
+      "path": "/open/v1/rpa/task/redditVideo",
+      "title": "Publish video on Reddit",
+      "source": "https://doc.geelark.com/web/#/602813392/101528461",
+      "page_id": "101528461"
+    },
+    {
+      "package": "automation",
+      "method": "RedditImage",
+      "path": "/open/v1/rpa/task/redditImage",
+      "title": "Publish pictures and texts on Reddit",
+      "source": "https://doc.geelark.com/web/#/602813392/101528462",
+      "page_id": "101528462"
+    },
+    {
+      "package": "automation",
+      "method": "PinterestVideo",
+      "path": "/open/v1/rpa/task/pinterestVideo",
+      "title": "Publish video on Pinterest",
+      "source": "https://doc.geelark.com/web/#/602813392/101528559",
+      "page_id": "101528559"
+    },
+    {
+      "package": "automation",
+      "method": "PinterestImage",
+      "path": "/open/v1/rpa/task/pinterestImage",
+      "title": "Publish pictures and texts on Pinterest",
+      "source": "https://doc.geelark.com/web/#/602813392/101528560",
+      "page_id": "101528560"
+    },
+    {
+      "package": "automation",
+      "method": "ThreadsVideo",
+      "path": "/open/v1/rpa/task/threadsVideo",
+      "title": "Publish video on Threads",
+      "source": "https://doc.geelark.com/web/#/602813392/101528654",
+      "page_id": "101528654"
+    },
+    {
+      "package": "automation",
+      "method": "ThreadsImage",
+      "path": "/open/v1/rpa/task/threadsImage",
+      "title": "Publish pictures and texts on Threads",
+      "source": "https://doc.geelark.com/web/#/602813392/101528655",
+      "page_id": "101528655"
+    },
+    {
+      "package": "shell",
+      "method": "Execute",
+      "path": "/open/v1/shell/execute",
+      "title": "Execute shell command",
+      "source": "https://doc.geelark.com/web/#/602813392/101527932",
+      "page_id": "101527932"
+    },
+    {
+      "package": "app",
+      "method": "ListInstalled",
+      "path": "/open/v1/app/list",
+      "title": "Get installed applications",
+      "source": "https://doc.geelark.com/web/#/602813392/101527847",
+      "page_id": "101527847"
+    },
+    {
+      "package": "app",
+      "method": "ListAvailable",
+      "path": "/open/v1/app/installable/list",
+      "title": "Get available applications",
+      "source": "https://doc.geelark.com/web/#/602813392/101527848",
+      "page_id": "101527848"
+    },
+    {
+      "package": "app",
+      "method": "Install",
+      "path": "/open/v1/app/install",
+      "title": "Install application",
+      "source": "https://doc.geelark.com/web/#/602813392/101527849",
+      "page_id": "101527849"
+    },
+    {
+      "package": "app",
+      "method": "Start",
+      "path": "/open/v1/app/start",
+      "title": "Start application",
+      "source": "https://doc.geelark.com/web/#/602813392/101527850",
+      "page_id": "101527850"
+    },
+    {
+      "package": "app",
+      "method": "Stop",
+      "path": "/open/v1/app/stop",
+      "title": "Stop application",
+      "source": "https://doc.geelark.com/web/#/602813392/101527851",
+      "page_id": "101527851"
+    },
+    {
+      "package": "app",
+      "method": "Uninstall",
+      "path": "/open/v1/app/uninstall",
+      "title": "Uninstall application",
+      "source": "https://doc.geelark.com/web/#/602813392/101527852",
+      "page_id": "101527852"
+    },
+    {
+      "package": "app",
+      "method": "Upload",
+      "path": "/open/v1/app/upload",
+      "title": "Upload Application",
+      "source": "https://doc.geelark.com/web/#/602813392/101527967",
+      "page_id": "101527967"
+    },
+    {
+      "package": "app",
+      "method": "UploadStatus",
+      "path": "/open/v1/app/upload/status",
+      "title": "Query Application Upload Status",
+      "source": "https://doc.geelark.com/web/#/602813392/101527968",
+      "page_id": "101527968"
+    },
+    {
+      "package": "app",
+      "method": "ListShop",
+      "path": "/open/v1/app/shop/list",
+      "title": "Get the application list",
+      "source": "https://doc.geelark.com/web/#/602813392/101528644",
+      "page_id": "101528644"
+    },
+    {
+      "package": "app",
+      "method": "AddToTeam",
+      "path": "/open/v1/app/add",
+      "title": "Add to Team Applications",
+      "source": "https://doc.geelark.com/web/#/602813392/101528645",
+      "page_id": "101528645"
+    },
+    {
+      "package": "app",
+      "method": "ListTeam",
+      "path": "/open/v1/app/teamApp/list",
+      "title": "Get Team App List",
+      "source": "https://doc.geelark.com/web/#/602813392/101528688",
+      "page_id": "101528688"
+    },
+    {
+      "package": "app",
+      "method": "RemoveTeam",
+      "path": "/open/v1/app/remove",
+      "title": "Remove Team Apps",
+      "source": "https://doc.geelark.com/web/#/602813392/101528689",
+      "page_id": "101528689"
+    },
+    {
+      "package": "app",
+      "method": "SetAutoInstall",
+      "path": "/open/v1/app/setStatus",
+      "title": "Set Team Apps to Install Automatically",
+      "source": "https://doc.geelark.com/web/#/602813392/101528690",
+      "page_id": "101528690"
+    },
+    {
+      "package": "app",
+      "method": "SetAuthorization",
+      "path": "/open/v1/app/auth/status",
+      "title": "Set Team App Authorization",
+      "source": "https://doc.geelark.com/web/#/602813392/101528691",
+      "page_id": "101528691"
+    },
+    {
+      "package": "app",
+      "method": "SetRoot",
+      "path": "/open/v1/app/root",
+      "title": "Set Team App ROOT Access",
+      "source": "https://doc.geelark.com/web/#/602813392/101528692",
+      "page_id": "101528692"
+    },
+    {
+      "package": "app",
+      "method": "BatchOperate",
+      "path": "/open/v1/app/operation/batch",
+      "title": "Batch Operate Cloud Phone App",
+      "source": "https://doc.geelark.com/web/#/602813392/101529391",
+      "page_id": "101529391"
+    },
+    {
+      "package": "app",
+      "method": "SetKeepAlive",
+      "path": "/open/v1/app/setKeepAlive",
+      "title": "Set Team App Keep Alive",
+      "source": "https://doc.geelark.com/web/#/602813392/101529442",
+      "page_id": "101529442"
+    },
+    {
+      "package": "app",
+      "method": "SetAutoStart",
+      "path": "/open/v1/app/setAutoStart",
+      "title": "Set Team App Auto Start",
+      "source": "https://doc.geelark.com/web/#/602813392/101529443",
+      "page_id": "101529443"
+    },
+    {
+      "package": "app",
+      "method": "SetHidden",
+      "path": "/open/v1/app/setHide",
+      "title": "Set team app hide status",
+      "source": "https://doc.geelark.com/web/#/602813392/101529759",
+      "page_id": "101529759"
+    },
+    {
+      "package": "adb",
+      "method": "SetStatus",
+      "path": "/open/v1/adb/setStatus",
+      "title": "Set ADB Status",
+      "source": "https://doc.geelark.com/web/#/602813392/101527853",
+      "page_id": "101527853"
+    },
+    {
+      "package": "adb",
+      "method": "GetInfo",
+      "path": "/open/v1/adb/getData",
+      "title": "Get ADB information",
+      "source": "https://doc.geelark.com/web/#/602813392/101527854",
+      "page_id": "101527854"
+    },
+    {
+      "package": "files",
+      "method": "GetUploadURL",
+      "path": "/open/v1/upload/getUrl",
+      "title": "Upload temporary files to GeeLark",
+      "source": "https://doc.geelark.com/web/#/602813392/101527836",
+      "page_id": "101527836"
+    },
+    {
+      "package": "files",
+      "method": "UploadToPhone",
+      "path": "/open/v1/phone/uploadFile",
+      "title": "Upload files to the cloud phone",
+      "source": "https://doc.geelark.com/web/#/602813392/101528108",
+      "page_id": "101528108"
+    },
+    {
+      "package": "files",
+      "method": "UploadResult",
+      "path": "/open/v1/phone/uploadFile/result",
+      "title": "Query the upload status of files to the cloud phone",
+      "source": "https://doc.geelark.com/web/#/602813392/101528109",
+      "page_id": "101528109"
+    },
+    {
+      "package": "files",
+      "method": "UploadKeybox",
+      "path": "/open/v1/phone/keyboxUpload",
+      "title": "Upload the keybox file",
+      "source": "https://doc.geelark.com/web/#/602813392/101528555",
+      "page_id": "101528555"
+    },
+    {
+      "package": "files",
+      "method": "KeyboxResult",
+      "path": "/open/v1/phone/keyboxUpload/result",
+      "title": "Query the upload keybox file task result",
+      "source": "https://doc.geelark.com/web/#/602813392/101528556",
+      "page_id": "101528556"
+    },
+    {
+      "package": "library",
+      "method": "GetUploadURL",
+      "path": "/open/v1/material/getUploadUrl",
+      "title": "Upload files to the Library",
+      "source": "https://doc.geelark.com/web/#/602813392/101529515",
+      "page_id": "101529515"
+    },
+    {
+      "package": "library",
+      "method": "Create",
+      "path": "/open/v1/material/create",
+      "title": "Create material",
+      "source": "https://doc.geelark.com/web/#/602813392/101528424",
+      "page_id": "101528424"
+    },
+    {
+      "package": "library",
+      "method": "Delete",
+      "path": "/open/v1/material/del",
+      "title": "Delete material",
+      "source": "https://doc.geelark.com/web/#/602813392/101528425",
+      "page_id": "101528425"
+    },
+    {
+      "package": "library",
+      "method": "SetTag",
+      "path": "/open/v1/material/tag/set",
+      "title": "Set material tag",
+      "source": "https://doc.geelark.com/web/#/602813392/101528426",
+      "page_id": "101528426"
+    },
+    {
+      "package": "library",
+      "method": "Search",
+      "path": "/open/v1/material/search",
+      "title": "Search material",
+      "source": "https://doc.geelark.com/web/#/602813392/101528427",
+      "page_id": "101528427"
+    },
+    {
+      "package": "library",
+      "method": "CreateTag",
+      "path": "/open/v1/material/tag/create",
+      "title": "Create tag",
+      "source": "https://doc.geelark.com/web/#/602813392/101528428",
+      "page_id": "101528428"
+    },
+    {
+      "package": "library",
+      "method": "DeleteTag",
+      "path": "/open/v1/material/tag/del",
+      "title": "Delete tag",
+      "source": "https://doc.geelark.com/web/#/602813392/101528429",
+      "page_id": "101528429"
+    },
+    {
+      "package": "library",
+      "method": "SearchTags",
+      "path": "/open/v1/material/tag/search",
+      "title": "Search material tag",
+      "source": "https://doc.geelark.com/web/#/602813392/101528430",
+      "page_id": "101528430"
+    },
+    {
+      "package": "webhook",
+      "method": "SetURL",
+      "path": "/open/v1/callback/set",
+      "title": "Set Webhook URL",
+      "source": "https://doc.geelark.com/web/#/602813392/101527973",
+      "page_id": "101527973"
+    },
+    {
+      "package": "webhook",
+      "method": "GetURL",
+      "path": "/open/v1/callback/get",
+      "title": "Get Webhook URL",
+      "source": "https://doc.geelark.com/web/#/602813392/101527974",
+      "page_id": "101527974"
+    },
+    {
+      "package": "oem",
+      "method": "Customization",
+      "path": "/open/v1/phone/customization",
+      "title": "OEM/White Label",
+      "source": "https://doc.geelark.com/web/#/602813392/101528564",
+      "page_id": "101528564"
+    },
+    {
+      "package": "analytics",
+      "method": "Data",
+      "path": "/open/v1/analytics/data",
+      "title": "Get account data",
+      "source": "https://doc.geelark.com/web/#/602813392/101528665",
+      "page_id": "101528665"
+    },
+    {
+      "package": "analytics",
+      "method": "AddAccounts",
+      "path": "/open/v1/analytics/accounts/add",
+      "title": "Add Accounts",
+      "source": "https://doc.geelark.com/web/#/602813392/101528675",
+      "page_id": "101528675"
+    },
+    {
+      "package": "analytics",
+      "method": "DeleteAccount",
+      "path": "/open/v1/analytics/accounts/delete",
+      "title": "Delete Account",
+      "source": "https://doc.geelark.com/web/#/602813392/101528676",
+      "page_id": "101528676"
+    },
+    {
+      "package": "analytics",
+      "method": "ListAccounts",
+      "path": "/open/v1/analytics/accounts/list",
+      "title": "Accounts List",
+      "source": "https://doc.geelark.com/web/#/602813392/101528677",
+      "page_id": "101528677"
+    },
+    {
+      "package": "analytics",
+      "method": "UpdateAccount",
+      "path": "/open/v1/analytics/accounts/update",
+      "title": "Update Account",
+      "source": "https://doc.geelark.com/web/#/602813392/101529393",
+      "page_id": "101529393"
+    },
+    {
+      "package": "analytics",
+      "method": "CreateTag",
+      "path": "/open/v1/analytics/tags/create",
+      "title": "Create  Tag",
+      "source": "https://doc.geelark.com/web/#/602813392/101529754",
+      "page_id": "101529754"
+    },
+    {
+      "package": "analytics",
+      "method": "ListTags",
+      "path": "/open/v1/analytics/tags/list",
+      "title": "List  Tags",
+      "source": "https://doc.geelark.com/web/#/602813392/101529755",
+      "page_id": "101529755"
+    },
+    {
+      "package": "analytics",
+      "method": "UpdateTag",
+      "path": "/open/v1/analytics/tags/update",
+      "title": "Update  Tag",
+      "source": "https://doc.geelark.com/web/#/602813392/101529756",
+      "page_id": "101529756"
+    },
+    {
+      "package": "analytics",
+      "method": "DeleteTags",
+      "path": "/open/v1/analytics/tags/del",
+      "title": "Delete  Tags",
+      "source": "https://doc.geelark.com/web/#/602813392/101529757",
+      "page_id": "101529757"
+    },
+    {
+      "package": "livestream",
+      "method": "Start",
+      "path": "/open/v1/phone/videoPush/upload",
+      "title": "Live Streaming",
+      "source": "https://doc.geelark.com/web/#/602813392/101529812",
+      "page_id": "101529812"
+    },
+    {
+      "package": "livestream",
+      "method": "Result",
+      "path": "/open/v1/phone/videoPush/upload/result",
+      "title": "Query Streaming Result",
+      "source": "https://doc.geelark.com/web/#/602813392/101529813",
+      "page_id": "101529813"
+    },
+    {
+      "package": "livestream",
+      "method": "Stop",
+      "path": "/open/v1/phone/videoPush/stop",
+      "title": "Stop Streaming",
+      "source": "https://doc.geelark.com/web/#/602813392/101529814",
+      "page_id": "101529814"
+    },
+    {
+      "package": "browser",
+      "method": "Create",
+      "path": "/api/v1/browser/create",
+      "title": "Create new browser",
+      "source": "https://doc.geelark.com/web/#/602813392/101528629",
+      "page_id": "101528629"
+    },
+    {
+      "package": "browser",
+      "method": "Update",
+      "path": "/api/v1/browser/update",
+      "title": "Edit browser",
+      "source": "https://doc.geelark.com/web/#/602813392/101528630",
+      "page_id": "101528630"
+    },
+    {
+      "package": "browser",
+      "method": "Delete",
+      "path": "/api/v1/browser/delete",
+      "title": "Delete browser",
+      "source": "https://doc.geelark.com/web/#/602813392/101528631",
+      "page_id": "101528631"
+    },
+    {
+      "package": "browser",
+      "method": "List",
+      "path": "/api/v1/browser/list",
+      "title": "Get browser list",
+      "source": "https://doc.geelark.com/web/#/602813392/101528632",
+      "page_id": "101528632"
+    },
+    {
+      "package": "browser",
+      "method": "Start",
+      "path": "/api/v1/browser/start",
+      "title": "Launch browser",
+      "source": "https://doc.geelark.com/web/#/602813392/101528633",
+      "page_id": "101528633"
+    },
+    {
+      "package": "browser",
+      "method": "Stop",
+      "path": "/api/v1/browser/stop",
+      "title": "Close browser",
+      "source": "https://doc.geelark.com/web/#/602813392/101528634",
+      "page_id": "101528634"
+    },
+    {
+      "package": "browser",
+      "method": "Transfer",
+      "path": "/api/v1/browser/transfer",
+      "title": "Transfer browsers",
+      "source": "https://doc.geelark.com/web/#/602813392/101528635",
+      "page_id": "101528635"
+    },
+    {
+      "package": "browser",
+      "method": "APIStatus",
+      "path": "/api/v1/status",
+      "title": "Check API interface status",
+      "source": "https://doc.geelark.com/web/#/602813392/101528659",
+      "page_id": "101528659"
+    },
+    {
+      "package": "browser",
+      "method": "Status",
+      "path": "/api/v1/browser/status",
+      "title": "Check browser status",
+      "source": "https://doc.geelark.com/web/#/602813392/101529527",
+      "page_id": "101529527"
+    },
+    {
+      "package": "browser",
+      "method": "ClearCache",
+      "path": "/api/v1/browser/deleteCache",
+      "title": "Clear browser cache",
+      "source": "https://doc.geelark.com/web/#/602813392/101529528",
+      "page_id": "101529528"
+    },
+    {
+      "package": "browser",
+      "method": "MoveGroup",
+      "path": "/api/v1/browser/moveGroup",
+      "title": "Browser Mobile Grouping",
+      "source": "https://doc.geelark.com/web/#/602813392/101529529",
+      "page_id": "101529529"
+    },
+    {
+      "package": "browser",
+      "method": "Cookies",
+      "path": "/api/v1/browser/getCookie",
+      "title": "Query profile cookies",
+      "source": "https://doc.geelark.com/web/#/602813392/101529530",
+      "page_id": "101529530"
+    },
+    {
+      "package": "browser",
+      "method": "SetBookmarks",
+      "path": "/api/v1/browser/setBookmark",
+      "title": "Set browser bookmarks",
+      "source": "https://doc.geelark.com/web/#/602813392/101529535",
+      "page_id": "101529535"
+    },
+    {
+      "package": "browser",
+      "method": "GetBookmarks",
+      "path": "/api/v1/browser/getBookmark",
+      "title": "Get browser bookmarks",
+      "source": "https://doc.geelark.com/web/#/602813392/101529536",
+      "page_id": "101529536"
+    },
+    {
+      "package": "browser",
+      "method": "Clone",
+      "path": "/api/v1/browser/clone",
+      "title": "Clone browser",
+      "source": "https://doc.geelark.com/web/#/602813392/101529610",
+      "page_id": "101529610"
+    },
+    {
+      "package": "browser",
+      "method": "Kernels",
+      "path": "/api/v1/browser/getKernelsList",
+      "title": "Query kernel",
+      "source": "https://doc.geelark.com/web/#/602813392/101529621",
+      "page_id": "101529621"
+    },
+    {
+      "package": "browser",
+      "method": "UpdateKernels",
+      "path": "/api/v1/browser/updateKernels",
+      "title": "Download and update the kernel",
+      "source": "https://doc.geelark.com/web/#/602813392/101529622",
+      "page_id": "101529622"
+    },
+    {
+      "package": "browser",
+      "method": "ExtensionGroups",
+      "path": "/open/v1/browser/extGroup/list",
+      "title": "Get Browser Extension Category List",
+      "source": "https://doc.geelark.com/web/#/602813392/101529797",
+      "page_id": "101529797"
+    },
+    {
+      "package": "browserautomation",
+      "method": "Search",
+      "path": "/api/v1/browser/task/search",
+      "title": "Query task",
+      "source": "https://doc.geelark.com/web/#/602813392/101529495",
+      "page_id": "101529495"
+    },
+    {
+      "package": "browserautomation",
+      "method": "Cancel",
+      "path": "/api/v1/browser/task/cancel",
+      "title": "Cancel task",
+      "source": "https://doc.geelark.com/web/#/602813392/101529496",
+      "page_id": "101529496"
+    },
+    {
+      "package": "browserautomation",
+      "method": "Restart",
+      "path": "/api/v1/browser/task/restart",
+      "title": "Retry Task",
+      "source": "https://doc.geelark.com/web/#/602813392/101529497",
+      "page_id": "101529497"
+    },
+    {
+      "package": "browserautomation",
+      "method": "Detail",
+      "path": "/api/v1/browser/task/detail",
+      "title": "Query task details",
+      "source": "https://doc.geelark.com/web/#/602813392/101529522",
+      "page_id": "101529522"
+    },
+    {
+      "package": "browserautomation",
+      "method": "Flow",
+      "path": "/api/v1/browser/task/flow",
+      "title": "Task flow query",
+      "source": "https://doc.geelark.com/web/#/602813392/101529498",
+      "page_id": "101529498"
+    },
+    {
+      "package": "browserautomation",
+      "method": "Add",
+      "path": "/api/v1/browser/task/add",
+      "title": "Create custom task",
+      "source": "https://doc.geelark.com/web/#/602813392/101529499",
+      "page_id": "101529499"
+    },
+    {
+      "package": "browserautomation",
+      "method": "TikTokSearch",
+      "path": "/api/v1/browser/task/tiktokSearch",
+      "title": "TikTok search videos, likes and comments",
+      "source": "https://doc.geelark.com/web/#/602813392/101529576",
+      "page_id": "101529576"
+    },
+    {
+      "package": "browserautomation",
+      "method": "TikTokComment",
+      "path": "/api/v1/browser/task/tiktokComment",
+      "title": "TikTok like and comment on videos",
+      "source": "https://doc.geelark.com/web/#/602813392/101529577",
+      "page_id": "101529577"
+    },
+    {
+      "package": "browserautomation",
+      "method": "TikTokLike",
+      "path": "/api/v1/browser/task/tiktokLike",
+      "title": "TikTok like specified videos",
+      "source": "https://doc.geelark.com/web/#/602813392/101529578",
+      "page_id": "101529578"
+    },
+    {
+      "package": "browserautomation",
+      "method": "FacebookPost",
+      "path": "/api/v1/browser/task/facebookPost",
+      "title": "Facebook Post a Status",
+      "source": "https://doc.geelark.com/web/#/602813392/101529579",
+      "page_id": "101529579"
+    },
+    {
+      "package": "browserautomation",
+      "method": "FacebookFriends",
+      "path": "/api/v1/browser/task/facebookFriends",
+      "title": "Facebook add recommended friends",
+      "source": "https://doc.geelark.com/web/#/602813392/101529580",
+      "page_id": "101529580"
+    },
+    {
+      "package": "browserautomation",
+      "method": "FacebookLike",
+      "path": "/api/v1/browser/task/facebookLike",
+      "title": "Facebook like all on the first screen",
+      "source": "https://doc.geelark.com/web/#/602813392/101529581",
+      "page_id": "101529581"
+    },
+    {
+      "package": "browserautomation",
+      "method": "FacebookHomepage",
+      "path": "/api/v1/browser/task/facebookHomepage",
+      "title": "Facebook account creates a homepage",
+      "source": "https://doc.geelark.com/web/#/602813392/101529582",
+      "page_id": "101529582"
+    },
+    {
+      "package": "browserautomation",
+      "method": "InstagramLike",
+      "path": "/api/v1/browser/task/instagramLike",
+      "title": "Browse and like Instagram feed",
+      "source": "https://doc.geelark.com/web/#/602813392/101529583",
+      "page_id": "101529583"
+    },
+    {
+      "package": "browserautomation",
+      "method": "InstagramSearch",
+      "path": "/api/v1/browser/task/instagramSearch",
+      "title": "Instagram search hashtags and browse posts",
+      "source": "https://doc.geelark.com/web/#/602813392/101529584",
+      "page_id": "101529584"
+    },
+    {
+      "package": "browserautomation",
+      "method": "YouTubeWatch",
+      "path": "/api/v1/browser/task/youtubeWatch",
+      "title": "YouTube Watch Videos",
+      "source": "https://doc.geelark.com/web/#/602813392/101529585",
+      "page_id": "101529585"
+    },
+    {
+      "package": "browserautomation",
+      "method": "XPost",
+      "path": "/api/v1/browser/task/xPost",
+      "title": "X(Twitter) Retweet and Post a Tweet",
+      "source": "https://doc.geelark.com/web/#/602813392/101529586",
+      "page_id": "101529586"
+    },
+    {
+      "package": "browserautomation",
+      "method": "XLike",
+      "path": "/api/v1/browser/task/xLike",
+      "title": "X(Twitter) like and retweet tweets",
+      "source": "https://doc.geelark.com/web/#/602813392/101529587",
+      "page_id": "101529587"
+    },
+    {
+      "package": "browserautomation",
+      "method": "RedditLike",
+      "path": "/api/v1/browser/task/redditLike",
+      "title": "Browse and like Reddit posts searched by keywords",
+      "source": "https://doc.geelark.com/web/#/602813392/101529588",
+      "page_id": "101529588"
+    },
+    {
+      "package": "browserautomation",
+      "method": "CookieBot",
+      "path": "/api/v1/browser/task/cookieBot",
+      "title": "Cookie Bot",
+      "source": "https://doc.geelark.com/web/#/602813392/101529589",
+      "page_id": "101529589"
+    },
+    {
+      "package": "proxy",
+      "method": "Add",
+      "path": "/open/v1/proxy/add",
+      "title": "Add proxy",
+      "source": "https://doc.geelark.com/web/#/602813392/101527926",
+      "page_id": "101527926"
+    },
+    {
+      "package": "proxy",
+      "method": "Update",
+      "path": "/open/v1/proxy/update",
+      "title": "Update proxy",
+      "source": "https://doc.geelark.com/web/#/602813392/101527927",
+      "page_id": "101527927"
+    },
+    {
+      "package": "proxy",
+      "method": "Delete",
+      "path": "/open/v1/proxy/delete",
+      "title": "Delete proxy",
+      "source": "https://doc.geelark.com/web/#/602813392/101527928",
+      "page_id": "101527928"
+    },
+    {
+      "package": "proxy",
+      "method": "List",
+      "path": "/open/v1/proxy/list",
+      "title": "Get all proxies",
+      "source": "https://doc.geelark.com/web/#/602813392/101527929",
+      "page_id": "101527929"
+    },
+    {
+      "package": "proxy",
+      "method": "Check",
+      "path": "/open/v1/proxy/check",
+      "title": "Proxy Detection",
+      "source": "https://doc.geelark.com/web/#/602813392/101528662",
+      "page_id": "101528662"
+    },
+    {
+      "package": "proxygroup",
+      "method": "Create",
+      "path": "/open/v1/proxyGroup/add",
+      "title": "Add Proxy Group",
+      "source": "https://doc.geelark.com/web/#/602813392/101529750",
+      "page_id": "101529750"
+    },
+    {
+      "package": "proxygroup",
+      "method": "List",
+      "path": "/open/v1/proxyGroup/search",
+      "title": "List Proxy Groups",
+      "source": "https://doc.geelark.com/web/#/602813392/101529751",
+      "page_id": "101529751"
+    },
+    {
+      "package": "proxygroup",
+      "method": "Update",
+      "path": "/open/v1/proxyGroup/update",
+      "title": "Update Proxy Group",
+      "source": "https://doc.geelark.com/web/#/602813392/101529752",
+      "page_id": "101529752"
+    },
+    {
+      "package": "proxygroup",
+      "method": "Delete",
+      "path": "/open/v1/proxyGroup/del",
+      "title": "Delete Proxy Groups",
+      "source": "https://doc.geelark.com/web/#/602813392/101529753",
+      "page_id": "101529753"
+    },
+    {
+      "package": "tag",
+      "method": "Create",
+      "path": "/open/v1/tag/add",
+      "title": "Create tag",
+      "source": "https://doc.geelark.com/web/#/602813392/101527936",
+      "page_id": "101527936"
+    },
+    {
+      "package": "tag",
+      "method": "Delete",
+      "path": "/open/v1/tag/delete",
+      "title": "Delete tag",
+      "source": "https://doc.geelark.com/web/#/602813392/101527937",
+      "page_id": "101527937"
+    },
+    {
+      "package": "tag",
+      "method": "List",
+      "path": "/open/v1/tag/list",
+      "title": "Query tag",
+      "source": "https://doc.geelark.com/web/#/602813392/101527938",
+      "page_id": "101527938"
+    },
+    {
+      "package": "tag",
+      "method": "Update",
+      "path": "/open/v1/tag/update",
+      "title": "Modify tag",
+      "source": "https://doc.geelark.com/web/#/602813392/101527939",
+      "page_id": "101527939"
+    },
+    {
+      "package": "group",
+      "method": "Create",
+      "path": "/open/v1/group/add",
+      "title": "Create group",
+      "source": "https://doc.geelark.com/web/#/602813392/101527940",
+      "page_id": "101527940"
+    },
+    {
+      "package": "group",
+      "method": "Delete",
+      "path": "/open/v1/group/delete",
+      "title": "Delete group",
+      "source": "https://doc.geelark.com/web/#/602813392/101527941",
+      "page_id": "101527941"
+    },
+    {
+      "package": "group",
+      "method": "List",
+      "path": "/open/v1/group/list",
+      "title": "Query group",
+      "source": "https://doc.geelark.com/web/#/602813392/101527942",
+      "page_id": "101527942"
+    },
+    {
+      "package": "group",
+      "method": "Update",
+      "path": "/open/v1/group/update",
+      "title": "Modify group",
+      "source": "https://doc.geelark.com/web/#/602813392/101527943",
+      "page_id": "101527943"
+    },
+    {
+      "package": "billing",
+      "method": "Balance",
+      "path": "/open/v1/pay/wallet",
+      "title": "Balance Inquiry",
+      "source": "https://doc.geelark.com/web/#/602813392/101529433",
+      "page_id": "101529433"
+    },
+    {
+      "package": "billing",
+      "method": "Plans",
+      "path": "/open/v1/pay/profiles/list",
+      "title": "Get plan list",
+      "source": "https://doc.geelark.com/web/#/602813392/101529504",
+      "page_id": "101529504"
+    },
+    {
+      "package": "billing",
+      "method": "ChangePlan",
+      "path": "/open/v1/pay/plan/upgrade",
+      "title": "Change plan",
+      "source": "https://doc.geelark.com/web/#/602813392/101529505",
+      "page_id": "101529505"
+    },
+    {
+      "package": "billing",
+      "method": "RenewPlan",
+      "path": "/open/v1/pay/plan/continue",
+      "title": "Renew plan",
+      "source": "https://doc.geelark.com/web/#/602813392/101529508",
+      "page_id": "101529508"
+    },
+    {
+      "package": "billing",
+      "method": "PlanInfo",
+      "path": "/open/v1/pay/plan/info",
+      "title": "Get the current subscription plan information",
+      "source": "https://doc.geelark.com/web/#/602813392/101529510",
+      "page_id": "101529510"
+    },
+    {
+      "package": "billing",
+      "method": "Transactions",
+      "path": "/open/v1/billing/transaction/detail",
+      "title": "Billing transaction detail",
+      "source": "https://doc.geelark.com/web/#/602813392/101529561",
+      "page_id": "101529561"
+    },
+    {
+      "package": "billing",
+      "method": "BuyTime",
+      "path": "/open/v1/pay/timeAddOn/buy",
+      "title": "Buy Time add-on",
+      "source": "https://doc.geelark.com/web/#/602813392/101529625",
+      "page_id": "101529625"
+    }
+  ]
+}
