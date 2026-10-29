@@ -12,3 +12,10 @@ const (
 	// TaskStatusCancelled means the task was cancelled.
 	TaskStatusCancelled = 7
 )
+
+const (
+	// UseAIComment lets TikTok comment tasks write comments with AI (Pro users only).
+	UseAIComment = 1
+	// UseOwnComment makes TikTok comment tasks post the request's Comment.
+	UseOwnComment = 2
+)

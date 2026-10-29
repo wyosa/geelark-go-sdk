@@ -35,9 +35,9 @@ type UpdateKernelsRequest struct {
 type UpdateKernelsResponse struct {
 	// Kernel download/update status. The official response example uses "complete".
 	Status string `json:"status"`
-	// Progress value returned by the desktop client. Its range and units are not specified by
-	// the documentation.
-	Progress int `json:"progress"`
+	// Progress value returned by the desktop client. The documentation shows only 0 and does
+	// not specify a type or range, so fractional values are accepted.
+	Progress float64 `json:"progress"`
 }
 
 // UpdateKernels: https://open.geelark.com/api/browser-update-kernel

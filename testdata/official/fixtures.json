@@ -2516,6 +2516,43 @@
   },
   {
     "package": "automation",
+    "method": "InstagramLike",
+    "path": "/open/v1/rpa/task/instagramLike",
+    "title": "Instagram likes and comments",
+    "source": "https://doc.geelark.com/web/#/602813392/101529847",
+    "page_id": "101529847",
+    "url": "https://openapi.geelark.com/open/v1/rpa/task/instagramLike",
+    "slug": "rpa-task-InstagramLike",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "id": "557536075321468390",
+        "links": [
+          "https://www.instagram.com/p/xxx1/",
+          "https://www.instagram.com/p/xxx2/"
+        ],
+        "comments": [
+          "nice post",
+          "great"
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "automation",
     "method": "YouTubePubShort",
     "path": "/open/v1/rpa/task/youtubePubShort",
     "title": "YouTube publish Short",
@@ -4408,6 +4445,88 @@
     "callbacks": []
   },
   {
+    "package": "patch",
+    "method": "Install",
+    "path": "/open/v1/phone/patch/install",
+    "title": "Install Patch",
+    "source": "https://doc.geelark.com/web/#/602813392/101529841",
+    "page_id": "101529841",
+    "url": "https://openapi.geelark.com/open/v1/phone/patch/install",
+    "slug": "phone-patch-install",
+    "requests": [
+      {
+        "apkURL": "https://material.geelark.com/user-upload/495622401615203830/apk/uCeztwvXpswsHPH5WFht.apk",
+        "id": "493188646250219877"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B82825D58F85FB31B755BD6CA32A30A9",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "1830906144634757120"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "patch",
+    "method": "InstallStatus",
+    "path": "/open/v1/phone/patch/install/status",
+    "title": "Query Patch Install Status",
+    "source": "https://doc.geelark.com/web/#/602813392/101529842",
+    "page_id": "101529842",
+    "url": "https://openapi.geelark.com/open/v1/phone/patch/install/status",
+    "slug": "phone-patch-install-status",
+    "requests": [
+      {
+        "type": 1,
+        "patchId": "sdktest",
+        "id": "532930887177274368"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B9C9A787A1B559A6B883A171A7EA129B",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "status": 1
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "patch",
+    "method": "Uninstall",
+    "path": "/open/v1/phone/patch/uninstall",
+    "title": "Uninstall Patch",
+    "source": "https://doc.geelark.com/web/#/602813392/101529843",
+    "page_id": "101529843",
+    "url": "https://openapi.geelark.com/open/v1/phone/patch/uninstall",
+    "slug": "phone-patch-uninstall",
+    "requests": [
+      {
+        "patchId": "sdktest",
+        "id": "532930887177274368"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "B9292502ADA00945BACF910EAB199F92",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "status": 1
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
     "package": "webhook",
     "method": "SetURL",
     "path": "/open/v1/callback/set",
@@ -6210,6 +6329,37 @@
         "remark": "test remark",
         "scheduleAt": 1741846843,
         "eid": "557536075321468390"
+      }
+    ],
+    "responses": [
+      {
+        "traceId": "A4D8BCF69B878A71AC589F5CB1D80EAB",
+        "code": 0,
+        "msg": "success",
+        "data": {
+          "taskId": "558017255909123564"
+        }
+      }
+    ],
+    "callbacks": []
+  },
+  {
+    "package": "browserautomation",
+    "method": "XAiComment",
+    "path": "/api/v1/browser/task/xAiComment",
+    "title": "X(Twitter) AI random comments",
+    "source": "https://doc.geelark.com/web/#/602813392/101529845",
+    "page_id": "101529845",
+    "url": "http://localhost:40185/api/v1/browser/task/xAiComment",
+    "slug": "browser-task-xAIComment",
+    "requests": [
+      {
+        "name": "test",
+        "remark": "test remark",
+        "scheduleAt": 1741846843,
+        "eid": "557536075321468390",
+        "useAI": 2,
+        "comment": "test"
       }
     ],
     "responses": [

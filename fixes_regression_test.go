@@ -29,8 +29,10 @@ func TestMissingResponseData(t *testing.T) {
 					t.Fatal(err)
 				}
 				responseType := method.Type().Out(0).Elem()
+				// Update documents a data-free full success; HideAccessibility returns the same
+				// failDetails-only shape and is treated the same way.
 				optional := responseType.Kind() == reflect.Struct && responseType.NumField() == 0 ||
-					fixture.Package == "cloudphone" && fixture.Method == "Update"
+					fixture.Package == "cloudphone" && (fixture.Method == "Update" || fixture.Method == "HideAccessibility")
 				result := method.Call([]reflect.Value{reflect.ValueOf(context.Background()), reflect.Zero(method.Type().In(1))})
 				if optional {
 					if !result[1].IsNil() || result[0].IsNil() {

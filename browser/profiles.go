@@ -58,10 +58,10 @@ func (c *Client) Transfer(ctx context.Context, req TransferRequest) (*TransferRe
 }
 
 type MoveGroupRequest struct {
-	// browser IDs, up to 100.
-	EnvIDs []string `json:"envIds,omitempty"`
-	// group ID, and "0" is moved to ungrouped.
-	GroupID string `json:"groupId,omitempty"`
+	// Browser IDs, up to 100. Required.
+	EnvIDs []string `json:"envIds"`
+	// Target group ID. Use "0", not an empty string, to move browsers to ungrouped. Required.
+	GroupID string `json:"groupId"`
 }
 
 type MoveGroupResponse struct{}

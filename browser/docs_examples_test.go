@@ -55,6 +55,7 @@ func TestDocumentationExamples(t *testing.T) {
 			if err := json.Unmarshal([]byte(tc.raw), &a); err != nil {
 				t.Fatal(err)
 			}
+			mirrorDeviceMemory(a)
 			if err := json.Unmarshal(got, &b); err != nil {
 				t.Fatal(err)
 			}
@@ -64,3 +65,76 @@ func TestDocumentationExamples(t *testing.T) {
 		})
 	}
 }
+
+// mirrorDeviceMemory adds memoryDevice wherever an example has only memeryDevice,
+// because the SDK sends and returns device memory under both documented spellings.
+func mirrorDeviceMemory(v any) {
+	switch v := v.(type) {
+	case map[string]any:
+		if memory, ok := v["memeryDevice"]; ok {
+			if _, ok := v["memoryDevice"]; !ok {
+				v["memoryDevice"] = memory
+			}
+		}
+		for _, child := range v {
+			mirrorDeviceMemory(child)
+		}
+	case []any:
+		for _, child := range v {
+			mirrorDeviceMemory(child)
+		}
+	}
+}
+
+func TestDeviceMemorySpellings(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		in   any
+	}{
+		{"create table spelling", CreateRequestSimulateConfig{MemoryDevice: ptr(8)}},
+		{"create example spelling", CreateRequestSimulateConfig{MemeryDevice: ptr(8)}},
+		{"update table spelling", &UpdateRequestSimulateConfig{MemoryDevice: ptr(8)}},
+		{"update example spelling", UpdateRequestSimulateConfig{MemeryDevice: ptr(8)}},
+	} {
+		got, err := json.Marshal(tc.in)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if string(got) != `{"memeryDevice":8,"memoryDevice":8}` {
+			t.Errorf("%s: %s", tc.name, got)
+		}
+	}
+	if got, _ := json.Marshal(CreateRequestSimulateConfig{}); string(got) != `{}` {
+		t.Errorf("unset memory must be omitted: %s", got)
+	}
+	for _, raw := range []string{`{"memeryDevice":8}`, `{"memoryDevice":8}`} {
+		var info ListResponseItemsItemSimulateInfo
+		if err := json.Unmarshal([]byte(raw), &info); err != nil {
+			t.Fatal(err)
+		}
+		if info.MemoryDevice != 8 || info.MemeryDevice != 8 {
+			t.Errorf("%s decoded as %d/%d", raw, info.MemoryDevice, info.MemeryDevice)
+		}
+	}
+}
+
+func TestFractionalGeolocation(t *testing.T) {
+	var resp ListResponse
+	raw := `{"items":[{"simulateInfo":{"geoLocation":{"switcher":3,"longitude":103.87546,"latitude":1.30243}}}]}`
+	if err := json.Unmarshal([]byte(raw), &resp); err != nil {
+		t.Fatal(err)
+	}
+	geo := resp.Items[0].SimulateInfo.GeoLocation
+	if geo.Longitude != 103.87546 || geo.Latitude != 1.30243 {
+		t.Fatalf("geolocation = %+v", geo)
+	}
+	got, err := json.Marshal(CreateRequestSimulateConfigGeoLocation{Longitude: ptr(103.87546), Latitude: ptr(20.0)})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(got) != `{"longitude":103.87546,"latitude":20}` {
+		t.Fatalf("request geolocation = %s", got)
+	}
+}
+
+func ptr[T any](v T) *T { return &v }

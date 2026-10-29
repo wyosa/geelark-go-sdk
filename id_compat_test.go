@@ -19,6 +19,7 @@ import (
 func TestResponseIdentifierCompatibility(t *testing.T) {
 	types := []any{
 		cloudphone.StopResponseFailDetailsItem{},
+		cloudphone.StopResponseSuccessDetailsItem{},
 		cloudphone.DeleteResponseFailDetailsItem{},
 		cloudphone.UpdateResponseFailDetailsItem{},
 		cloudphone.HideAccessibilityResponseFailDetailsItem{},

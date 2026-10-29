@@ -39,10 +39,12 @@ type UpdateRequestSimulateConfigGeoLocation struct {
 	Switcher *int `json:"switcher,omitempty"`
 	// Match based on IP. Required.
 	BaseOnIP *bool `json:"baseOnIp,omitempty"`
-	// Longitude in degrees. The browser API documents integer coordinates. Required.
-	Longitude *int `json:"longitude,omitempty"`
-	// Latitude in degrees. The browser API documents integer coordinates. Required.
-	Latitude *int `json:"latitude,omitempty"`
+	// Longitude in degrees. The parameter table says integer, but fractional degrees are
+	// accepted here so locations are not rounded to about 100 km. Required.
+	Longitude *float64 `json:"longitude,omitempty"`
+	// Latitude in degrees. The parameter table says integer, but fractional degrees are
+	// accepted here so locations are not rounded to about 100 km. Required.
+	Latitude *float64 `json:"latitude,omitempty"`
 	// Accuracy (meters). Required.
 	Accuracy *int `json:"accuracy,omitempty"`
 }
@@ -126,10 +128,10 @@ type UpdateRequestSimulateConfig struct {
 	SpeechVoise *UpdateRequestSimulateConfigSpeechVoise `json:"speechVoise,omitempty"`
 	// Hardware concurrency. Required.
 	HardwareConcurrency *int `json:"hardwareConcurrency,omitempty"`
-	// Legacy misspelling of MemoryDevice. Use MemoryDevice for new requests; this field
-	// remains for compatibility with older payloads.
+	// Device memory under the spelling used by the documented JSON examples. Set either
+	// field: MarshalJSON sends the value under both memeryDevice and memoryDevice.
 	MemeryDevice *int `json:"memeryDevice,omitempty"`
-	// Device memory. Required.
+	// Device memory under the spelling used by the parameter table. Required.
 	MemoryDevice *int `json:"memoryDevice,omitempty"`
 	// Do Not Track 0: Default, 1: On, 2: Off. Required.
 	DoNotTrack *int `json:"doNotTrack,omitempty"`

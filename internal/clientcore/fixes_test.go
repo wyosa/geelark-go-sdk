@@ -1,6 +1,7 @@
 package clientcore
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"errors"
@@ -100,6 +101,57 @@ func TestZeroSizeUploads(t *testing.T) {
 	c, _ := New(Config{BaseURL: DefaultBaseURL, Token: "test"})
 	if err := c.Upload(ctx, "PUT", "https://storage.example/file", nil, auditErrorReader{sentinel}, 0); !errors.Is(err, context.Canceled) {
 		t.Fatalf("cancelled upload read its reader: %v", err)
+	}
+}
+
+// net/http replaces empty bytes and strings readers with http.NoBody and then
+// ignores ContentLength, so these bodies must be rejected before sending.
+func TestDeclaredSizeRejectsEmptyBodies(t *testing.T) {
+	drained := bytes.NewReader([]byte("hello"))
+	if _, err := io.Copy(io.Discard, drained); err != nil {
+		t.Fatal(err)
+	}
+	for name, body := range map[string]io.Reader{
+		"empty_strings_reader": strings.NewReader(""),
+		"empty_bytes_buffer":   new(bytes.Buffer),
+		"drained_bytes_reader": drained,
+		"no_body":              http.NoBody,
+	} {
+		t.Run(name, func(t *testing.T) {
+			calls := 0
+			c, _ := New(Config{BaseURL: DefaultBaseURL, Token: "test", HTTPClient: &http.Client{Transport: roundTripFunc(func(*http.Request) (*http.Response, error) {
+				calls++
+				return &http.Response{StatusCode: 200, Body: http.NoBody}, nil
+			})}})
+			err := c.Upload(context.Background(), "PUT", "https://storage.example/file", nil, body, 5)
+			if err == nil || calls != 0 {
+				t.Fatalf("empty body uploaded for declared size 5: err=%v calls=%d", err, calls)
+			}
+		})
+	}
+}
+
+func TestOSSUploadsUseTLS(t *testing.T) {
+	for _, tc := range []struct{ signed, want string }{
+		{
+			"http://bucket.oss-cn-hangzhou.aliyuncs.com/open-upload%2F1%2Ffile.mp4?Expires=1&OSSAccessKeyId=id&Signature=a%2Bb%3D",
+			"https://bucket.oss-cn-hangzhou.aliyuncs.com/open-upload%2F1%2Ffile.mp4?Expires=1&OSSAccessKeyId=id&Signature=a%2Bb%3D",
+		},
+		{"HTTP://Bucket.OSS-AP-SOUTHEAST-3.ALIYUNCS.COM/k?Signature=s", "https://Bucket.OSS-AP-SOUTHEAST-3.ALIYUNCS.COM/k?Signature=s"},
+		{"http://storage.example/k?Signature=s", "http://storage.example/k?Signature=s"},
+		{"http://aliyuncs.com.example/k", "http://aliyuncs.com.example/k"},
+	} {
+		var got string
+		c, _ := New(Config{BaseURL: DefaultBaseURL, Token: "test", HTTPClient: &http.Client{Transport: roundTripFunc(func(r *http.Request) (*http.Response, error) {
+			got = r.URL.String()
+			return &http.Response{StatusCode: 200, Body: http.NoBody}, nil
+		})}})
+		if err := c.Upload(context.Background(), "PUT", tc.signed, nil, strings.NewReader("x"), 1); err != nil {
+			t.Fatal(err)
+		}
+		if got != tc.want {
+			t.Errorf("%s uploaded to %s, want %s", tc.signed, got, tc.want)
+		}
 	}
 }
 

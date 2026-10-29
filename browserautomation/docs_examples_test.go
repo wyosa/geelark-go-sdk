@@ -46,6 +46,8 @@ func TestDocumentationExamples(t *testing.T) {
 		{"XPostResponse", "{\"taskId\":\"558017255909123564\"}", func() any { return new(XPostResponse) }},
 		{"XLikeRequest", "{\"name\":\"test\",\"remark\":\"test remark\",\"scheduleAt\":1741846843,\"eid\":\"557536075321468390\"}", func() any { return new(XLikeRequest) }},
 		{"XLikeResponse", "{\"taskId\":\"558017255909123564\"}", func() any { return new(XLikeResponse) }},
+		{"XAiCommentRequest", "{\"name\":\"test\",\"remark\":\"test remark\",\"scheduleAt\":1741846843,\"eid\":\"557536075321468390\",\"useAI\":2,\"comment\":\"test\"}", func() any { return new(XAiCommentRequest) }},
+		{"XAiCommentResponse", "{\"taskId\":\"558017255909123564\"}", func() any { return new(XAiCommentResponse) }},
 		{"RedditLikeRequest", "{\"name\":\"test\",\"remark\":\"test remark\",\"scheduleAt\":1741846843,\"eid\":\"557536075321468390\",\"searchKeywords\":[\"hello\"]}", func() any { return new(RedditLikeRequest) }},
 		{"RedditLikeResponse", "{\"taskId\":\"558017255909123564\"}", func() any { return new(RedditLikeResponse) }},
 		{"CookieBotRequest", "{\"name\":\"test\",\"remark\":\"test remark\",\"scheduleAt\":1741846843,\"eid\":\"557536075321468390\",\"pages\":[\"https://a.com\"]}", func() any { return new(CookieBotRequest) }},

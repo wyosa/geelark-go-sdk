@@ -86,10 +86,12 @@ type ListResponseItemsItemSimulateInfoGeoLocation struct {
 	Switcher int `json:"switcher"`
 	// Match based on IP address.
 	BaseOnIP bool `json:"baseOnIp"`
-	// Longitude in degrees. The browser API documents integer coordinates.
-	Longitude int `json:"longitude"`
-	// Latitude in degrees. The browser API documents integer coordinates.
-	Latitude int `json:"latitude"`
+	// Longitude in degrees. The response table says integer; float64 also decodes
+	// fractional coordinates set in the desktop client.
+	Longitude float64 `json:"longitude"`
+	// Latitude in degrees. The response table says integer; float64 also decodes
+	// fractional coordinates set in the desktop client.
+	Latitude float64 `json:"latitude"`
 	// Accuracy (meters).
 	Accuracy int `json:"accuracy"`
 }
@@ -202,10 +204,10 @@ type ListResponseItemsItemSimulateInfo struct {
 	// SpeechVoices.
 	SpeechVoise         ListResponseItemsItemSimulateInfoSpeechVoise `json:"speechVoise"`
 	HardwareConcurrency int                                          `json:"hardwareConcurrency"`
-	// Legacy misspelling of MemoryDevice. Use MemoryDevice for new requests; this field
-	// remains for compatibility with older payloads.
+	// Device memory under the spelling used by the documented JSON example. UnmarshalJSON
+	// copies whichever spelling is returned into both fields.
 	MemeryDevice int `json:"memeryDevice"`
-	// Device memory.
+	// Device memory under the spelling used by the response table.
 	MemoryDevice int `json:"memoryDevice,omitempty"`
 	// Do Not Track 0: Default, 1: Enabled, 2: Disabled.
 	DoNotTrack         int                                                 `json:"doNotTrack"`

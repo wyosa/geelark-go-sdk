@@ -65,3 +65,18 @@ func (v *HideAccessibilityResponseFailDetailsItem) UnmarshalJSON(data []byte) er
 	v.ID = string(value.ID)
 	return nil
 }
+
+// UnmarshalJSON accepts string or integer IDs, matching the failure details of
+// the same response. Numeric IDs are preserved exactly; fractional IDs are rejected.
+func (v *StopResponseSuccessDetailsItem) UnmarshalJSON(data []byte) error {
+	type wire StopResponseSuccessDetailsItem
+	value := struct {
+		*wire
+		ID jsonutil.StringID `json:"id"`
+	}{wire: (*wire)(v), ID: jsonutil.StringID(v.ID)}
+	if err := json.Unmarshal(data, &value); err != nil {
+		return err
+	}
+	v.ID = string(value.ID)
+	return nil
+}

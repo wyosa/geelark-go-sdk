@@ -18,6 +18,7 @@ import (
 	"github.com/wyosa/geelark-go-sdk/library"
 	"github.com/wyosa/geelark-go-sdk/livestream"
 	"github.com/wyosa/geelark-go-sdk/oem"
+	"github.com/wyosa/geelark-go-sdk/patch"
 	"github.com/wyosa/geelark-go-sdk/proxy"
 	"github.com/wyosa/geelark-go-sdk/proxygroup"
 	"github.com/wyosa/geelark-go-sdk/shell"
@@ -251,6 +252,10 @@ func TestDocumentedPaths(t *testing.T) {
 			_, err := cloud.Automation.InstagramAiComment(ctx, automation.InstagramAiCommentRequest{})
 			return err
 		}},
+		{"automation.InstagramLike", "/open/v1/rpa/task/instagramLike", func() error {
+			_, err := cloud.Automation.InstagramLike(ctx, automation.InstagramLikeRequest{})
+			return err
+		}},
 		{"automation.YouTubePubShort", "/open/v1/rpa/task/youtubePubShort", func() error {
 			_, err := cloud.Automation.YouTubePubShort(ctx, automation.YouTubePubShortRequest{})
 			return err
@@ -352,6 +357,12 @@ func TestDocumentedPaths(t *testing.T) {
 		{"library.CreateTag", "/open/v1/material/tag/create", func() error { _, err := cloud.Library.CreateTag(ctx, library.CreateTagRequest{}); return err }},
 		{"library.DeleteTag", "/open/v1/material/tag/del", func() error { _, err := cloud.Library.DeleteTag(ctx, library.DeleteTagRequest{}); return err }},
 		{"library.SearchTags", "/open/v1/material/tag/search", func() error { _, err := cloud.Library.SearchTags(ctx, library.SearchTagsRequest{}); return err }},
+		{"patch.Install", "/open/v1/phone/patch/install", func() error { _, err := cloud.Patches.Install(ctx, patch.InstallRequest{}); return err }},
+		{"patch.InstallStatus", "/open/v1/phone/patch/install/status", func() error {
+			_, err := cloud.Patches.InstallStatus(ctx, patch.InstallStatusRequest{})
+			return err
+		}},
+		{"patch.Uninstall", "/open/v1/phone/patch/uninstall", func() error { _, err := cloud.Patches.Uninstall(ctx, patch.UninstallRequest{}); return err }},
 		{"webhook.SetURL", "/open/v1/callback/set", func() error { _, err := cloud.Webhooks.SetURL(ctx, webhook.SetURLRequest{}); return err }},
 		{"webhook.GetURL", "/open/v1/callback/get", func() error { _, err := cloud.Webhooks.GetURL(ctx, webhook.GetURLRequest{}); return err }},
 		{"oem.Customization", "/open/v1/phone/customization", func() error { _, err := cloud.OEM.Customization(ctx, oem.CustomizationRequest{}); return err }},
@@ -442,6 +453,10 @@ func TestDocumentedPaths(t *testing.T) {
 		}},
 		{"browserautomation.XPost", "/api/v1/browser/task/xPost", func() error { _, err := local.Automation.XPost(ctx, browserautomation.XPostRequest{}); return err }},
 		{"browserautomation.XLike", "/api/v1/browser/task/xLike", func() error { _, err := local.Automation.XLike(ctx, browserautomation.XLikeRequest{}); return err }},
+		{"browserautomation.XAiComment", "/api/v1/browser/task/xAiComment", func() error {
+			_, err := local.Automation.XAiComment(ctx, browserautomation.XAiCommentRequest{})
+			return err
+		}},
 		{"browserautomation.RedditLike", "/api/v1/browser/task/redditLike", func() error {
 			_, err := local.Automation.RedditLike(ctx, browserautomation.RedditLikeRequest{})
 			return err

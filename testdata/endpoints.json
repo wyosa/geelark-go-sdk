@@ -1,5 +1,5 @@
 {
-  "snapshot": "2026-10-23",
+  "snapshot": "2026-10-29",
   "endpoints": [
     {
       "package": "cloudphone",
@@ -563,6 +563,14 @@
     },
     {
       "package": "automation",
+      "method": "InstagramLike",
+      "path": "/open/v1/rpa/task/instagramLike",
+      "title": "Instagram likes and comments",
+      "source": "https://doc.geelark.com/web/#/602813392/101529847",
+      "page_id": "101529847"
+    },
+    {
+      "package": "automation",
       "method": "YouTubePubShort",
       "path": "/open/v1/rpa/task/youtubePubShort",
       "title": "YouTube publish Short",
@@ -1034,6 +1042,30 @@
       "page_id": "101528430"
     },
     {
+      "package": "patch",
+      "method": "Install",
+      "path": "/open/v1/phone/patch/install",
+      "title": "Install Patch",
+      "source": "https://doc.geelark.com/web/#/602813392/101529841",
+      "page_id": "101529841"
+    },
+    {
+      "package": "patch",
+      "method": "InstallStatus",
+      "path": "/open/v1/phone/patch/install/status",
+      "title": "Query Patch Install Status",
+      "source": "https://doc.geelark.com/web/#/602813392/101529842",
+      "page_id": "101529842"
+    },
+    {
+      "package": "patch",
+      "method": "Uninstall",
+      "path": "/open/v1/phone/patch/uninstall",
+      "title": "Uninstall Patch",
+      "source": "https://doc.geelark.com/web/#/602813392/101529843",
+      "page_id": "101529843"
+    },
+    {
       "package": "webhook",
       "method": "SetURL",
       "path": "/open/v1/callback/set",
@@ -1440,6 +1472,14 @@
       "title": "X(Twitter) like and retweet tweets",
       "source": "https://doc.geelark.com/web/#/602813392/101529587",
       "page_id": "101529587"
+    },
+    {
+      "package": "browserautomation",
+      "method": "XAiComment",
+      "path": "/api/v1/browser/task/xAiComment",
+      "title": "X(Twitter) AI random comments",
+      "source": "https://doc.geelark.com/web/#/602813392/101529845",
+      "page_id": "101529845"
     },
     {
       "package": "browserautomation",

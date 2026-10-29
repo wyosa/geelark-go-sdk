@@ -40,15 +40,15 @@ GEELARK_APP_ID=your-app-id GEELARK_API_KEY=your-api-key go run ./examples/key-au
 
 ## API coverage
 
-206/206 endpoint paths from the 2026-10-23 documentation snapshot.
+211/211 endpoint paths from the 2026-10-29 documentation snapshot.
 [Endpoint list](testdata/endpoints.json).
 
 | Package | Endpoints |
 | --- | ---: |
 | `cloudphone` | 30 |
-| `automation` | 64 |
+| `automation` | 65 |
 | `browser` | 18 |
-| `browserautomation` | 20 |
+| `browserautomation` | 21 |
 | `app` | 19 |
 | `analytics` | 9 |
 | `library` | 8 |
@@ -59,6 +59,7 @@ GEELARK_APP_ID=your-app-id GEELARK_API_KEY=your-api-key go run ./examples/key-au
 | `proxygroup` | 4 |
 | `tag` | 4 |
 | `livestream` | 3 |
+| `patch` | 3 |
 | `adb` | 2 |
 | `webhook` | 2 |
 | `shell` | 1 |

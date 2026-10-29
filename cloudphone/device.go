@@ -174,9 +174,10 @@ type HideAccessibilityResponse struct {
 // HideAccessibility: https://open.geelark.com/api/phone-hideAccessibility
 //
 // Supports Android 12, 13, 14, and 15. Each call replaces the previous configuration.
+// A fully successful call may return no data, which yields an empty response.
 func (c *Client) HideAccessibility(ctx context.Context, req HideAccessibilityRequest) (*HideAccessibilityResponse, error) {
 	var resp HideAccessibilityResponse
-	if err := c.core.Do(ctx, "/open/v1/phone/hideAccessibility", req, &resp); err != nil {
+	if err := c.core.DoOptionalData(ctx, "/open/v1/phone/hideAccessibility", req, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

@@ -14,7 +14,9 @@ type Client struct {
 func New(core common.Transport) *Client { return &Client{core: core} }
 
 type CustomizationRequestToolBarSettingsItem struct {
-	// Toolbar item name. Refer to the item descriptions below.
+	// Toolbar item name: networkQuality, rotate, screenshot, upload, library (effective only
+	// while upload is visible), volumeUp, volumeDown, speedUp, detection, quality, restart,
+	// appStore, qcode, export, timing, liveStreaming, clear, teamApp, or coordinate.
 	ToolBar string `json:"toolBar,omitempty"`
 	// Whether to display the item. If omitted or set to false, the item will not be displayed.
 	Visible *bool `json:"visible,omitempty"`
@@ -39,8 +41,9 @@ type CustomizationRequest struct {
 	// entrance (as shown picture blow).!demo
 	// (https://singapore-upgrade.geelark.cn/en_mirror_url_demo.png) When open this url, please
 	// redirect to https://mobile.geelark.com/mobile.html with all parameters (it is
-	// recommended to use a iframe) ).
-	MirrorURL string `json:"mirrorUrl,omitempty"`
+	// recommended to use a iframe) ). Nil leaves it unchanged; a pointer to an empty string
+	// sends "" to remove it.
+	MirrorURL *string `json:"mirrorUrl,omitempty"`
 	// Control whether the toolbar entrance on the side of the cloud phone should displayed. If
 	// not set, all will be displayed by default.The display order of the menu matches the
 	// order in which the parameters are passed. The positions of Network quality and App Store
@@ -51,8 +54,9 @@ type CustomizationRequest struct {
 	// Custom domain name. Maximum length: 255 characters. Do not include the http:// or
 	// https:// prefix. Example: phone.example.com. For instructions on configuring a custom
 	// domain, please refer to OEM Custom Domain
-	// (https://open.geelark.com/api/OEM-custom-domain).
-	CustomDomain string `json:"customDomain,omitempty"`
+	// (https://open.geelark.com/api/OEM-custom-domain). Nil leaves it unchanged; a pointer to
+	// an empty string sends "" to remove it.
+	CustomDomain *string `json:"customDomain,omitempty"`
 }
 
 type CustomizationResponse struct{}

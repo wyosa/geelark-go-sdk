@@ -7,7 +7,8 @@ import (
 	"os"
 )
 
-// Upload obtains a signed URL and uploads a Library file with PUT.
+// Upload obtains a signed URL and uploads a Library file with PUT, over HTTPS
+// even when GeeLark returns a plain-HTTP Alibaba Cloud OSS URL.
 // Call Create with the returned ResourceURL to save it in the Library.
 // GeeLark documents a 30-day retention period for Library files. Files not
 // registered with Create after upload are deleted by the service.

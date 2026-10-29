@@ -245,6 +245,12 @@ func TestOfficialContracts(t *testing.T) {
 							corrected["duration"] = json.Number("0")
 							reason = "official example omits the required duration; the zero-value request includes it"
 						}
+						if simulate, ok := corrected["simulateConfig"].(map[string]any); ok && f.Package == "browser" {
+							if memory, ok := simulate["memeryDevice"]; ok && simulate["memoryDevice"] == nil {
+								simulate["memoryDevice"] = memory
+								reason = "official example spells memeryDevice only; the SDK also sends the table's memoryDevice"
+							}
+						}
 						if reason != "" && reflect.DeepEqual(corrected, auditJSON(sent)) {
 							t.Skip(reason)
 						}
@@ -332,7 +338,7 @@ func auditMethod(f auditFixture, hc *http.Client) (reflect.Value, error) {
 	}
 	services := map[string]any{
 		"cloudphone": cloud.CloudPhones, "adb": cloud.ADB, "shell": cloud.Shell,
-		"app": cloud.Apps, "files": cloud.Files, "library": cloud.Library,
+		"app": cloud.Apps, "files": cloud.Files, "library": cloud.Library, "patch": cloud.Patches,
 		"automation": cloud.Automation, "analytics": cloud.Analytics,
 		"livestream": cloud.LiveStream, "webhook": cloud.Webhooks, "oem": cloud.OEM,
 		"proxy": cloud.Proxies, "proxygroup": cloud.ProxyGroups, "group": cloud.Groups,

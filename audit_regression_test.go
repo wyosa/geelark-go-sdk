@@ -16,6 +16,8 @@ import (
 	"github.com/wyosa/geelark-go-sdk/browserautomation"
 	"github.com/wyosa/geelark-go-sdk/cloudphone"
 	"github.com/wyosa/geelark-go-sdk/group"
+	"github.com/wyosa/geelark-go-sdk/library"
+	"github.com/wyosa/geelark-go-sdk/proxy"
 	"github.com/wyosa/geelark-go-sdk/tag"
 )
 
@@ -75,6 +77,7 @@ func TestOptionalListsCanBeCleared(t *testing.T) {
 		{"browser tags", "tagIds", func(v []string) any { return browser.UpdateRequest{ID: "browser", TagIDs: v} }},
 		{"analytics tags", "tagIds", func(v []string) any { return analytics.UpdateAccountRequest{ID: "account", TagIDs: v} }},
 		{"network blacklist", "blackList", func(v []string) any { return cloudphone.SetNetworkSettingsRequest{BlackList: v} }},
+		{"library material tags", "tagsId", func(v []string) any { return library.SetTagRequest{MaterialsID: []string{"m"}, TagsID: v} }},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -148,6 +151,11 @@ func TestAppVersionCodeAcceptsDocumentedForms(t *testing.T) {
 			t.Errorf("versionCode %s: %+v", raw, value)
 		}
 	}
+	// One empty versionCode must not fail the whole ListAvailable response.
+	var empty app.ListAvailableResponseItemsItemAppVersionInfoListItem
+	if err := json.Unmarshal([]byte(`{"id":"version","versionCode":""}`), &empty); err != nil || empty.VersionCode != 0 || empty.ID != "version" {
+		t.Errorf("empty versionCode: %+v, %v", empty, err)
+	}
 }
 
 func TestCustomTasksPreserveArbitraryParameters(t *testing.T) {
@@ -186,4 +194,30 @@ func TestTaskLogCursorPreservesMillisecondTimestamps(t *testing.T) {
 		t.Fatal(err)
 	}
 	assertJSON(t, body, `{"id":"task","searchAfter":[1749004889853]}`)
+}
+
+// Scalars whose documented table type disagrees with the examples must not fail
+// the whole response when the server uses the other form.
+func TestTolerantResponseScalars(t *testing.T) {
+	for _, raw := range []string{`48001`, `"48001"`} {
+		body := `{"totalAmount":1,"failAmount":1,"failDetails":[{"id":"task","code":` + raw + `,"msg":"status"}]}`
+		var cancel automation.CancelTaskResponse
+		var retry automation.RetryTaskResponse
+		if err := json.Unmarshal([]byte(body), &cancel); err != nil || cancel.FailDetails[0].Code != 48001 || cancel.FailDetails[0].ID != "task" {
+			t.Errorf("cancel code %s: %+v, %v", raw, cancel, err)
+		}
+		if err := json.Unmarshal([]byte(body), &retry); err != nil || retry.FailDetails[0].Code != 48001 || retry.FailDetails[0].Msg != "status" {
+			t.Errorf("retry code %s: %+v, %v", raw, retry, err)
+		}
+	}
+	for _, raw := range []string{`2`, `"2"`} {
+		var tag library.SearchResponseListItemTagsItem
+		if err := json.Unmarshal([]byte(`{"id":"1","name":`+raw+`,"color":2}`), &tag); err != nil || tag.Name != "2" || tag.Color != 2 {
+			t.Errorf("library tag name %s: %+v, %v", raw, tag, err)
+		}
+		var item proxy.ListResponseListItem
+		if err := json.Unmarshal([]byte(`{"id":"p","port":80,"proxyGroupId":`+raw+`}`), &item); err != nil || item.ProxyGroupID != "2" || item.Port != 80 {
+			t.Errorf("proxy group %s: %+v, %v", raw, item, err)
+		}
+	}
 }

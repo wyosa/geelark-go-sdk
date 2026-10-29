@@ -199,9 +199,9 @@ type UpdateAccountRequest struct {
 	Account string `json:"account,omitempty"`
 	// Platform; 0: TikTok 1: YouTube 2: Instagram 4: Reddit.
 	Channel *int `json:"channel,omitempty"`
-	// Account remark. An empty string omits remark; this type cannot send an explicit empty
-	// string. The documentation does not specify how to clear an existing remark.
-	Remark string `json:"remark,omitempty"`
+	// Account remark. Nil omits the field and keeps the existing remark; a pointer to an empty
+	// string sends "" to clear it.
+	Remark *string `json:"remark,omitempty"`
 	// Data Assistant tag IDs, at most 20 after deduplication. Nil omits the field; an empty
 	// non-nil slice sends an empty array. The update page and changelog disagree about
 	// omission, so do not assume it preserves existing tags.

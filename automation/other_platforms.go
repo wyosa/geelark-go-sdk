@@ -89,11 +89,13 @@ type RedditWarmupRequest struct {
 	ScheduleAt int64 `json:"scheduleAt"`
 	// Cloud phone ID. Required.
 	ID string `json:"id"`
-	// ~~Search keyword. Maximum length: 150 characters.This field will be deprecated soon.~~.
+	// Search keyword. Maximum length: 150 characters.
+	//
+	// Deprecated: GeeLark is retiring this field; use Keywords.
 	Keyword string `json:"keyword,omitempty"`
 	// Search keyword array. Supports up to 100 keywords, with each keyword having a maximum
 	// length of 150 characters. If keywords is not empty, the keyword field is ignored.
-	Keywords string `json:"keywords,omitempty"`
+	Keywords []string `json:"keywords,omitempty"`
 	// Duration, in minutes.Valid range: [1, 9999]. Required.
 	Duration int `json:"duration"`
 }

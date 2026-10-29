@@ -11,3 +11,10 @@ type Fingerprint = ListResponseItemsItemSimulateInfo
 
 // Profile is a browser profile returned by List.
 type Profile = ListResponseItemsItem
+
+const (
+	// StatusOpen is the Status result for a running browser.
+	StatusOpen = "open"
+	// StatusClosed is the Status result for a browser that is not running.
+	StatusClosed = "close"
+)

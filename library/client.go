@@ -110,9 +110,8 @@ func (c *Client) Delete(ctx context.Context, req DeleteRequest) (*DeleteResponse
 type SetTagRequest struct {
 	// material id. Required.
 	MaterialsID []string `json:"materialsId"`
-	// New material tag IDs; each operation replaces all existing tags. Nil and empty slices
-	// both omit tagsId in this SDK. The server behavior for an omitted field versus an empty
-	// array is not specified.
+	// New material tag IDs; each operation replaces all existing tags. Nil omits tagsId; an
+	// empty non-nil slice sends an empty array to remove all tags.
 	TagsID []string `json:"tagsId,omitempty"`
 }
 
@@ -161,8 +160,8 @@ type SearchRequest struct {
 type SearchResponseListItemTagsItem struct {
 	// Library tag ID.
 	ID string `json:"id"`
-	// Library tag name. The example uses a string despite the table describing it as an
-	// integer.
+	// Library tag name. The example uses a string; a number, as the table describes, is
+	// converted to its decimal text.
 	Name string `json:"name"`
 	// tag color: 0 White 1 Red 2 Blue 3 Green 4 Yellow 5 Purple.
 	Color int `json:"color"`

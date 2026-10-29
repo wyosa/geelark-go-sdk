@@ -227,6 +227,7 @@ func (c *Client) do(ctx context.Context, path string, requestBody, out any, allo
 }
 
 // Upload sends data to a signed storage URL without GeeLark credentials.
+// Plain-HTTP Alibaba Cloud OSS URLs are upgraded to HTTPS.
 func (c *Client) Upload(ctx context.Context, method, signedURL string, headers map[string]string, body io.Reader, size int64) error {
 	if ctx == nil {
 		ctx = context.Background()
@@ -240,6 +241,11 @@ func (c *Client) Upload(ctx context.Context, method, signedURL string, headers m
 	u, err := url.Parse(signedURL)
 	if err != nil || u.Host == "" || (u.Scheme != "https" && u.Scheme != "http") || u.User != nil {
 		return errors.New("upload: invalid signed URL")
+	}
+	// GeeLark returns plain-HTTP Alibaba Cloud OSS upload URLs. OSS signatures do
+	// not cover the scheme, so send the file and the signature over TLS instead.
+	if u.Scheme == "http" && strings.HasSuffix(strings.ToLower(u.Hostname()), ".aliyuncs.com") {
+		signedURL = "https" + signedURL[len("http"):]
 	}
 	if size < 0 {
 		return errors.New("upload: size must be nonnegative")
@@ -269,6 +275,11 @@ func (c *Client) Upload(ctx context.Context, method, signedURL string, headers m
 	req, err := http.NewRequestWithContext(ctx, method, signedURL, body)
 	if err != nil {
 		return errors.New("upload: build request failed")
+	}
+	// net/http replaces an empty bytes or strings reader with http.NoBody and
+	// then sends Content-Length: 0 regardless of req.ContentLength.
+	if size > 0 && req.Body == http.NoBody {
+		return fmt.Errorf("upload: body is empty but declared size is %d", size)
 	}
 	req.ContentLength = size
 	for k, v := range headers {
@@ -320,12 +331,14 @@ func newTraceID() (string, error) {
 
 func (c *Client) waitTurn(ctx context.Context, path string) error {
 	interval := c.minInterval
-	// Billing endpoints have stricter limits than the API-wide default.
+	// Billing endpoints have stricter limits than the API-wide default. As with
+	// DefaultMinInterval, keep a small margin so network jitter cannot make two
+	// calls arrive inside the documented window (1/min and 10/min).
 	switch path {
 	case "/open/v1/pay/plan/info":
-		interval = max(interval, time.Minute)
+		interval = max(interval, 62*time.Second)
 	case "/open/v1/pay/wallet":
-		interval = max(interval, 6*time.Second)
+		interval = max(interval, 6200*time.Millisecond)
 	}
 	for {
 		if err := ctx.Err(); err != nil {

@@ -15,11 +15,11 @@ func TestEndpointRateLimitIntervals(t *testing.T) {
 		configured time.Duration
 		want       time.Duration
 	}{
-		{"default plan info", "/open/v1/pay/plan/info", 0, time.Minute},
-		{"default balance", "/open/v1/pay/wallet", 0, 6 * time.Second},
+		{"default plan info", "/open/v1/pay/plan/info", 0, 62 * time.Second},
+		{"default balance", "/open/v1/pay/wallet", 0, 6200 * time.Millisecond},
 		{"default other endpoint", "/open/v1/phone/list", 0, DefaultMinInterval},
-		{"shorter plan info", "/open/v1/pay/plan/info", time.Nanosecond, time.Minute},
-		{"shorter balance", "/open/v1/pay/wallet", time.Nanosecond, 6 * time.Second},
+		{"shorter plan info", "/open/v1/pay/plan/info", time.Nanosecond, 62 * time.Second},
+		{"shorter balance", "/open/v1/pay/wallet", time.Nanosecond, 6200 * time.Millisecond},
 		{"shorter other endpoint", "/open/v1/phone/list", time.Nanosecond, time.Nanosecond},
 		{"longer plan info", "/open/v1/pay/plan/info", 2 * time.Minute, 2 * time.Minute},
 		{"longer balance", "/open/v1/pay/wallet", 10 * time.Second, 10 * time.Second},

@@ -16,6 +16,7 @@ import (
 	"github.com/wyosa/geelark-go-sdk/files"
 	"github.com/wyosa/geelark-go-sdk/group"
 	"github.com/wyosa/geelark-go-sdk/library"
+	"github.com/wyosa/geelark-go-sdk/oem"
 	"github.com/wyosa/geelark-go-sdk/proxy"
 	"io"
 	"net/http"
@@ -37,7 +38,12 @@ func TestAuditExplicitZeroValues(t *testing.T) {
 		{"gps", cloudphone.SetGPSRequest{List: []cloudphone.SetGPSRequestListItem{{ID: "p", Longitude: common.Ptr(0.0), Latitude: common.Ptr(-0.125)}}}, `{"list":[{"id":"p","longitude":0,"latitude":-0.125}]}`},
 		{"phone_clear", cloudphone.UpdateRequest{ID: "p", Name: common.Ptr(""), Remark: common.Ptr(""), GroupID: common.Ptr(""), TagIDs: []string{}}, `{"id":"p","name":"","remark":"","groupID":"","tagIDs":[]}`},
 		{"browser_clear", browser.UpdateRequest{ID: "b", GroupID: common.Ptr(""), AccountTOTPSecret: common.Ptr(""), TagIDs: []string{}}, `{"id":"b","groupId":"","accountTOTPSecret":"","tagIds":[]}`},
-		{"analytics_zero", analytics.UpdateAccountRequest{ID: "a", Channel: common.Ptr(0), TagIDs: []string{}}, `{"id":"a","channel":0,"tagIds":[]}`},
+		{"analytics_zero", analytics.UpdateAccountRequest{ID: "a", Channel: common.Ptr(0), Remark: common.Ptr(""), TagIDs: []string{}}, `{"id":"a","channel":0,"remark":"","tagIds":[]}`},
+		{"oem_clear", oem.CustomizationRequest{MirrorURL: common.Ptr(""), CustomDomain: common.Ptr("")}, `{"mirrorUrl":"","customDomain":""}`},
+		{"browser_create_empty_value", browser.CreateRequestSimulateConfigPortScanProtection{Switcher: common.Ptr(1), Value: common.Ptr("")}, `{"switcher":1,"value":""}`},
+		{"browser_move_ungrouped", browser.MoveGroupRequest{EnvIDs: []string{"b"}, GroupID: "0"}, `{"envIds":["b"],"groupId":"0"}`},
+		{"browser_move_required", browser.MoveGroupRequest{}, `{"envIds":null,"groupId":""}`},
+		{"proxy_auto_refresh_off", cloudphone.UpdateRequest{ID: "p", ProxyConfig: &cloudphone.UpdateRequestProxyConfig{TypeID: common.Ptr(1), RefreshURL: common.Ptr("http://refresh.invalid"), AutoRefresh: common.Ptr(0)}}, `{"id":"p","proxyConfig":{"typeId":1,"refreshUrl":"http://refresh.invalid","autoRefresh":0}}`},
 		{"group_remark", group.UpdateRequest{List: []group.UpdateRequestListItem{{ID: common.Ptr("g"), Remark: common.Ptr("")}}}, `{"list":[{"id":"g","remark":""}]}`},
 		{"proxy_credentials", proxy.UpdateRequest{List: []proxy.UpdateItem{{ID: "x", Scheme: "http", Server: "proxy.invalid", Port: 80, Username: common.Ptr(""), Password: common.Ptr(""), ProxyGroupID: common.Ptr("")}}}, `{"list":[{"id":"x","scheme":"http","server":"proxy.invalid","port":80,"username":"","password":"","proxyGroupId":""}]}`},
 		{"blacklist", cloudphone.SetNetworkSettingsRequest{BlackList: []string{}}, `{"blackList":[]}`},

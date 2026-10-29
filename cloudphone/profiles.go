@@ -167,9 +167,11 @@ type ListRequest struct {
 	GroupName *string `json:"groupName,omitempty"`
 	// List of cloud phone tag names.
 	Tags []string `json:"tags,omitempty"`
-	// Charging method.
+	// Charging method filter: ChargeModePerMinute (0) or ChargeModeMonthly (1). Nil returns
+	// all charging modes.
 	ChargeMode *int `json:"chargeMode,omitempty"`
-	// Power state.
+	// Power state filter: OpenStatusOff (0) or OpenStatusOn (1). These values differ from the
+	// Status* constants used by Status responses. Nil returns all phones.
 	OpenStatus *int `json:"openStatus,omitempty"`
 	// List of proxy IDs. The maximum array length is 10.
 	ProxyIDs []string `json:"proxyIds,omitempty"`
@@ -322,18 +324,27 @@ func (c *Client) Delete(ctx context.Context, req DeleteRequest) (*DeleteResponse
 	return &resp, nil
 }
 
+// UpdateRequestProxyConfig is either a static proxy (TypeID 1 socks5, 2 http,
+// 3 https; -1 for no proxy, which needs no other fields) or a dynamic proxy
+// already configured in the client (UseProxyCfg true with TypeID 21-30).
 type UpdateRequestProxyConfig struct {
 	// Proxy type ID, Please refer to the typeId list. Required.
 	TypeID *int `json:"typeId,omitempty"`
-	// Proxy server hostname. Required.
+	// Proxy server hostname. Required for static proxies; optional for dynamic ones.
 	Server *string `json:"server,omitempty"`
-	// Proxy server port. Required.
+	// Proxy server port. Required for static proxies; optional for dynamic ones.
 	Port *int `json:"port,omitempty"`
-	// Proxy server username. Required.
+	// Proxy server username. Required for static proxies; optional for dynamic ones.
 	Username *string `json:"username,omitempty"`
-	// Proxy server password. Required.
+	// Proxy server password. Required for static proxies; optional for dynamic ones.
 	Password *string `json:"password,omitempty"`
-	// Whether to use the already configured proxy. Required.
+	// Static proxy refresh URL.
+	RefreshURL *string `json:"refreshUrl,omitempty"`
+	// Static proxy automatic refresh: 0 disabled (default when omitted), 1 every hour,
+	// 2 daily.
+	AutoRefresh *int `json:"autoRefresh,omitempty"`
+	// Whether to use the dynamic proxy already configured in the client. Required for
+	// dynamic proxies.
 	UseProxyCfg *bool `json:"useProxyCfg,omitempty"`
 	// Proxy protocol type: 1 for SOCKS5, 2 for HTTP.
 	Protocol *int `json:"protocol,omitempty"`

@@ -7,7 +7,8 @@ import (
 	"os"
 )
 
-// Upload obtains a temporary signed URL and uploads body with PUT.
+// Upload obtains a temporary signed URL and uploads body with PUT, over HTTPS
+// even when GeeLark returns a plain-HTTP Alibaba Cloud OSS URL.
 // The returned resource URL is valid for three days according to GeeLark.
 // Size must be the exact number of bytes; zero requires an empty reader or nil.
 // A zero-size reader is probed before upload so nonempty content is not discarded.

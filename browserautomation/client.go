@@ -546,6 +546,50 @@ func (c *Client) XLike(ctx context.Context, req XLikeRequest) (*XLikeResponse, e
 	return &resp, nil
 }
 
+type XAiCommentRequest struct {
+	// Task name, maximum 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remark, maximum 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// Profile ID. Required.
+	Eid string `json:"eid"`
+	// Whether to use AI: UseAIComment (1, Pro users only) or UseOwnComment (2, post Comment).
+	// Required; zero is not a valid value.
+	UseAI int `json:"useAI"`
+	// Comment content, up to 300 characters; required when UseAI is UseOwnComment. Always
+	// sent because the parameter table marks it required.
+	Comment string `json:"comment"`
+	// Specified links, up to 100 items, each up to 100 characters.
+	Links []string `json:"links,omitempty"`
+	// Comment probability, 0-100, default is 30.
+	CommentProbability *int `json:"commentProbability,omitempty"`
+	// Search keywords, up to 100 items, each up to 100 characters.
+	SearchKeywords []string `json:"searchKeywords,omitempty"`
+	// Whether to like, default is no.
+	LikeVideo *bool `json:"likeVideo,omitempty"`
+	// Comment image as a local file path on the computer running the desktop client, maximum
+	// 500 characters. Takes effect when UseAI is UseOwnComment.
+	ImagePath string `json:"imagePath,omitempty"`
+}
+
+type XAiCommentResponse struct {
+	// ID assigned to the asynchronous task.
+	TaskID string `json:"taskId"`
+}
+
+// XAiComment: https://open.geelark.com/api/browser-task-xAIComment
+//
+// Comments on X (Twitter) posts with AI-generated or supplied comments.
+func (c *Client) XAiComment(ctx context.Context, req XAiCommentRequest) (*XAiCommentResponse, error) {
+	var resp XAiCommentResponse
+	if err := c.core.Do(ctx, "/api/v1/browser/task/xAiComment", req, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 type RedditLikeRequest struct {
 	// Profile ID. Required.
 	Eid string `json:"eid"`

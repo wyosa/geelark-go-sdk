@@ -31,8 +31,9 @@ type AddItem struct {
 	Password string `json:"password,omitempty"`
 	// Detection channels: 1. IPApi; 2. IP2Location; default is IP2Location.
 	ProxyQueryChannel *int `json:"proxyQueryChannel,omitempty"`
-	// Proxy group ID. This field is described in the changelog but omitted from some endpoint
-	// parameter tables.
+	// Proxy group ID. Undocumented: the changelog (2026-07-29) adds proxy group support to
+	// this API without naming the field, so this name is inferred and unverified; check the
+	// result. "0" denotes ungrouped proxies in the proxy group API.
 	ProxyGroupID string `json:"proxyGroupId,omitempty"`
 }
 
@@ -95,8 +96,9 @@ type UpdateItem struct {
 	Password *string `json:"password,omitempty"`
 	// Detection channels: 1 IPApi; 2 IP2Location; default to original detection channel.
 	ProxyQueryChannel *int `json:"proxyQueryChannel,omitempty"`
-	// Proxy group ID. This field is described in the changelog but omitted from some endpoint
-	// parameter tables.
+	// Proxy group ID. Undocumented: the changelog (2026-07-29) adds proxy group support to
+	// this API without naming the field, so this name is inferred and unverified; check the
+	// result. "0" denotes ungrouped proxies in the proxy group API.
 	ProxyGroupID *string `json:"proxyGroupId,omitempty"`
 }
 
@@ -170,8 +172,9 @@ type ListRequest struct {
 	PageSize int `json:"pageSize"`
 	// Proxy ID list.
 	IDs []string `json:"ids,omitempty"`
-	// Proxy group ID. This field is described in the changelog but omitted from some endpoint
-	// parameter tables.
+	// Proxy group ID. Undocumented: the changelog (2026-07-29) adds proxy group support to
+	// this API without naming the field, so this name is inferred and unverified; check the
+	// result. "0" denotes ungrouped proxies in the proxy group API.
 	ProxyGroupID string `json:"proxyGroupId,omitempty"`
 }
 
@@ -190,8 +193,9 @@ type ListResponseListItem struct {
 	Username string `json:"username"`
 	// Proxy password.
 	Password string `json:"password"`
-	// Proxy group ID. This field is described in the changelog but omitted from some endpoint
-	// parameter tables.
+	// Proxy group ID. Undocumented: the changelog (2026-07-29) adds proxy group support to
+	// this API without naming the field, so this name is inferred and unverified; check the
+	// result. "0" denotes ungrouped proxies in the proxy group API.
 	ProxyGroupID string `json:"proxyGroupId,omitempty"`
 }
 

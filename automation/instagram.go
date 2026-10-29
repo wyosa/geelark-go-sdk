@@ -121,7 +121,7 @@ type InstagramPubReelsImagesRequest struct {
 	SameStyleURL string `json:"sameStyleUrl,omitempty"`
 	// AI tag, defaults to false.
 	AiTag *bool `json:"aiTag,omitempty"`
-	// Posting a POST request defaults to false.
+	// Whether to publish the images as a feed post instead of Reels; defaults to false.
 	PublishPost *bool `json:"publishPost,omitempty"`
 	// Whether to retrieve the sharing link, the default is false.
 	NeedShareLink *bool `json:"needShareLink,omitempty"`
@@ -281,6 +281,39 @@ type InstagramAiCommentResponse struct {
 func (c *Client) InstagramAiComment(ctx context.Context, req InstagramAiCommentRequest) (*InstagramAiCommentResponse, error) {
 	var resp InstagramAiCommentResponse
 	if err := c.core.Do(ctx, "/open/v1/rpa/task/instagramAiComment", req, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
+type InstagramLikeRequest struct {
+	// Task name, up to 128 characters.
+	Name string `json:"name,omitempty"`
+	// Remarks, up to 200 characters.
+	Remark string `json:"remark,omitempty"`
+	// Scheduled execution time as a Unix timestamp in seconds. Required.
+	ScheduleAt int64 `json:"scheduleAt"`
+	// Cloud phone ID. Required.
+	ID string `json:"id"`
+	// Links of the posts to like. Supports up to 100 elements, with each link containing a
+	// maximum of 100 characters. Required.
+	Links []string `json:"links"`
+	// Comments to post. Supports up to 100 elements, with each comment containing a maximum of
+	// 100 characters.
+	Comments []string `json:"comments,omitempty"`
+}
+
+type InstagramLikeResponse struct {
+	// ID assigned to the asynchronous task.
+	TaskID string `json:"taskId"`
+}
+
+// InstagramLike: https://open.geelark.com/api/rpa-task-InstagramLike
+//
+// Likes the specified Instagram posts and optionally comments on them.
+func (c *Client) InstagramLike(ctx context.Context, req InstagramLikeRequest) (*InstagramLikeResponse, error) {
+	var resp InstagramLikeResponse
+	if err := c.core.Do(ctx, "/open/v1/rpa/task/instagramLike", req, &resp); err != nil {
 		return nil, err
 	}
 	return &resp, nil

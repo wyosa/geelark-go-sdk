@@ -21,6 +21,7 @@ import (
 	"github.com/wyosa/geelark-go-sdk/library"
 	"github.com/wyosa/geelark-go-sdk/livestream"
 	"github.com/wyosa/geelark-go-sdk/oem"
+	"github.com/wyosa/geelark-go-sdk/patch"
 	"github.com/wyosa/geelark-go-sdk/proxy"
 	"github.com/wyosa/geelark-go-sdk/proxygroup"
 	"github.com/wyosa/geelark-go-sdk/shell"
@@ -65,6 +66,8 @@ type Client struct {
 	Files *files.Client
 	// Library manages retained Library files and their tags.
 	Library *library.Client
+	// Patches installs and removes patch modules on cloud phones.
+	Patches *patch.Client
 	// Automation creates and queries automation tasks.
 	Automation *automation.Client
 	// Analytics manages Data Assistant accounts, tags, and metrics.
@@ -178,6 +181,7 @@ func newCloudClient(core *clientcore.Client) *Client {
 		Apps:        app.New(core),
 		Files:       files.New(core),
 		Library:     library.New(core),
+		Patches:     patch.New(core),
 		Automation:  automation.New(core),
 		Analytics:   analytics.New(core),
 		LiveStream:  livestream.New(core),
@@ -241,8 +245,9 @@ func WithHTTPClient(httpClient *http.Client) Option {
 }
 
 // WithMinInterval changes the minimum spacing between calls to the same path.
-// Billing.PlanInfo always waits at least 60 seconds between calls and
-// Billing.Balance at least 6 seconds; a longer interval is honored.
+// Billing.PlanInfo always waits at least 62 seconds between calls and
+// Billing.Balance at least 6.2 seconds, slightly above the documented 1 and 10
+// requests per minute; a longer interval is honored.
 // Nonpositive values are ignored. This setting applies to one client instance;
 // callers coordinating several clients or processes need their own limiter.
 func WithMinInterval(interval time.Duration) Option {

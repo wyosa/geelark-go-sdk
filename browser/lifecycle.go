@@ -61,8 +61,7 @@ type StatusRequest struct {
 }
 
 type StatusResponse struct {
-	// Browser status string returned by the desktop client. The documentation does not
-	// enumerate all possible values.
+	// Browser status: StatusOpen while the browser is running, otherwise StatusClosed.
 	Status string `json:"status"`
 	// Browser debugging port returned by the desktop client.
 	DebugPort int `json:"debugPort"`

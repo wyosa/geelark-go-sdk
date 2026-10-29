@@ -133,8 +133,8 @@ type TikTokRandomCommentRequest struct {
 	ScheduleAt int64 `json:"scheduleAt"`
 	// Cloud phone ID. Required.
 	ID string `json:"id"`
-	// Whether to use AI: 1 for AI (only available for Pro users); 2 for not using AI, provide
-	// your own comment. Required.
+	// Whether to use AI: UseAIComment (1, Pro users only) or UseOwnComment (2, post Comment).
+	// Required; zero is not a valid value.
 	UseAi int `json:"useAi"`
 	// Comment content, up to 500 characters; required when useAi is 2. Required.
 	Comment string `json:"comment"`
@@ -172,8 +172,8 @@ type TikTokRandomCommentAsiaRequest struct {
 	ScheduleAt int64 `json:"scheduleAt"`
 	// Cloud phone ID. Required.
 	ID string `json:"id"`
-	// Whether to use AI: 1 for AI (only available for Pro users); 2 for not using AI, provide
-	// your own comment. Required.
+	// Whether to use AI: UseAIComment (1, Pro users only) or UseOwnComment (2, post Comment).
+	// Required; zero is not a valid value.
 	UseAi int `json:"useAi"`
 	// Comment content, up to 500 characters; required when useAi is 2. Required.
 	Comment string `json:"comment"`
@@ -269,7 +269,7 @@ type TikTokRandomFollowRequest struct {
 	ScheduleAt int64 `json:"scheduleAt"`
 	// Cloud phone ID. Required.
 	ID string `json:"id"`
-	// Pay attention to probability, 0-100. Required.
+	// Follow probability, 0-100. Required.
 	FollowProbability int `json:"followProbability"`
 }
 
@@ -296,7 +296,7 @@ type TikTokRandomFollowAsiaRequest struct {
 	ScheduleAt int64 `json:"scheduleAt"`
 	// Cloud phone ID. Required.
 	ID string `json:"id"`
-	// Pay attention to probability, 0-100. Required.
+	// Follow probability, 0-100. Required.
 	FollowProbability int `json:"followProbability"`
 }
 
